@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import SijainenLogin from './komponentit/login/sijainen/SijainenLogin';
 import KouluLogin from './komponentit/login/koulu/KouluLogin';
 import Rekisterointi from './komponentit/login/rekisterointi/Rekisterointi';
+import SivuaEiLoytynyt from './komponentit/SivuaEiLoytynyt';
 
 
 ReactDOM.render((
@@ -18,7 +19,7 @@ ReactDOM.render((
             <Route exact path='/sijainenlogin' component={SijainenLogin}></Route>
             <Route exact path='/koululogin' component={KouluLogin}></Route>
             <Route exact path='/rekisterointi' component={Rekisterointi}></Route>
-            {/* <Route component={SivuaEiLoytynyt} /> */}
+            <Route component={SivuaEiLoytynyt} />
         </Switch>
     </BrowserRouter>
 ), document.getElementById('root'));

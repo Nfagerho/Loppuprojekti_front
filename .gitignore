@@ -3,10 +3,8 @@
 /idea/*
 
 out/
-*
-.iml
-*
-.xml
+*.iml
+*.xml
 
 node_modules/
 

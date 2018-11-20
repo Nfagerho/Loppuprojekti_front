@@ -10,6 +10,9 @@ import KouluLogin from './komponentit/login/koulu/KouluLogin';
 import Rekisterointi from './komponentit/login/rekisterointi/Rekisterointi';
 import KaikkiToimeksiannot from './komponentit/etusivu/sivupalkki/sijainen/KaikkiToimeksiannot';
 
+import SivuaEiLoytynyt from './komponentit/SivuaEiLoytynyt';
+
+
 
 ReactDOM.render((
     <BrowserRouter>
@@ -20,7 +23,7 @@ ReactDOM.render((
             <Route exact path='/koululogin' component={KouluLogin}></Route>
             <Route exact path='/rekisterointi' component={Rekisterointi}></Route>
             <Route exact path='/toimeksiannot' component={KaikkiToimeksiannot}></Route>
-            {/* <Route component={SivuaEiLoytynyt} /> */}
+            <Route component={SivuaEiLoytynyt} />
         </Switch>
     </BrowserRouter>
 ), document.getElementById('root'));

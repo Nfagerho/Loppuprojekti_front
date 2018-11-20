@@ -14,11 +14,6 @@ class LoginSivu extends Component {
                     <NavLink to='/koululogin'>KouluLogin</NavLink><br/>
                     <NavLink to='/rekisterointi'>Rekisteröinti</NavLink>              
                 </nav>
-                {/* <Switch>
-                    <Route exact path='/sijainenlogin' component={SijainenLogin}></Route>
-                    <Route exact path='/koululogin' component={KouluLogin}></Route>
-                    <Route exact path='/rekisterointi' component={Rekisterointi}></Route>
-                </Switch> */}
             </div>
         );
     }

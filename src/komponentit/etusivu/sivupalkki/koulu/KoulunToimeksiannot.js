@@ -33,7 +33,9 @@ class KoulunToimeksiannot extends Component {
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
             return <li key={toimeksiantomappi.toimeksiantoId}>  
                 {toimeksiantomappi.koulu &&
-            <li>Oppiaine: {toimeksiantomappi.oppiaine}<br/> Alkaa: {toimeksiantomappi.toimeksiantoAlkuPvm} Loppuu: {toimeksiantomappi.toimeksiantoLoppuPvm}</li>}</li> }
+            <li>Oppiaine: {toimeksiantomappi.oppiaine}<br/> Alkaa: {toimeksiantomappi.toimeksiantoAlkuPvm} Loppuu: {toimeksiantomappi.toimeksiantoLoppuPvm}</li>} <button type="submit">Poista toimeksianto</button></li>
+             
+        }
            
         })
     

@@ -15,7 +15,7 @@ export function haeKaikkiToimeksiannot(callback) {
 }
 
 //Kaikkien koulujen tietojen fetchaus databasesta
-const url1 = '/api/koulu';
+const url1 = '/api/koulu/';
 
 export function haeKoulunTiedot(callback) {
     fetch(url1, {accept: 'application/json'})

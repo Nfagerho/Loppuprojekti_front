@@ -20,13 +20,10 @@ kaikkihaettu = (haettudata, virhe) => {
         alert("virhe");
     } else {
         this.setState({toimeksiantodata: haettudata});
-        console.log(this.state.toimeksiantodata);
     }
 }
 //Datan mappaus
 render() {
-   
-   console.log(this.state.toimeksiantodata)
     var toimeksiantooliot = this.state.toimeksiantodata.map(function(toimeksiantomappi){
         return <li key={toimeksiantomappi.toimeksiantoId}>{toimeksiantomappi.oppiaine}<li>Alkaa: {toimeksiantomappi.toimeksiantoAlkuPvm} Loppuu: {toimeksiantomappi.toimeksiantoLoppuPvm}</li>
         {toimeksiantomappi.koulu &&

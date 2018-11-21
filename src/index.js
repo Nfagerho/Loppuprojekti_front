@@ -9,6 +9,10 @@ import SijainenLogin from './komponentit/login/sijainen/SijainenLogin';
 import KouluLogin from './komponentit/login/koulu/KouluLogin';
 import Rekisterointi from './komponentit/login/rekisterointi/Rekisterointi';
 import KaikkiToimeksiannot from './komponentit/etusivu/sivupalkki/sijainen/KaikkiToimeksiannot';
+import KoulunTiedot from './komponentit/etusivu/sivupalkki/koulu/KoulunTiedot';
+import SijaisenTiedot from './komponentit/etusivu/sivupalkki/sijainen/SijaisenTiedot';
+import KoulunToimeksiannot from './komponentit/etusivu/sivupalkki/koulu/KoulunToimeksiannot';
+import SijaisenToimeksiannot from './komponentit/etusivu/sivupalkki/sijainen/SijaisenToimeksiannot';
 
 import SivuaEiLoytynyt from './komponentit/SivuaEiLoytynyt';
 
@@ -22,7 +26,12 @@ ReactDOM.render((
             <Route exact path='/sijainenlogin' component={SijainenLogin}></Route>
             <Route exact path='/koululogin' component={KouluLogin}></Route>
             <Route exact path='/rekisterointi' component={Rekisterointi}></Route>
+            {/* Allaolevat routtaukset on tehty, jotta Nooa voi koklailla datan hakemista databasesta: */}
             <Route exact path='/toimeksiannot' component={KaikkiToimeksiannot}></Route>
+            <Route exact path='/kouluntiedot' component={KoulunTiedot}></Route>
+            <Route exact path='/sijaisentiedot' component={SijaisenTiedot}></Route>
+            <Route exact path='/koulunomattoimeksiannot' component={KoulunToimeksiannot}></Route>
+            <Route exact path='/sijaisenomattoimeksiannot' component={SijaisenToimeksiannot}></Route>
             <Route component={SivuaEiLoytynyt} />
         </Switch>
     </BrowserRouter>

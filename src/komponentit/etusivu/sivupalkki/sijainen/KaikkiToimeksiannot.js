@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { haeKaikkiToimeksiannot } from '../../../../restpalvelu' ;
 
-
+//Täällä näytetään kaikki mahdolliset toimeksiannot. Koodiin ei ole vielä lisätty ominaisuutta, joka blokkaisi ne toimeksiannot, jotka
+//on jo kytketty johonkin sijaiseen
 class KaikkiToimeksiannot extends Component {
 
 constructor(props) {
@@ -22,7 +23,7 @@ kaikkihaettu = (haettudata, virhe) => {
         console.log(this.state.toimeksiantodata);
     }
 }
-
+//Datan mappaus
 render() {
    
    console.log(this.state.toimeksiantodata)
@@ -32,7 +33,7 @@ render() {
                  <li>Koulu:{toimeksiantomappi.koulu.kouluNimi} Osoite: {toimeksiantomappi.koulu.kouluOsoite} Yhteyshenkilö:{toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>}</li>
        
     })
-
+//Datan näyttö sivustolla:
     return (    
         <ul>
             {toimeksiantooliot}

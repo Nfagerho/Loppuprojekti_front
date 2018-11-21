@@ -4,6 +4,7 @@ import './sivupalkki/sivupalkki.css';
 import Popup from 'reactjs-popup';
 import BurgerIkoni from './sivupalkki/BurgerIkoni';
 import Valikko from './sivupalkki/Valikko';
+import Substidudes from './substidudes.png'
 
 // Valikkoon liittyviä tyylityksiä
 const styles = {
@@ -24,6 +25,7 @@ class Etusivu extends Component {
     return (
       <div>
         <div style={styles}>
+            <img src={Substidudes}/>
           {/* <Sivupalkki /> */}
 
         <Popup 

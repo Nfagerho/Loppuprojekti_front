@@ -1,23 +1,48 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap } from 'react-google-maps';
+import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+
+import KarttaNakyma from './KarttaNakyma'
 
 class Kartta extends Component {
+    state = {
+        showingInfoWindow: false,
+        activeMarker: {},
+        selectedPlace: {}
+    };
+
+    onMarkerClick = (props, marker, e) =>
+        this.setState({
+            selectedPlace: props,
+            activeMarker: marker,
+            showingInfoWindow: true
+        });
+
+    onClose = props => {
+        if (this.state.showingInfoWindow) {
+            this.setState({
+                showingInfoWindow: false,
+                activeMarker: null
+            });
+        }
+    };
+
     render() {
-        const GoogleMapExample = withGoogleMap(props => (
-            <GoogleMap
-                defaultCenter = { { lat: 40.756795, lng: -73.954298 } }
-                defaultZoom = { 14 }
-            >
-            </GoogleMap>
-        ));
-        return(
-            <div>
-                <GoogleMapExample
-                    containerElement={ <div style={{ height: `720px`, width: '1530px' }} /> }
-                    mapElement={ <div style={{ height: `100%` }} /> }
-                />
-            </div>
+        return (
+            <KarttaNakyma centerAroundCurrentLocation google={this.props.google}>
+                <Marker onClick={this.onMarkerClick} name={'current location'} />
+                <InfoWindow
+                    marker={this.state.activeMarker}
+                    visible={this.state.showingInfoWindow}
+                    onClose={this.onClose}
+                >
+                    <div>
+                        <h4>{this.state.selectedPlace.name}</h4>
+                    </div>
+                </InfoWindow>
+            </KarttaNakyma>
         );
     }
-};
-export default Kartta;
+}
+export default GoogleApiWrapper({
+    apiKey: ''
+})(Kartta);

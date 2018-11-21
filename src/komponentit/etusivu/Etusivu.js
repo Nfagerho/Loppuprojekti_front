@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Sivupalkki from './sivupalkki/Sivupalkki';
 import Kartta from './kartta/Kartta';
 import './sivupalkki/sivupalkki.css';
 import Popup from 'reactjs-popup';

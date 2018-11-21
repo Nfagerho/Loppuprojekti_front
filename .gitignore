@@ -42,4 +42,4 @@ node_modules/
 
 
 npm-debug.log*
-base.js
+public/base.js

@@ -4,7 +4,7 @@ class KoulunUusiToimeksianto extends Component {
     render() {
         return (
             <div>
-                Täällä voi tehdä uuden toimeksiannon
+
             </div>
         );
     }

@@ -13,8 +13,8 @@ import KoulunTiedot from './komponentit/etusivu/sivupalkki/koulu/KoulunTiedot';
 import SijaisenTiedot from './komponentit/etusivu/sivupalkki/sijainen/SijaisenTiedot';
 import KoulunToimeksiannot from './komponentit/etusivu/sivupalkki/koulu/KoulunToimeksiannot';
 import SijaisenToimeksiannot from './komponentit/etusivu/sivupalkki/sijainen/SijaisenToimeksiannot';
-
 import SivuaEiLoytynyt from './komponentit/SivuaEiLoytynyt';
+import Lomake from "./komponentit/etusivu/sivupalkki/koulu/Lomake";
 
 
 
@@ -32,6 +32,7 @@ ReactDOM.render((
             <Route exact path='/sijaisentiedot' component={SijaisenTiedot}></Route>
             <Route exact path='/koulunomattoimeksiannot' component={KoulunToimeksiannot}></Route>
             <Route exact path='/sijaisenomattoimeksiannot' component={SijaisenToimeksiannot}></Route>
+            <Route exact path='/lomake' component={Lomake}></Route>
             <Route component={SivuaEiLoytynyt} />
         </Switch>
     </BrowserRouter>

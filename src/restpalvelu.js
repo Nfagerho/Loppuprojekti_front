@@ -1,5 +1,6 @@
 //Kaikkien toimeksiantojen fetchaus databasesta
 
+
 const url = '/api/toimeksianto';
 
 export function haeKaikkiToimeksiannot(callback) {
@@ -43,11 +44,24 @@ export function haeSijaisenTiedot(callback) {
             });
         });
 }
+
 const palveluurl = '/api/toimeksianto/';
+
 export function lahetaToimeksianto(lomake) {
     return fetch(palveluurl, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(lomake)
     })
+}
+
+const deleteurl = '/api/toimeksianto/';
+
+export function poistaToimeksianto(id) {
+    return fetch(deleteurl + id, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'}
+    })
+        .then(res => res.text())
+        .then(res => alert(res))
 }

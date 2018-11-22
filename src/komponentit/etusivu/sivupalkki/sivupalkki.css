@@ -4,7 +4,6 @@
   cursor: pointer;
   position: fixed;
   left: 20px;
-  /* bottom: 40px; */
   top: 50px;
   z-index: 9999;
   background: #fff;
@@ -58,5 +57,5 @@
   cursor: pointer;
 }
 .menu li:hover {
-  color: #ff0000;
+  color: #777777;
 }

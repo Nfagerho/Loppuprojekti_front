@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {haeKaikkiToimeksiannot, poistaToimeksianto} from '../../../../restpalvelu';
+import {haeKaikkiToimeksiannot, poistaToimeksianto, muokkaaToimeksianto} from '../../../../restpalvelu';
+import { Route, Redirect } from 'react-router'
 
 
 //Täällä haetaan yksittäiseen kouluun liittyvät toimeksiannot. Tällä hetkellä koodiin on kovakoodattu koulunID 1. Tämä pitäisi
@@ -28,8 +29,16 @@ class KoulunToimeksiannot extends Component {
     }
     poistaToimeksiantoById = (e) => {
         e.preventDefault();
-        poistaToimeksianto(e.target.value)
+        poistaToimeksianto(e.target.value).then((function(){
+            this.haekaikki();
+        }).bind(this));
+
+
     };
+
+    handleOnSubmit = (e) => {
+        this.props.history.push('/muokkaalomake/'+ e.target.value);
+        };
 
 
 //Alla olevaan mappaukseen on kovakoodattu kouluID 1. Eli IF-lause tsekkaa, onko toimeksiantoon kytketyn koulun ID 1, jos on niin
@@ -47,9 +56,10 @@ class KoulunToimeksiannot extends Component {
                             value={toimeksiantomappi.toimeksiantoId}
                             onClick={this.poistaToimeksiantoById}>Poista toimeksianto ID:llä
                     </button>
+                            onClick={this.poistaToimeksiantoById}>Poista toimeksianto</button> <button type="button"
+                            value={toimeksiantomappi.toimeksiantoId} onClick={this.handleOnSubmit}>Muokkaa toimeksiantoa</button>
                 </li>
             }
-
         })
 
         return (

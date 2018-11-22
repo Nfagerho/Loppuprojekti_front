@@ -15,7 +15,7 @@ export function haeKaikkiToimeksiannot(callback) {
 }
 
 //Kaikkien koulujen tietojen fetchaus databasesta
-const url1 = '/api/koulu';
+const url1 = '/api/koulu/';
 
 export function haeKoulunTiedot(callback) {
     fetch(url1, {accept: 'application/json'})
@@ -62,5 +62,15 @@ export function poistaToimeksianto(id) {
         headers: {'Content-Type': 'application/json'}
     })
         .then(res => res.text())
-        .then(res => alert(res))
+        
+}
+
+const muokkausurl = '/api/toimeksianto/';
+
+export function muokkaaToimeksianto(id, lomake) {
+    return fetch(muokkausurl + id, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(lomake)
+    })
 }

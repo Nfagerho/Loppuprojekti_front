@@ -15,8 +15,9 @@ const styles = {
 
 // Valikkoon liittyviä tyylityksiä
 const contentStyle = {
-  background: "rgba(255,255,255,0",
-  width: "50%",
+  // background: "rgba(255,255,255,0",
+  background: "rgba(255,255,255,0.7",
+  width: "40%",
   border: "none"
 };
 
@@ -30,9 +31,10 @@ class Etusivu extends Component {
 
         <Popup 
           modal
-          overlayStyle={{ background: "rgba(255,255,255,0.8"}}
+          // overlayStyle={{ background: "rgba(255,255,255,0.8"}}
+          overlayStyle={{ background: "rgba(255,255,255,0"}}
           contentStyle={contentStyle}
-          closeOnDocumentClick={false}
+          closeOnDocumentClick={true}
           trigger={open => <BurgerIkoni open={open} />} 
         >
           {close => <Valikko close={close} />}

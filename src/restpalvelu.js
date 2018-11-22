@@ -63,7 +63,7 @@ export function poistaToimeksianto(id) {
         headers: {'Content-Type': 'application/json'}
     })
         .then(res => res.text())
-        .then(res => alert(res))
+        
 }
 
 const muokkausurl = '/api/toimeksianto/';

@@ -9,13 +9,11 @@ class MuokkaaToimeksianto extends Component {
         oppiaine: '',
         koulu: 1
     };
-
+    
     muokkaalomake = (e) => {
         e.preventDefault();
-        console.log("TESTIA" + this.props.match.params.id);
         muokkaaToimeksianto(this.state.toimeksiantoId, this.state)
     };
-
 
     render() {
         return (

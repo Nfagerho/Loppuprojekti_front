@@ -29,7 +29,11 @@ class KoulunToimeksiannot extends Component {
     }
     poistaToimeksiantoById = (e) => {
         e.preventDefault();
-        poistaToimeksianto(e.target.value)
+        poistaToimeksianto(e.target.value).then((function(){
+            this.haekaikki();
+        }).bind(this));
+       
+        
     };
 
     handleOnSubmit = (e) => {

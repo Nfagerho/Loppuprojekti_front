@@ -8,8 +8,8 @@ class Lomake extends Component {
         kouluNimi: '',
         kouluOsoite: '',
         kouluYhteyshenkilo: '',
-        toimeksiantoAlkuPvm: '',
-        toimeksiantoLoppuPvm: '',
+        toimeksiantoAlkuaika: '',
+        toimeksiantoLoppuaika: '',
         oppiaine: '',
         koulu: 1
     };
@@ -21,33 +21,33 @@ class Lomake extends Component {
     render() {
         return (
             <div>
-                <form>Poista toimeksianto<br/>
+                <form>Poista toimeksianto
                     <input type="text" placeholder=""
                            value={this.state.toimeksiantoId}
                            onChange={this.handlaaPoistoByToimeksiantoId}/><br/>
                     <button type="submit" onClick={this.poistaToimeksiantoById}>Poista toimeksianto ID:llä</button>
                 </form>
-                <form>Koulun nimi: <br/>
+                <form>Koulun nimi:
                     <input type="text" placeholder=""
                            value={this.state.kouluNimi}
                            onChange={this.handlaaKouluNimi}/><br/>
-                    Koulun osoite: <br/>
+                    Koulun osoite:
                     <input type="text" placeholder=""
                            value={this.state.kouluOsoite}
                            onChange={this.handlaaKouluOsoite}/><br/>
-                    Koulun yhteyshenkilö: <br/>
+                    Koulun yhteyshenkilö:
                     <input type="text" placeholder=""
                            value={this.state.kouluYhteyshenkilo}
                            onChange={this.handlaaKouluYhteyshenkilo}/><br/>
-                    Toimeksiannon AlkuPvm: <br/>
-                    <input type="text" placeholder=""
-                           value={this.state.toimeksiantoAlkuPvm}
-                           onChange={this.handlaatoimeksiantoAlkuPvm}/><br/>
-                    Toimeksiannon LoppuPvm: <br/>
-                    <input type="text" placeholder=""
-                           value={this.state.toimeksiantoLoppuPvm}
-                           onChange={this.handlaatoimeksiantoLoppuPvm}/><br/>
-                    Oppiaine: <br/>
+                    Toimeksiannon Alkuaika:
+                    <input type="datetime-local" placeholder=""
+                           value={this.state.toimeksiantoAlkuaika}
+                           onChange={this.handlaatoimeksiantoAlkuaika}/><br/>
+                    Toimeksiannon Loppuaika:
+                    <input type="datetime-local" placeholder=""
+                           value={this.state.toimeksiantoLoppuaika}
+                           onChange={this.handlaatoimeksiantoLoppuaika}/><br/>
+                    Oppiaine:
                     <input type="text" placeholder=""
                            value={this.state.oppiaine}
                            onChange={this.handlaaoppiaine}/><br/>
@@ -66,11 +66,11 @@ class Lomake extends Component {
     handlaaKouluYhteyshenkilo = (e) => {
         this.setState({kouluYhteyshenkilo: e.target.value});
     };
-    handlaatoimeksiantoAlkuPvm = (e) => {
-        this.setState({toimeksiantoAlkuPvm: e.target.value});
+    handlaatoimeksiantoAlkuaika = (e) => {
+        this.setState({toimeksiantoAlkuaika: e.target.value});
     };
-    handlaatoimeksiantoLoppuPvm = (e) => {
-        this.setState({toimeksiantoLoppuPvm: e.target.value});
+    handlaatoimeksiantoLoppuaika = (e) => {
+        this.setState({toimeksiantoLoppuaika: e.target.value});
     };
     handlaaoppiaine = (e) => {
         this.setState({oppiaine: e.target.value});
@@ -78,7 +78,6 @@ class Lomake extends Component {
     handlaaPoistoByToimeksiantoId = (e) => {
         this.setState({toimeksiantoId: e.target.value})
     };
-
     poistaToimeksiantoById = () => {
         poistaToimeksianto(this.state)
     }

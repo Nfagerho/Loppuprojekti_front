@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { haeKaikkiToimeksiannot } from '../../../../restpalvelu' ;
 
-//Täällä näytetään kaikki mahdolliset toimeksiannot. Koodiin ei ole vielä lisätty ominaisuutta, joka blokkaisi ne toimeksiannot, jotka
-//on jo kytketty johonkin sijaiseen
+//Täällä näytetään kaikki toimeksiannot, jotka ei ole jo kytketty johonkin sijaiseen. Eli käytännössä varattavissa olevat toimeksiannot
 class KaikkiToimeksiannot extends Component {
 
 constructor(props) {
@@ -24,12 +23,14 @@ kaikkihaettu = (haettudata, virhe) => {
 }
 //Datan mappaus
 render() {
-    var toimeksiantooliot = this.state.toimeksiantodata.map(function(toimeksiantomappi){
+    var toimeksiantooliot = this.state.toimeksiantodata.map((toimeksiantomappi) =>{
+        //Tsekkaa onko toimeksiantoihin kytketty sijaisia. Jos ei, niin listaa toimeksiannot sivuilla varattaviksi
+        if (toimeksiantomappi.sijainen === null) {
         return <li key={toimeksiantomappi.toimeksiantoId}>{toimeksiantomappi.oppiaine}<li>Alkaa: {toimeksiantomappi.toimeksiantoAlkuPvm} Loppuu: {toimeksiantomappi.toimeksiantoLoppuPvm}</li>
         {toimeksiantomappi.koulu &&
                  <li>Koulu:{toimeksiantomappi.koulu.kouluNimi} Osoite: {toimeksiantomappi.koulu.kouluOsoite} Yhteyshenkilö:{toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>}</li>
        
-    })
+    }})
 //Datan näyttö sivustolla:
     return (    
         <ul>

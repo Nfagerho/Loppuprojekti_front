@@ -10,12 +10,26 @@ class MuokkaaToimeksianto extends Component {
         koulu: 1
     };
     
+    // componentDidMount () {
+    //     this.taytakentat();
+    // }
+    // taytakentat() {
+    //     var testi = JSON.parse(sessionStorage.getItem('toimeksiantoja'));
+    //     this.setState({toimeksiantoAlkuPvm: testi.toimeksiantoAlkuPvm, toimeksiantoLoppuPvm: testi.toimeksiantoLoppuPvm, oppiaine: testi.oppiaine});
+
+        
+    // }
+   
+
     muokkaalomake = (e) => {
         e.preventDefault();
         muokkaaToimeksianto(this.state.toimeksiantoId, this.state)
+        
     };
+    
 
     render() {
+        
         return (
             <div>
                 <form>
@@ -39,6 +53,7 @@ class MuokkaaToimeksianto extends Component {
 
   
     handlaatoimeksiantoAlkuPvm = (e) => {
+        console.log(e.target.value);
         this.setState({toimeksiantoAlkuPvm: e.target.value});
     };
     handlaatoimeksiantoLoppuPvm = (e) => {
@@ -50,10 +65,6 @@ class MuokkaaToimeksianto extends Component {
     handlaaPoistoByToimeksiantoId = (e) => {
         this.setState({toimeksiantoId: e.target.value})
     };
-
-    poistaToimeksiantoById = () => {
-        poistaToimeksianto(this.state)
-    }
 }
 
 export default MuokkaaToimeksianto;

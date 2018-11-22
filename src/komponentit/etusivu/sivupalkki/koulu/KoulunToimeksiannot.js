@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {haeKaikkiToimeksiannot, poistaToimeksianto} from '../../../../restpalvelu';
+import {haeKaikkiToimeksiannot, poistaToimeksianto, muokkaaToimeksianto} from '../../../../restpalvelu';
+import { Route, Redirect } from 'react-router'
 
 
 //Täällä haetaan yksittäiseen kouluun liittyvät toimeksiannot. Tällä hetkellä koodiin on kovakoodattu koulunID 1. Tämä pitäisi
@@ -31,6 +32,10 @@ class KoulunToimeksiannot extends Component {
         poistaToimeksianto(e.target.value)
     };
 
+    handleOnSubmit = (e) => {
+        this.props.history.push('/muokkaalomake/'+ e.target.value);
+        };
+
 
 //Alla olevaan mappaukseen on kovakoodattu kouluID 1. Eli IF-lause tsekkaa, onko toimeksiantoon kytketyn koulun ID 1, jos on niin
 //näyttää toimeksiannon. Jos ei, niin ei näytä mitään.
@@ -38,27 +43,18 @@ class KoulunToimeksiannot extends Component {
 
         var toimeksiantooliot = this.state.toimeksiantodata.map((toimeksiantomappi) => {
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
-<<<<<<< HEAD
-            return <li key={toimeksiantomappi.toimeksiantoId}>  
-                {toimeksiantomappi.koulu &&
-            <li>Oppiaine: {toimeksiantomappi.oppiaine}<br/> Alkaa: {toimeksiantomappi.toimeksiantoAlkuPvm} Loppuu: {toimeksiantomappi.toimeksiantoLoppuPvm}</li>} <button type="submit">Poista toimeksianto</button></li>
-             
-        }
-           
-=======
                 return <li key={toimeksiantomappi.toimeksiantoId}>
                     {toimeksiantomappi.koulu &&
                     <li>Oppiaine: {toimeksiantomappi.oppiaine}<br/> Alkaa: {toimeksiantomappi.toimeksiantoAlkuPvm} Loppuu: {toimeksiantomappi.toimeksiantoLoppuPvm}
                     </li>}
                     <button type="button"
                             value={toimeksiantomappi.toimeksiantoId}
-                            onClick={this.poistaToimeksiantoById}>Poista toimeksianto ID:llä</button>
+                            onClick={this.poistaToimeksiantoById}>Poista toimeksianto</button> <button type="button"
+                            value={toimeksiantomappi.toimeksiantoId} onClick={this.handleOnSubmit}>Muokkaa toimeksiantoa</button>
                 </li>
             }
-
->>>>>>> 180f787b2b5c44cf3c79b84c4ac2b59104622e4c
         })
-
+       
         return (
             <ul>
                 {toimeksiantooliot}

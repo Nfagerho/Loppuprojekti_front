@@ -65,3 +65,13 @@ export function poistaToimeksianto(id) {
         .then(res => res.text())
         .then(res => alert(res))
 }
+
+const muokkausurl = '/api/toimeksianto/';
+
+export function muokkaaToimeksianto(id, lomake) {
+    return fetch(muokkausurl + id, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(lomake)
+    })
+}

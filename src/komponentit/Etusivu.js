@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
-import SijainenLogin from './sijainen/SijainenLogin';
-import KouluLogin from './koulu/KouluLogin';
-import Rekisterointi from './rekisterointi/Rekisterointi';
+import SijainenLogin from './login/sijainen/SijainenLogin';
+import KouluLogin from './login/koulu/KouluLogin';
+import Rekisterointi from './login/rekisterointi/Rekisterointi';
 import {Switch, Route} from 'react-router-dom';
-import './login.css';
-import Substidudes2 from './substidudes2.png'
+import './login/login.css';
+import Substidudes2 from './sijainenNakyma/substidudes2.png'
 
 
 
 
-class LoginSivu extends Component {
+class Etusivu extends Component {
 
     render() {
         return (
@@ -29,4 +29,4 @@ class LoginSivu extends Component {
     }
 }
 
-export default LoginSivu;
+export default Etusivu;

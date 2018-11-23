@@ -1,29 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Etusivu from './komponentit/etusivu/Etusivu';
-import LoginSivu from './komponentit/login/LoginSivu';
 import { Switch, Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
+
+import SijainenNakyma from './komponentit/sijainenNakyma/SijainenNakyma';
+import Etusivu from './komponentit/Etusivu';
 import SijainenLogin from './komponentit/login/sijainen/SijainenLogin';
 import KouluLogin from './komponentit/login/koulu/KouluLogin';
 import Rekisterointi from './komponentit/login/rekisterointi/Rekisterointi';
-import KaikkiToimeksiannot from './komponentit/etusivu/sivupalkki/sijainen/KaikkiToimeksiannot';
-import KoulunTiedot from './komponentit/etusivu/sivupalkki/koulu/KoulunTiedot';
-import SijaisenTiedot from './komponentit/etusivu/sivupalkki/sijainen/SijaisenTiedot';
-import KoulunToimeksiannot from './komponentit/etusivu/sivupalkki/koulu/KoulunToimeksiannot';
-import SijaisenToimeksiannot from './komponentit/etusivu/sivupalkki/sijainen/SijaisenToimeksiannot';
+import KaikkiToimeksiannot from './komponentit/sijainenNakyma/valikko/KaikkiToimeksiannot';
+import KoulunTiedot from './komponentit/kouluNakyma/koulu/KoulunTiedot';
+import SijaisenTiedot from './komponentit/sijainenNakyma/valikko/SijaisenTiedot';
+import KoulunToimeksiannot from './komponentit/kouluNakyma/koulu/KoulunToimeksiannot';
+import SijaisenToimeksiannot from './komponentit/sijainenNakyma/valikko/SijaisenToimeksiannot';
 import SivuaEiLoytynyt from './komponentit/SivuaEiLoytynyt';
-import Lomake from "./komponentit/etusivu/sivupalkki/koulu/Lomake";
-import MuokkaaToimeksiantoa from "./komponentit/etusivu/sivupalkki/koulu/MuokkaaToimeksiantoa";
+import Lomake from "./komponentit/kouluNakyma/koulu/Lomake";
+import MuokkaaToimeksiantoa from "./komponentit/kouluNakyma/koulu/MuokkaaToimeksiantoa";
 
 
 
 ReactDOM.render((
     <BrowserRouter>
         <Switch>
-            <Route exact path='/' component={LoginSivu}></Route>
-            <Route exact path='/etusivu' component={Etusivu}></Route>
+            <Route exact path='/' component={Etusivu}></Route>
+            <Route exact path='/sijainen' component={SijainenNakyma}></Route>
             <Route exact path='/sijainenlogin' component={SijainenLogin}></Route>
             <Route exact path='/koululogin' component={KouluLogin}></Route>
             <Route exact path='/rekisterointi' component={Rekisterointi}></Route>

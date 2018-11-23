@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { haeSijaisenTiedot } from '../../../../restpalvelu';
+import { haeSijaisenTiedot } from '../../../restpalvelu';
 
 
 // Täällä haetaan sijaisen omat tiedot. Tällä hetkellä hakee kaikkien sijaisten kaikki tiedot. 

@@ -7,7 +7,7 @@ class SijainenLogin extends Component {
             <div>
                 Täällä kirjautuu Sijainen
                 <nav>
-                    <NavLink to='/etusivu'>Etusivu</NavLink><br/>
+                    <NavLink to='/sijainen'>Etusivu</NavLink><br/>
                 </nav>
             </div>
         );

@@ -5,6 +5,8 @@ import Popup from 'reactjs-popup';
 import BurgerIkoni from './valikko/BurgerIkoni';
 import Valikko from './valikko/Valikko';
 import Substidudes2 from '../substidudes2.png'
+import SignOutButton from '../firebase/SignOut';
+
 
 // Valikkoon liittyviä tyylityksiä
 const styles = {
@@ -29,7 +31,7 @@ class SijainenNakyma extends Component {
                     <img src={Substidudes2}/>
                 </div>
 
-                <button className="logout">Kirjaudu ulos</button>
+                <SignOutButton/>
 
                 <div style={styles}>
 

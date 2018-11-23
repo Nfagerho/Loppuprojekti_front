@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { haeSijaisenTiedot } from '../../../restpalvelu';
-
+import { withAuthorization } from '../../firebase/Session';
 
 // Täällä haetaan sijaisen omat tiedot. Tällä hetkellä hakee kaikkien sijaisten kaikki tiedot. 
 class SijaisenTiedot extends Component {
@@ -49,4 +49,6 @@ class SijaisenTiedot extends Component {
     }
     }
 
-export default SijaisenTiedot;
+    const condition = authUser => !!authUser;
+
+    export default withAuthorization(condition)(SijaisenTiedot);

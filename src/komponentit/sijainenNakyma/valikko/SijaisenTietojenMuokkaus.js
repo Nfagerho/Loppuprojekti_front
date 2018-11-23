@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {haeYksittainenSijainen, muokkaaSijaista} from '../../../restpalvelu';
-
+import { withAuthorization } from '../../firebase/Session';
 
 class SijaisenTietojenMuokkaus extends Component {
     state = {
@@ -83,4 +83,6 @@ class SijaisenTietojenMuokkaus extends Component {
 }
 
 
-export default SijaisenTietojenMuokkaus;
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(SijaisenTietojenMuokkaus);

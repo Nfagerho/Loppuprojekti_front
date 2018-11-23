@@ -12,7 +12,7 @@ const withAuthorization = condition => Component => {
         authUser => {
           if (!condition(authUser)) {
             // Jos käyttäjä ei ole kirjautunut salatulle sivulle yrittäessään, ohjataan hänet alla olevaan osoitteeseen:
-            this.props.history.push('/');
+            this.props.history.push('/sijainenlogin');
           }
         },
       );

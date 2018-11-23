@@ -7,6 +7,9 @@ import Valikko from './valikko/Valikko';
 import Substidudes2 from '../substidudes2.png'
 import SignOutButton from '../firebase/SignOut';
 
+// Autentikointiin liittyvää
+import { withAuthorization } from '../firebase/Session';
+
 
 // Valikkoon liittyviä tyylityksiä
 const styles = {
@@ -56,4 +59,8 @@ class SijainenNakyma extends Component {
     }
 }
 
-export default SijainenNakyma;
+// Autentikointiin liittyvää
+const condition = authUser => !!authUser;
+// Autentikointiin liittyvää
+export default withAuthorization(condition)(SijainenNakyma);
+// export default SijainenNakyma;

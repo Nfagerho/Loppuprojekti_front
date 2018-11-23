@@ -59,7 +59,11 @@ a.button {
 }
 
 .logout {
-    margin-left: 93%;
+    margin-left: 85%;
     background-color: #e42226;
     color: black;
+}
+
+.sijainenSignIn {
+    text-align: center;
 }

@@ -1,6 +1,5 @@
 //Kaikkien toimeksiantojen fetchaus databasesta
 
-
 const url = '/api/toimeksianto';
 
 export function haeKaikkiToimeksiannot(callback) {

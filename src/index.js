@@ -15,7 +15,7 @@ import KoulunToimeksiannot from './komponentit/etusivu/sivupalkki/koulu/KoulunTo
 import SijaisenToimeksiannot from './komponentit/etusivu/sivupalkki/sijainen/SijaisenToimeksiannot';
 import SivuaEiLoytynyt from './komponentit/SivuaEiLoytynyt';
 import Lomake from "./komponentit/etusivu/sivupalkki/koulu/Lomake";
-import MuokkaaToimeksiantoa from './komponentit/etusivu/sivupalkki/koulu/MuokkaaToimeksiantoa';
+import MuokkaaToimeksiantoa from "./komponentit/etusivu/sivupalkki/koulu/MuokkaaToimeksiantoa";
 
 
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { haeSijaisenTiedot } from '../../../restpalvelu';
 
 
+
 // Täällä haetaan sijaisen omat tiedot. Tällä hetkellä hakee kaikkien sijaisten kaikki tiedot. 
 class SijaisenTiedot extends Component {
     constructor(props) {
@@ -23,7 +24,9 @@ class SijaisenTiedot extends Component {
         }
     }
     handlaamuokkaus = (e) => {
-        this.props.history.push('/sijaisenomientietojenmuokkaus/'+ e.target.value);
+        this.props.muokkaus(e.target.value);
+        //this.props.history.push('/sijaisenomientietojenmuokkaus/'+ e.target.value);
+      
         };
 
     //Täällä mapataan data

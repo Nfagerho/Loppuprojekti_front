@@ -48,7 +48,7 @@ class SijainenNakyma extends Component {
                         closeOnDocumentClick={true}
                         trigger={open => <BurgerIkoni open={open}/>}
                     >
-                        {close => <Valikko close={close}/>}
+                        {close => <Valikko close={close} history={this.props.history}/>}
                     </Popup>
 
                 </div>

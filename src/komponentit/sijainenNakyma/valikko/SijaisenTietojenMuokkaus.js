@@ -4,7 +4,7 @@ import {haeYksittainenSijainen, muokkaaSijaista} from '../../../restpalvelu';
 
 class SijaisenTietojenMuokkaus extends Component {
     state = {
-        sijainenId: this.props.match.params.id,
+        sijainenId: this.props.id,
         sijainenNimi: '',
         sijainenOsoite: '',
         sijainenPuhelinnumero: '',
@@ -19,7 +19,7 @@ class SijaisenTietojenMuokkaus extends Component {
      }
 
      haeyksisijainen() {
-        haeYksittainenSijainen(this.yksihaettu, this.props.match.params.id);
+        haeYksittainenSijainen(this.yksihaettu, this.props.id);
     }
     yksihaettu = (haettudata, virhe) => {
         if (virhe) {
@@ -36,6 +36,7 @@ class SijaisenTietojenMuokkaus extends Component {
     muokkaatietoja = (e) => {
         e.preventDefault();
         muokkaaSijaista(this.state.sijainenId, this.state)
+        this.props.muokkaus();
        
     };
 

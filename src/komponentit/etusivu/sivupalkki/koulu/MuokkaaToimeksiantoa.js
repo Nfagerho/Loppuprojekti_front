@@ -7,7 +7,8 @@ class MuokkaaToimeksianto extends Component {
         toimeksiantoAlkuaika: '',
         toimeksiantoLoppuaika: '',
         oppiaine: '',
-        koulu: 1
+        koulu: 1,
+        sijainen: 1
     };
 
 

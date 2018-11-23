@@ -1,8 +1,8 @@
 import React from "react";
 import Popup from 'reactjs-popup';
-import KaikkiToimeksiannot from "./sijainen/KaikkiToimeksiannot";
-import SijaisenToimeksiannot from "./sijainen/SijaisenToimeksiannot";
-import SijaisenTiedot from "./sijainen/SijaisenTiedot";
+import KaikkiToimeksiannot from "./KaikkiToimeksiannot";
+import SijaisenToimeksiannot from "./SijaisenToimeksiannot";
+import SijaisenTiedot from "./SijaisenTiedot";
 
 // Tämä valikko tulee näkyviin, kun hampurilaista klikataan.
 export default ({ close }) => (

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {haeKaikkiToimeksiannot, poistaToimeksianto, muokkaaToimeksianto} from '../../../../restpalvelu';
+import {haeKaikkiToimeksiannot, poistaToimeksianto, muokkaaToimeksianto} from '../../../restpalvelu';
 
 class MuokkaaToimeksianto extends Component {
     state = {

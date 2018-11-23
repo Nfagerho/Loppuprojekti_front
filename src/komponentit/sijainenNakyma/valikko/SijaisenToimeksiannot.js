@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { haeKaikkiToimeksiannot } from '../../../../restpalvelu' ;
+import { haeKaikkiToimeksiannot } from '../../../restpalvelu' ;
 
 //Täällä haetaan yksittäiseen sijaiseen liittyvät toimeksiannot. Tällä hetkellä koodiin on kovakoodattu SijaisenId 1. Tämä pitäisi
 //saada vastaamaan sisäänkirjautuneen sijaisen ID:tä Firebasen kautta.

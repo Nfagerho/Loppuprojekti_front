@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { haeKoulunTiedot } from '../../../../restpalvelu';
-import { haeKaikkiToimeksiannot } from '../../../../restpalvelu' ;
+import { haeKoulunTiedot } from '../../../restpalvelu';
+import { haeKaikkiToimeksiannot } from '../../../restpalvelu' ;
 
 
 // Täällä haetaan koulun omat tiedot. Tällä hetkellä hakee kaikkien koulujen kaikki tiedot. 

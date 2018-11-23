@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { haeKaikkiToimeksiannot } from '../../../../restpalvelu' ;
+import { haeKaikkiToimeksiannot } from '../../../restpalvelu' ;
 
 //Täällä näytetään kaikki mahdolliset toimeksiannot. Koodiin ei ole vielä lisätty ominaisuutta, joka blokkaisi ne toimeksiannot, jotka
 //on jo kytketty johonkin sijaiseen

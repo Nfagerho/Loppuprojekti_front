@@ -25,12 +25,14 @@ import SignInPage from './komponentit/firebase/SignIn';
 const App = () => (
     <BrowserRouter>
         <Switch>
-        <Route exact path='/' component={Etusivu}></Route>
+            <Route exact path='/' component={Etusivu}></Route>
             <Route exact path='/sijainen' component={SijainenNakyma}></Route>
             <Route exact path='/sijainenlogin' component={SijainenLogin}></Route>
             <Route exact path='/koululogin' component={KouluLogin}></Route>
             <Route exact path='/rekisterointi' component={Rekisterointi}></Route>
-            {/* Allaolevat routtaukset on tehty, jotta Nooa voi koklailla datan hakemista databasesta: */}
+            <Route component={SivuaEiLoytynyt} />
+
+            {/* Seuraavat sivut ovat suojattuja (autentikoinnin takana) */}
             <Route exact path='/toimeksiannot' component={KaikkiToimeksiannot}></Route>
             <Route exact path='/kouluntiedot' component={KoulunTiedot}></Route>
             <Route exact path='/sijaisentiedot' component={SijaisenTiedot}></Route>
@@ -40,7 +42,7 @@ const App = () => (
             <Route exact path='/lomake' component={Lomake}></Route>
             <Route path='/muokkaalomake/:id' component={MuokkaaToimeksiantoa}></Route>
             <Route path='/testikirjautuminen' component={SignInPage}></Route>
-            <Route component={SivuaEiLoytynyt} />
+            
         </Switch>
     </BrowserRouter>    
   );

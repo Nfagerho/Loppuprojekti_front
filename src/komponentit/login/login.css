@@ -66,6 +66,12 @@ a.button {
     font-weight: bold;
 }
 
+.logout:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid #e42226;
+}
+
 .sijainenSignIn {
     text-align: center;
 }
@@ -75,6 +81,12 @@ a.button {
     color: black;
     font-weight: bold;
     border: 2px solid black;
+}
+
+.SignIn:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid #e42226;
 }
 
 h1 {

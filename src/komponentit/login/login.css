@@ -4,7 +4,7 @@ body {
     background-size: cover;
 }
 
-.login-menu {
+.button-menu {
     text-align: center;
 }
 
@@ -25,6 +25,7 @@ body {
 }
 .buttontext {
     margin-left: -30px;
+    font-family: sans-serif;
 }
 
 .buttontext2 {
@@ -32,7 +33,7 @@ body {
 }
 
 .buttontext3 {
-    margin-left: -60px;
+    margin-left: -61px;
 }
 .sijainen {
     text-align: center;
@@ -41,8 +42,9 @@ body {
 }
 
 .button:hover {
-    background-color: black; /* Green */
+    background-color: black;
     color: white;
+    border: 10px solid #e42226;
 }
 
 a.button {
@@ -50,10 +52,15 @@ a.button {
     color: black;
     text-decoration: none;
     font-weight: bold;
-    font-family: SansSerif;
-
 }
 
 .logo {
     text-align: center;
+}
+
+.logout {
+    margin-left: 1400px;
+    text-align: right;
+    background-color: #e42226;
+    color: black;
 }

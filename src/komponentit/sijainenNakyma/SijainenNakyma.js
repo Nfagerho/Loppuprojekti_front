@@ -4,7 +4,7 @@ import './valikko/sivupalkki.css';
 import Popup from 'reactjs-popup';
 import BurgerIkoni from './valikko/BurgerIkoni';
 import Valikko from './valikko/Valikko';
-import Substidudes2 from './substidudes2.png'
+import Substidudes2 from '../substidudes2.png'
 
 // Valikkoon liittyviä tyylityksiä
 const styles = {
@@ -25,8 +25,14 @@ class SijainenNakyma extends Component {
   render() {
     return (
       <div>
+          <div className="logo">
+              <img src={Substidudes2}/>
+          </div>
+
+              <button className="logout">Kirjaudu ulos</button>
+
         <div style={styles}>
-            <img src={Substidudes2}/>
+
           {/* <Sivupalkki /> */}
 
         <Popup 

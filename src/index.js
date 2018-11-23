@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 import SijainenNakyma from './komponentit/sijainenNakyma/SijainenNakyma';
+import KouluNakyma from './komponentit/kouluNakyma/KouluNakyma'
 import Etusivu from './komponentit/Etusivu';
 import SijainenLogin from './komponentit/login/sijainen/SijainenLogin';
 import KouluLogin from './komponentit/login/koulu/KouluLogin';
@@ -24,9 +25,10 @@ ReactDOM.render((
     <BrowserRouter>
         <Switch>
             <Route exact path='/' component={Etusivu}></Route>
-            <Route exact path='/sijainen' component={SijainenNakyma}></Route>
             <Route exact path='/sijainenlogin' component={SijainenLogin}></Route>
+            <Route exact path='/sijainen' component={SijainenNakyma}></Route>
             <Route exact path='/koululogin' component={KouluLogin}></Route>
+            <Route exact path='/koulu' component={KouluNakyma}></Route>
             <Route exact path='/rekisterointi' component={Rekisterointi}></Route>
             {/* Allaolevat routtaukset on tehty, jotta Nooa voi koklailla datan hakemista databasesta: */}
             <Route exact path='/toimeksiannot' component={KaikkiToimeksiannot}></Route>

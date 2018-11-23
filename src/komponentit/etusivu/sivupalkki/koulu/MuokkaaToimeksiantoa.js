@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import {haeKaikkiToimeksiannot, poistaToimeksianto, muokkaaToimeksianto} from '../../../../restpalvelu';
 
@@ -70,5 +69,6 @@ class MuokkaaToimeksianto extends Component {
         poistaToimeksianto(this.state)
     }
 }
+
 
 export default MuokkaaToimeksianto;

@@ -73,4 +73,5 @@ export function muokkaaToimeksianto(id, lomake) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(lomake)
     })
+
 }

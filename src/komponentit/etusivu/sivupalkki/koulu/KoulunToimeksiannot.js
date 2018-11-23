@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import {haeKaikkiToimeksiannot, poistaToimeksianto, muokkaaToimeksianto} from '../../../../restpalvelu';
 import { Route, Redirect } from 'react-router'
@@ -76,6 +75,5 @@ class KoulunToimeksiannot extends Component {
 
     }
 }
-
 
 export default KoulunToimeksiannot;

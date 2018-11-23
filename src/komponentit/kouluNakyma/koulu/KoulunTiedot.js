@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { haeKoulunTiedot } from '../../../restpalvelu';
 import { haeKaikkiToimeksiannot } from '../../../restpalvelu' ;
+import { withAuthorization } from '../../firebase/Session';
 
 
 // Täällä haetaan koulun omat tiedot. Tällä hetkellä hakee kaikkien koulujen kaikki tiedot. 
@@ -54,4 +55,6 @@ class KoulunTiedot extends Component {
     }
     }
 
-export default KoulunTiedot;
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(KoulunTiedot);

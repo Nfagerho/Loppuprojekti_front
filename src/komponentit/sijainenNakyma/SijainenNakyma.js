@@ -8,7 +8,7 @@ import Substidudes2 from '../substidudes2.png'
 import SignOutButton from '../firebase/SignOut';
 
 // Autentikointiin liittyvää
-import { withAuthorization } from '../firebase/Session';
+import {withAuthorization} from '../firebase/Session';
 
 
 // Valikkoon liittyviä tyylityksiä
@@ -31,7 +31,8 @@ class SijainenNakyma extends Component {
         return (
             <div>
                 <div className="logo">
-                    <img src={Substidudes2}/>
+                    <a href='/'>
+                        <img src={Substidudes2}/></a>
                 </div>
 
                 <SignOutButton/>

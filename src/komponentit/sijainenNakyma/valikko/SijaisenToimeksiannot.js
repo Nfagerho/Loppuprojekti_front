@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { haeKaikkiToimeksiannot } from '../../../restpalvelu' ;
+import { withAuthorization } from '../../firebase/Session';
 
 //Täällä haetaan yksittäiseen sijaiseen liittyvät toimeksiannot. Tällä hetkellä koodiin on kovakoodattu SijaisenId 1. Tämä pitäisi
 //saada vastaamaan sisäänkirjautuneen sijaisen ID:tä Firebasen kautta.
@@ -46,4 +47,7 @@ class SijaisenToimeksiannot extends Component {
         
     }
     }
-export default SijaisenToimeksiannot;
+
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(SijaisenToimeksiannot);

@@ -116,3 +116,30 @@ export function muokkaaSijaista(id, lomake) {
     })
 
 }
+
+//Haetaan yksittäinen koulu databasesta
+const yksittainenkoulunURL = '/api/koulu/';
+
+export function haeYksittainenKoulu(callback, id) {
+    fetch(yksittainenkoulunURL + id, {accept: 'application/json'})
+        .then(function (response) {
+            response.json().then(function (json) {
+                if (response.status >= 400)
+                    callback(null, response.status);
+                else
+                    callback(json);
+            });
+        });
+}
+
+//Muokataan yksittäisen koulun tietoja databasessa
+const koulunmuokkausurl = '/api/koulu/';
+
+export function muokkaaKoulua(id, lomake) {
+    return fetch(koulunmuokkausurl + id, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(lomake)
+    })
+
+}

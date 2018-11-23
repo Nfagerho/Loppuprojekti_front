@@ -25,13 +25,22 @@ class KoulunTiedot extends Component {
       
         }
     }
+
+    handlaatietojenmuokkaus = (e) => {
+        this.props.history.push('/koulunomientietojenmuokkaus/'+ e.target.value);
+        };
+
     //Täällä mapataan data
     render() {
        
        console.log(this.state.kouluntiedotdata)
-        var kouluntiedotolio = this.state.kouluntiedotdata.map(function(kouluntiedotmappi){
-            return <li key={kouluntiedotmappi.kouluId}>Nimi: {kouluntiedotmappi.kouluNimi} <li>Osoite: {kouluntiedotmappi.kouluOsoite} Yhteyshenkilö: {kouluntiedotmappi.kouluYhteyshenkilo}</li>
-                    </li>
+        var kouluntiedotolio = this.state.kouluntiedotdata.map((kouluntiedotmappi) => {
+            if (kouluntiedotmappi && kouluntiedotmappi.kouluId) {
+                return <li key={kouluntiedotmappi.kouluId}>
+                        Nimi: {kouluntiedotmappi.kouluNimi} <li>Osoite: {kouluntiedotmappi.kouluOsoite} 
+                        Yhteyshenkilö: {kouluntiedotmappi.kouluYhteyshenkilo}</li>
+                        <button type="button"value={kouluntiedotmappi.kouluId} onClick={this.handlaatietojenmuokkaus} >Muokkaa tietoja</button>
+                        </li>}
                
            
         })

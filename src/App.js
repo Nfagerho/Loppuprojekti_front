@@ -31,7 +31,7 @@ const App = () => (
             <Route exact path='/sijainenlogin' component={SijainenLogin}></Route>
             <Route exact path='/koululogin' component={KouluLogin}></Route>
             <Route exact path='/rekisterointi' component={Rekisterointi}></Route>
-            <Route component={SivuaEiLoytynyt} />
+            
 
             {/* Seuraavat sivut ovat suojattuja (autentikoinnin takana) */}
             <Route exact path='/toimeksiannot' component={KaikkiToimeksiannot}></Route>
@@ -44,7 +44,7 @@ const App = () => (
             <Route exact path='/lomake' component={Lomake}></Route>
             <Route path='/muokkaalomake/:id' component={MuokkaaToimeksiantoa}></Route>
             <Route path='/testikirjautuminen' component={SignInPage}></Route>
-            
+            <Route component={SivuaEiLoytynyt} />
         </Switch>
     </BrowserRouter>    
   );

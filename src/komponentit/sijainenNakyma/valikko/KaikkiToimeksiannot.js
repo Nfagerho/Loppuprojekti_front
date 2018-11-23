@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { haeKaikkiToimeksiannot } from '../../../restpalvelu' ;
+import { withAuthorization } from '../../firebase/Session';
 
 //Täällä näytetään kaikki mahdolliset toimeksiannot. Koodiin ei ole vielä lisätty ominaisuutta, joka blokkaisi ne toimeksiannot, jotka
 //on jo kytketty johonkin sijaiseen
@@ -44,5 +45,6 @@ render() {
 }
 }
 
+const condition = authUser => !!authUser;
 
-export default KaikkiToimeksiannot;
+export default withAuthorization(condition)(KaikkiToimeksiannot);

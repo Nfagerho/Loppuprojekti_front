@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {haeYksittainenToimeksianto, poistaToimeksianto, muokkaaToimeksianto} from '../../../restpalvelu';
+import { withAuthorization } from '../../firebase/Session';
 
 //Täällä haetaan muokattavan toimeksiannon tiedot ja asetetaan ne stateen. 
 
@@ -87,4 +88,6 @@ class MuokkaaToimeksianto extends Component {
 }
 
 
-export default MuokkaaToimeksianto;
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(MuokkaaToimeksianto);

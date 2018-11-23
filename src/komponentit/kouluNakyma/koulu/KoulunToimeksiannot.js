@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {haeKaikkiToimeksiannot, poistaToimeksianto, muokkaaToimeksianto} from '../../../restpalvelu';
 import { Route, Redirect } from 'react-router'
+import { withAuthorization } from '../../firebase/Session';
 
 
 //Täällä haetaan yksittäiseen kouluun liittyvät toimeksiannot. Tällä hetkellä koodiin on kovakoodattu koulunID 1. Tämä pitäisi
@@ -76,4 +77,6 @@ class KoulunToimeksiannot extends Component {
     }
 }
 
-export default KoulunToimeksiannot;
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(KoulunToimeksiannot);

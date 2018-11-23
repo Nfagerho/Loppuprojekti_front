@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {lahetaToimeksianto, poistaToimeksianto} from "../../../restpalvelu";
 
-
+//Täällä koulu pystyy lisäämään uuden toimeksiannon. Tällä hetkellä kovakoodattu kouluID 1.
 class Lomake extends Component {
 
     state = {
@@ -24,12 +24,6 @@ class Lomake extends Component {
     render() {
         return (
             <div>
-                <form>Poista toimeksianto
-                    <input type="text" placeholder=""
-                           value={this.state.toimeksiantoId}
-                           onChange={this.handlaaPoistoByToimeksiantoId}/><br/>
-                    <button type="submit" onClick={this.poistaToimeksiantoById}>Poista toimeksianto ID:llä</button>
-                </form>
                 <form>Koulun nimi:
                     <input type="text" placeholder=""
                            value={this.state.kouluNimi}
@@ -81,9 +75,7 @@ class Lomake extends Component {
     handlaaPoistoByToimeksiantoId = (e) => {
         this.setState({toimeksiantoId: e.target.value})
     };
-    poistaToimeksiantoById = () => {
-        poistaToimeksianto(this.state)
-    }
+    
 
 }
 

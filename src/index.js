@@ -1,48 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
-import { Switch, Route } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
 
-import SijainenNakyma from './komponentit/sijainenNakyma/SijainenNakyma';
-import Etusivu from './komponentit/Etusivu';
-import SijainenLogin from './komponentit/login/sijainen/SijainenLogin';
-import KouluLogin from './komponentit/login/koulu/KouluLogin';
-import Rekisterointi from './komponentit/login/rekisterointi/Rekisterointi';
-import KaikkiToimeksiannot from './komponentit/sijainenNakyma/valikko/KaikkiToimeksiannot';
-import KoulunTiedot from './komponentit/kouluNakyma/koulu/KoulunTiedot';
-import SijaisenTiedot from './komponentit/sijainenNakyma/valikko/SijaisenTiedot';
-import KoulunToimeksiannot from './komponentit/kouluNakyma/koulu/KoulunToimeksiannot';
-import SijaisenToimeksiannot from './komponentit/sijainenNakyma/valikko/SijaisenToimeksiannot';
-import SivuaEiLoytynyt from './komponentit/SivuaEiLoytynyt';
-import Lomake from "./komponentit/kouluNakyma/koulu/Lomake";
-import MuokkaaToimeksiantoa from "./komponentit/kouluNakyma/koulu/MuokkaaToimeksiantoa";
+import App from './App';
+import Firebase, { FirebaseContext } from './komponentit/firebase/Firebase';
 
 
-
-ReactDOM.render((
-    <BrowserRouter>
-        <Switch>
-            <Route exact path='/' component={Etusivu}></Route>
-            <Route exact path='/sijainen' component={SijainenNakyma}></Route>
-            <Route exact path='/sijainenlogin' component={SijainenLogin}></Route>
-            <Route exact path='/koululogin' component={KouluLogin}></Route>
-            <Route exact path='/rekisterointi' component={Rekisterointi}></Route>
-            {/* Allaolevat routtaukset on tehty, jotta Nooa voi koklailla datan hakemista databasesta: */}
-            <Route exact path='/toimeksiannot' component={KaikkiToimeksiannot}></Route>
-            <Route exact path='/kouluntiedot' component={KoulunTiedot}></Route>
-            <Route exact path='/sijaisentiedot' component={SijaisenTiedot}></Route>
-            <Route exact path='/koulunomattoimeksiannot' component={KoulunToimeksiannot}></Route>
-            <Route exact path='/sijaisenomattoimeksiannot' component={SijaisenToimeksiannot}></Route>
-            <Route exact path='/lomake' component={Lomake}></Route>
-            <Route path='/muokkaalomake/:id' component={MuokkaaToimeksiantoa}></Route>
-            <Route component={SivuaEiLoytynyt} />
-        </Switch>
-    </BrowserRouter>
-), document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-
-
+ReactDOM.render(
+    <FirebaseContext.Provider value={new Firebase()}>
+        <App />
+    </FirebaseContext.Provider>, 
+document.getElementById('root'));

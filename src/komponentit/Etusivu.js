@@ -3,7 +3,6 @@ import {NavLink} from 'react-router-dom';
 import './login/login.css';
 import Substidudes2 from './substidudes2.png'
 
-
 class Etusivu extends Component {
 
     render() {

@@ -22,6 +22,7 @@ class Etusivu extends Component {
                     {/*<NavLink className="button" to='/rekisterointi'><span className="buttontext3">REKISTERÖIDY</span></NavLink><br/><br/>*/}
                 </nav>
             </div>
+
         );
     }
 }

@@ -33,7 +33,7 @@ class SijainenNakyma extends Component {
                 <div className="logo">
                     <a href='/'>
                         <img src={Substidudes2}/></a>
-                </div>5
+                </div>
 
                 <SignOutButton/>
 

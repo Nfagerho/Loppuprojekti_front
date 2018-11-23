@@ -62,6 +62,8 @@ a.button {
     margin-left: 85%;
     background-color: #e42226;
     color: black;
+    border: 2px solid black;
+    font-weight: bold;
 }
 
 .sijainenSignIn {

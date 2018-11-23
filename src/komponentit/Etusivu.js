@@ -21,7 +21,12 @@ class Etusivu extends Component {
                         className="buttontext2">KOULU</span></NavLink><br/><br/>
                     {/*<NavLink className="button" to='/rekisterointi'><span className="buttontext3">REKISTERÖIDY</span></NavLink><br/><br/>*/}
                 </nav>
+                <footer>
+                    © 2018 Substidudes Inc. All rights reserved.<br/>
+                    <a href="mailto:info.substidudes@gmail.com" target="_top">info.substidudes@gmail.com</a>
+                </footer>
             </div>
+
         );
     }
 }

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {haeYksittainenSijainen, muokkaaSijaista} from '../../../restpalvelu';
 
-//Täällä haetaan muokattavan toimeksiannon tiedot ja asetetaan ne stateen. 
 
 class SijaisenTietojenMuokkaus extends Component {
     state = {
@@ -19,8 +18,6 @@ class SijaisenTietojenMuokkaus extends Component {
          this.haeyksisijainen();
      }
 
-     //Haetaan selaimesta tulevalla id:llä (this.props.match.params.id) yksittäisen toimeksiannon tiedot ja
-     //laitetaan sen jälkeen setStatella ne stateksi. Tällöin lomake saa tiedot automaattisesti ja voit muokata niitä haluamallasi tavalla
      haeyksisijainen() {
         haeYksittainenSijainen(this.yksihaettu, this.props.match.params.id);
     }
@@ -36,8 +33,6 @@ class SijaisenTietojenMuokkaus extends Component {
         }
     }
    
-    //Lomakkeen muokkausfunktio, joka aktivoituu buttonin painalluksesta. Kun muokkaus on tehty, siirtää se sivuston automaattisesti
-    //omiin toimeksiantoihin.
     muokkaatietoja = (e) => {
         e.preventDefault();
         muokkaaSijaista(this.state.sijainenId, this.state)

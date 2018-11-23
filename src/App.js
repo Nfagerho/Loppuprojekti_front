@@ -13,6 +13,7 @@ import KaikkiToimeksiannot from './komponentit/sijainenNakyma/valikko/KaikkiToim
 import KoulunTiedot from './komponentit/kouluNakyma/koulu/KoulunTiedot';
 import SijaisenTiedot from './komponentit/sijainenNakyma/valikko/SijaisenTiedot';
 import SijaisenTietojenMuokkaus from './komponentit/sijainenNakyma/valikko/SijaisenTietojenMuokkaus';
+import KoulunTietojenMuokkaus from './komponentit/kouluNakyma/koulu/KoulunTietojenMuokkaus';
 import KoulunToimeksiannot from './komponentit/kouluNakyma/koulu/KoulunToimeksiannot';
 import SijaisenToimeksiannot from './komponentit/sijainenNakyma/valikko/SijaisenToimeksiannot';
 import SivuaEiLoytynyt from './komponentit/SivuaEiLoytynyt';
@@ -36,7 +37,8 @@ const App = () => (
             <Route exact path='/toimeksiannot' component={KaikkiToimeksiannot}></Route>
             <Route exact path='/kouluntiedot' component={KoulunTiedot}></Route>
             <Route exact path='/sijaisentiedot' component={SijaisenTiedot}></Route>
-            <Route exact path='/sijaisenomientietojenmuokkaus/:id' component={SijaisenTietojenMuokkaus}></Route>
+            <Route path='/sijaisenomientietojenmuokkaus/:id' component={SijaisenTietojenMuokkaus}></Route>
+            <Route path='/koulunomientietojenmuokkaus/:id' component={KoulunTietojenMuokkaus}></Route>
             <Route exact path='/koulunomattoimeksiannot' component={KoulunToimeksiannot}></Route>
             <Route exact path='/sijaisenomattoimeksiannot' component={SijaisenToimeksiannot}></Route>
             <Route exact path='/lomake' component={Lomake}></Route>

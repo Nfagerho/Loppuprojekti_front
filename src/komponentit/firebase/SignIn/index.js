@@ -8,7 +8,7 @@ import { withFirebase } from '../Firebase';
 
 const SignInPage = () => (
   <div>
-    <h1>SignIn</h1>
+    <h1>Kirjaudu sisään</h1>
     <SignInForm />
     {/* Alla olevat lisätään kun ehtii */}
     {/* <PasswordForgetLink />
@@ -64,6 +64,7 @@ class SignInFormBase extends Component {
           type="text"
           placeholder="Email Address"
         />
+
         <input
           name="password"
           value={password}
@@ -71,7 +72,7 @@ class SignInFormBase extends Component {
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+        <button className="SignIn" disabled={isInvalid} type="submit">
           Sign In
         </button>
 

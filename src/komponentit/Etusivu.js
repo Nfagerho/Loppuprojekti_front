@@ -10,8 +10,10 @@ class Etusivu extends Component {
 
             <div>
                 <div className="logo">
-                    <img src={Substidudes2}/><br/><br/><br/><br/><br/>
+                    <a href='/'>
+                        <img src={Substidudes2}/></a>
                 </div>
+                <br/><br/><br/><br/><br/>
                 <nav className="button-menu">
                     <NavLink className="button" to='/sijainenlogin'><span
                         className="buttontext">SIJAINEN</span></NavLink><br/><br/>
@@ -20,6 +22,7 @@ class Etusivu extends Component {
                     {/*<NavLink className="button" to='/rekisterointi'><span className="buttontext3">REKISTERÖIDY</span></NavLink><br/><br/>*/}
                 </nav>
             </div>
+
         );
     }
 }

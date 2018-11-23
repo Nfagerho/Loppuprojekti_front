@@ -28,7 +28,8 @@ render() {
     var optiot = {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'};
     var toimeksiantooliot = this.state.toimeksiantodata.map(function(toimeksiantomappi){
         var aikamuutos = new Date(toimeksiantomappi.toimeksiantoAlkuaika);
-        return <li key={toimeksiantomappi.toimeksiantoId}>{toimeksiantomappi.oppiaine}<li>Alkaa: {aikamuutos.toLocaleTimeString("fi", optiot)} Loppuu: {aikamuutos.toLocaleTimeString("fi", optiot)}</li>
+        var aikamuutos1 = new Date(toimeksiantomappi.toimeksiantoLoppuaika);
+        return <li key={toimeksiantomappi.toimeksiantoId}>{toimeksiantomappi.oppiaine}<li>Alkaa: {aikamuutos.toLocaleTimeString("fi", optiot)} Loppuu: {aikamuutos1.toLocaleTimeString("fi", optiot)}</li>
         {toimeksiantomappi.koulu &&
                  <li>Koulu:{toimeksiantomappi.koulu.kouluNimi} Osoite: {toimeksiantomappi.koulu.kouluOsoite} Yhteyshenkilö:{toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>}</li>
        

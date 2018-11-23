@@ -44,6 +44,7 @@ export function haeSijaisenTiedot(callback) {
         });
 }
 
+//Lisätään uusi toimeksianto POST:illa databaseen
 const palveluurl = '/api/toimeksianto/';
 
 export function lahetaToimeksianto(lomake) {
@@ -53,7 +54,7 @@ export function lahetaToimeksianto(lomake) {
         body: JSON.stringify(lomake)
     })
 }
-
+//Poistetaan yksittäinen toimeksianto
 const deleteurl = '/api/toimeksianto/';
 
 export function poistaToimeksianto(id) {
@@ -64,7 +65,7 @@ export function poistaToimeksianto(id) {
         .then(res => res.text())
         
 }
-
+//Muokataan yksittäistä toimeksiantoa databasessa
 const muokkausurl = '/api/toimeksianto/';
 
 export function muokkaaToimeksianto(id, lomake) {
@@ -74,4 +75,18 @@ export function muokkaaToimeksianto(id, lomake) {
         body: JSON.stringify(lomake)
     })
 
+}
+//Haetaan yksittäinen toimeksianto databasesta
+const yksittainenURL = '/api/toimeksianto/';
+
+export function haeYksittainenToimeksianto(callback, id) {
+    fetch(yksittainenURL + id, {accept: 'application/json'})
+        .then(function (response) {
+            response.json().then(function (json) {
+                if (response.status >= 400)
+                    callback(null, response.status);
+                else
+                    callback(json);
+            });
+        });
 }

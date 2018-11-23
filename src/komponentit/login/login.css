@@ -67,3 +67,14 @@ a.button {
 .sijainenSignIn {
     text-align: center;
 }
+
+.SignIn {
+    background-color: #e42226;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+}
+
+h1 {
+    font-family: sans-serif;
+}

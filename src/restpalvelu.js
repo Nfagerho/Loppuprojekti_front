@@ -90,3 +90,29 @@ export function haeYksittainenToimeksianto(callback, id) {
             });
         });
 }
+
+//Haetaan yksittäinen sijainen databasesta
+const yksittainensijainenURL = '/api/sijainen/';
+
+export function haeYksittainenSijainen(callback, id) {
+    fetch(yksittainensijainenURL + id, {accept: 'application/json'})
+        .then(function (response) {
+            response.json().then(function (json) {
+                if (response.status >= 400)
+                    callback(null, response.status);
+                else
+                    callback(json);
+            });
+        });
+}
+//Muokataan yksittäisen sijaisen tietoja databasessa
+const sijaisenmuokkausurl = '/api/sijainen/';
+
+export function muokkaaSijaista(id, lomake) {
+    return fetch(sijaisenmuokkausurl + id, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(lomake)
+    })
+
+}

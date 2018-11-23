@@ -16,7 +16,9 @@ import SijaisenTietojenMuokkaus from './komponentit/sijainenNakyma/valikko/Sijai
 import KoulunToimeksiannot from './komponentit/kouluNakyma/koulu/KoulunToimeksiannot';
 import SijaisenToimeksiannot from './komponentit/sijainenNakyma/valikko/SijaisenToimeksiannot';
 import SivuaEiLoytynyt from './komponentit/SivuaEiLoytynyt';
-import Lomake from "./komponentit/kouluNakyma/koulu/Lomake";
+import Lomake from './komponentit/kouluNakyma/koulu/Lomake';
+import KouluNakyma from './komponentit/kouluNakyma/KouluNakyma';
+
 import MuokkaaToimeksiantoa from "./komponentit/kouluNakyma/koulu/MuokkaaToimeksiantoa";
 
 import { withAuthentication } from './komponentit/firebase/Session';
@@ -24,7 +26,7 @@ import SignInPage from './komponentit/firebase/SignIn';
 
 const App = () => (
     <BrowserRouter>
-        <Switch>
+        <Route>
         <Route exact path='/' component={Etusivu}></Route>
             <Route exact path='/sijainen' component={SijainenNakyma}></Route>
             <Route exact path='/sijainenlogin' component={SijainenLogin}></Route>
@@ -40,8 +42,10 @@ const App = () => (
             <Route exact path='/lomake' component={Lomake}></Route>
             <Route path='/muokkaalomake/:id' component={MuokkaaToimeksiantoa}></Route>
             <Route path='/testikirjautuminen' component={SignInPage}></Route>
+            <Route path='/koulunakyma' component={KouluNakyma}></Route>
             <Route component={SivuaEiLoytynyt} />
-        </Switch>
+        </Route>
+
     </BrowserRouter>    
   );
   

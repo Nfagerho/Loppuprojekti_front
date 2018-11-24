@@ -4,6 +4,7 @@ import KaikkiToimeksiannot from "./KaikkiToimeksiannot";
 import SijaisenToimeksiannot from "./SijaisenToimeksiannot";
 import SijaisenTiedot from "./SijaisenTiedot";
 import SijaisenTietojenMuokkaus from './SijaisenTietojenMuokkaus'
+import ToimeksiannonVaraus from './ToimeksiannonVaraus'
 
 // Tämä valikko tulee näkyviin, kun hampurilaista klikataan.
 export default class Valikko extends Component {
@@ -11,7 +12,9 @@ export default class Valikko extends Component {
         super(props);
         this.state = {
             sijaisenNakyma: false,
-            id : undefined
+            toimeksiantoNakyma: false,
+            id : undefined,
+            toimeksiantoid: undefined
         }
     }
 
@@ -19,6 +22,14 @@ export default class Valikko extends Component {
         this.setState({
             sijaisenNakyma: !this.state.sijaisenNakyma,
             id:id
+
+        })
+    }
+
+    varaus = (id) => {
+        this.setState({
+            toimeksiantoNakyma: !this.state.toimeksiantoNakyma,
+            toimeksiantoid:id
 
         })
     }
@@ -39,14 +50,17 @@ export default class Valikko extends Component {
                   </Popup>
           
                   <Popup trigger={<li onClick={this.props.close}>Näytä kaikki vapaat sijaisuudet</li>} modal closeOnDocumentClick>
-                      <span> Kaikki vapaat sijaisuudet: </span>
+                      
                       {/* Tähän täytyy laittaa ehtolause (jos lista tyhjä, mitä näytetään) */}
-                      <KaikkiToimeksiannot/>
+                      {!this.state.toimeksiantoNakyma &&<KaikkiToimeksiannot histroy={this.props.history} varaus={this.varaus}/>}
+                      
+                      {this.state.toimeksiantoNakyma && <ToimeksiannonVaraus id={this.state.toimeksiantoid} varaus={this.varaus}/>}
+                      {/* <KaikkiToimeksiannot/> */}
                   </Popup>
           
                   <Popup trigger={<li onClick={this.props.close}>Omat tiedot</li>} modal closeOnDocumentClick>
                       <span> Tähän sijaisen omat tiedot. </span>
-                      {!this.state.sijaisenNakyma &&<SijaisenTiedot history={this.props.history} muokkaus={this.muokkaus}/>}
+                      {!this.state.sijaisenNakyma &&<SijaisenTiedot histroy={this.props.history} muokkaus={this.muokkaus}/>}
                       
                       {this.state.sijaisenNakyma && <SijaisenTietojenMuokkaus id={this.state.id} muokkaus={this.muokkaus}/>}
                   </Popup>

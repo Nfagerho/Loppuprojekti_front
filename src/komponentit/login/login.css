@@ -30,10 +30,12 @@ body {
 
 .buttontext2 {
     margin-left: -20px;
+    font-family: sans-serif;
 }
 
 .buttontext3 {
     margin-left: -61px;
+    font-family: sans-serif;
 }
 .sijainen {
     text-align: center;
@@ -59,7 +61,7 @@ a.button {
 }
 
 .logout {
-    margin-left: 85%;
+    margin-left: 92%;
     background-color: #e42226;
     color: black;
     border: 2px solid black;

@@ -3,6 +3,7 @@ import Substidudes2 from '../substidudes2.png'
 import {Button, Col, ControlLabel, Form, FormControl, FormGroup, Grid, Row, Thumbnail} from "react-bootstrap";
 import koulu from './koulu.png';
 import './koulu.css';
+import KoulunToimeksiannot from "./KoulunToimeksiannot";
 
 class KouluNakyma extends Component {
     render() {
@@ -70,7 +71,7 @@ class KouluNakyma extends Component {
                                     </Col>
                                 </FormGroup>
                             </Form>
-
+                            <KoulunToimeksiannot/>
                         </Col>
                     </Row>
                 </Grid>;

@@ -21,20 +21,29 @@ import Lomake from './komponentit/kouluNakyma/koulu/Lomake';
 import KouluNakyma from './komponentit/kouluNakyma/KouluNakyma';
 
 import MuokkaaToimeksiantoa from "./komponentit/kouluNakyma/koulu/MuokkaaToimeksiantoa";
+import KouluNakyma from './komponentit/kouluNakyma/KouluNakyma';
 
 import { withAuthentication } from './komponentit/firebase/Session';
 import SignInPage from './komponentit/firebase/SignIn';
 
 const App = () => (
     <BrowserRouter>
+<<<<<<< HEAD
         <Route>
         <Route exact path='/' component={Etusivu}></Route>
+=======
+        <Switch>
+            <Route exact path='/' component={Etusivu}></Route>
+>>>>>>> be64e7fa3cb1b5fe0df2febfbca23b44e50d8d16
             <Route exact path='/sijainen' component={SijainenNakyma}></Route>
             <Route exact path='/sijainenlogin' component={SijainenLogin}></Route>
             <Route exact path='/koululogin' component={KouluLogin}></Route>
             <Route exact path='/rekisterointi' component={Rekisterointi}></Route>
-            {/* Allaolevat routtaukset on tehty, jotta Nooa voi koklailla datan hakemista databasesta: */}
+            
+
+            {/* Alla olevat sivut ovat suojattuja (autentikoinnin takana) */}
             <Route exact path='/toimeksiannot' component={KaikkiToimeksiannot}></Route>
+            <Route path='/koulunakyma' component={KouluNakyma}></Route>
             <Route exact path='/kouluntiedot' component={KoulunTiedot}></Route>
             <Route exact path='/sijaisentiedot' component={SijaisenTiedot}></Route>
             <Route path='/sijaisenomientietojenmuokkaus/:id' component={SijaisenTietojenMuokkaus}></Route>
@@ -43,11 +52,19 @@ const App = () => (
             <Route exact path='/sijaisenomattoimeksiannot' component={SijaisenToimeksiannot}></Route>
             <Route exact path='/lomake' component={Lomake}></Route>
             <Route path='/muokkaalomake/:id' component={MuokkaaToimeksiantoa}></Route>
+<<<<<<< HEAD
             <Route path='/testikirjautuminen' component={SignInPage}></Route>
             <Route path='/koulunakyma' component={KouluNakyma}></Route>
             <Route component={SivuaEiLoytynyt} />
         </Route>
 
+=======
+            {/* Tätä testikirjautumista käytettiin testailuun. Nyt tarpeeton?
+             <Route path='/testikirjautuminen' component={SignInPage}></Route> */}
+            <Route component={SivuaEiLoytynyt} />
+            {/* HUOM.!!!!!!!!!!! Kun lisäät uuden reitityksen, muista salaus kyseiseen komponenttiin. */}
+        </Switch>
+>>>>>>> be64e7fa3cb1b5fe0df2febfbca23b44e50d8d16
     </BrowserRouter>    
   );
   

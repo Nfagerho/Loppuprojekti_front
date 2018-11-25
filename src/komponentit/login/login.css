@@ -30,10 +30,12 @@ body {
 
 .buttontext2 {
     margin-left: -20px;
+    font-family: sans-serif;
 }
 
 .buttontext3 {
     margin-left: -61px;
+    font-family: sans-serif;
 }
 .sijainen {
     text-align: center;
@@ -59,11 +61,17 @@ a.button {
 }
 
 .logout {
-    margin-left: 85%;
+    margin-left: 0%;
     background-color: #e42226;
     color: black;
     border: 2px solid black;
     font-weight: bold;
+}
+
+.logout:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid #e42226;
 }
 
 .sijainenSignIn {
@@ -77,6 +85,21 @@ a.button {
     border: 2px solid black;
 }
 
+.SignIn:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid #e42226;
+}
+
 h1 {
     font-family: sans-serif;
+}
+
+footer {
+    position: absolute;
+    bottom: 4%;
+    width: 99%;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 15px;
 }

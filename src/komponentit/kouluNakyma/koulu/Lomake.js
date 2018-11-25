@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {lahetaToimeksianto, poistaToimeksianto} from "../../../restpalvelu";
+import { withAuthorization } from '../../firebase/Session';
 
-//Täällä koulu pystyy lisäämään uuden toimeksiannon. Tällä hetkellä kovakoodattu kouluID 1.
+//Täällä koulu.png pystyy lisäämään uuden toimeksiannon. Tällä hetkellä kovakoodattu kouluID 1.
 class Lomake extends Component {
 
     state = {
@@ -79,4 +80,6 @@ class Lomake extends Component {
 
 }
 
-export default Lomake;
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(Lomake);

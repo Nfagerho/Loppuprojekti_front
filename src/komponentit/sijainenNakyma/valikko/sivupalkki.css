@@ -59,3 +59,13 @@
 .menu li:hover {
   color: #e42226;
 }
+.menu #tuleva {
+  color: green;
+}
+
+.menu #meneva {
+  color: red;
+}
+.menu li.toimeksiannot {
+ font-size: 75%
+}

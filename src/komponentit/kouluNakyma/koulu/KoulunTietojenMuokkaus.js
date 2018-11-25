@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {haeYksittainenKoulu, muokkaaKoulua} from '../../../restpalvelu';
-
+import { withAuthorization } from '../../firebase/Session';
 
 class KoulunTietojenMuokkaus extends Component {
     state = {
@@ -76,4 +76,6 @@ class KoulunTietojenMuokkaus extends Component {
 }
 
 
-export default KoulunTietojenMuokkaus;
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(KoulunTietojenMuokkaus);

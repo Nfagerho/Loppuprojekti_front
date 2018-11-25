@@ -8,7 +8,7 @@ import Substidudes2 from '../substidudes2.png'
 import SignOutButton from '../firebase/SignOut';
 
 // Autentikointiin liittyvää
-import { withAuthorization } from '../firebase/Session';
+import {withAuthorization} from '../firebase/Session';
 
 
 // Valikkoon liittyviä tyylityksiä
@@ -34,8 +34,7 @@ class SijainenNakyma extends Component {
                     <a href='/'>
                         <img src={Substidudes2}/></a>
                 </div>
-
-                <SignOutButton/>
+                
 
                 <div style={styles}>
 
@@ -49,7 +48,7 @@ class SijainenNakyma extends Component {
                         closeOnDocumentClick={true}
                         trigger={open => <BurgerIkoni open={open}/>}
                     >
-                        {close => <Valikko close={close}/>}
+                        {close => <Valikko close={close} history={this.props.history}/>}
                     </Popup>
 
                 </div>

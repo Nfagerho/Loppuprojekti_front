@@ -5,6 +5,7 @@ import SijaisenToimeksiannot from "./SijaisenToimeksiannot";
 import SijaisenTiedot from "./SijaisenTiedot";
 import SijaisenTietojenMuokkaus from './SijaisenTietojenMuokkaus'
 import ToimeksiannonVaraus from './ToimeksiannonVaraus'
+import SignOutButton from "../../firebase/SignOut";
 
 // Tämä valikko tulee näkyviin, kun hampurilaista klikataan.
 export default class Valikko extends Component {
@@ -44,7 +45,6 @@ export default class Valikko extends Component {
               
               {/* Näissä alla olevissa linkeissä valikon sulkeminen (onClick={close}) ei toimi*/}
                   <Popup trigger={<li onClick={this.props.close}>Omat sijaisuudet</li>} modal closeOnDocumentClick>
-                      <span> Omat sijaisuudet: </span>
                       {/* Tähän täytyy laittaa ehtolause (jos lista tyhjä, mitä näytetään) */}
                       <SijaisenToimeksiannot/>
                   </Popup>
@@ -64,6 +64,8 @@ export default class Valikko extends Component {
                       
                       {this.state.sijaisenNakyma && <SijaisenTietojenMuokkaus id={this.state.id} muokkaus={this.muokkaus}/>}
                   </Popup>
+                  <hr/>
+                  <SignOutButton/>
               </ul>
             </div>
           );

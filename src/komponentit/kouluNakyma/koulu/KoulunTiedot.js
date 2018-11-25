@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { haeKoulunTiedot } from '../../../restpalvelu';
-import { haeKaikkiToimeksiannot } from '../../../restpalvelu' ;
 import { withAuthorization } from '../../firebase/Session';
 
 

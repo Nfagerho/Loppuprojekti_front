@@ -62,10 +62,6 @@ class KoulunToimeksiannot extends Component {
                 </li>
             }
 
-            
-            // sessionStorage.setItem("toimeksiantoja", JSON.stringify(toimeksiantomappi));
-            
-            // console.log(JSON.parse(sessionStorage.getItem('toimeksiantoja')));
         })
 
         return (

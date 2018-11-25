@@ -44,7 +44,6 @@ export default class Valikko extends Component {
               
               {/* Näissä alla olevissa linkeissä valikon sulkeminen (onClick={close}) ei toimi*/}
                   <Popup trigger={<li onClick={this.props.close}>Omat sijaisuudet</li>} modal closeOnDocumentClick>
-                      <span> Omat sijaisuudet: </span>
                       {/* Tähän täytyy laittaa ehtolause (jos lista tyhjä, mitä näytetään) */}
                       <SijaisenToimeksiannot/>
                   </Popup>

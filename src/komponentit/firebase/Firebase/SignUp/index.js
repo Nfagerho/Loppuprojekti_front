@@ -6,7 +6,7 @@ import { withFirebase } from '../index.js';
 
 const SignUpPage = () => (
   <div>
-    <h1>SignUp</h1>
+    <h1>Rekisteröidy Firebaseen:</h1>
     <SignUpForm />
   </div>
 );

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {haeKaikkiToimeksiannot, poistaToimeksianto} from '../../../restpalvelu';
 import {withAuthorization} from '../../firebase/Session';
-import {Button, ListGroup, ListGroupItem} from "react-bootstrap";
+import {Button, Col, ListGroup, ListGroupItem} from "react-bootstrap";
+import './Lomake.css';
 
 
 //Täällä haetaan yksittäiseen kouluun liittyvät toimeksiannot. Tällä hetkellä koodiin on kovakoodattu koulunID 1. Tämä pitäisi
@@ -46,22 +47,22 @@ class KoulunToimeksiannot extends Component {
             var aikamuutos = new Date(toimeksiantomappi.toimeksiantoAlkuaika);
             var aikamuutos1 = new Date(toimeksiantomappi.toimeksiantoLoppuaika);
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
-                return <div key={toimeksiantomappi.toimeksiantoId}>
-                    <b>Toimeksiannot:</b>
+                return <Col sm={8} key={toimeksiantomappi.toimeksiantoId}>
+
                     {toimeksiantomappi.koulu &&
                     <ListGroupItem>
                         <b>Oppiaine:</b> {toimeksiantomappi.oppiaine} <b>Alkaa:</b> {aikamuutos.toLocaleTimeString("fi", optiot)} <b>Loppuu:</b> {aikamuutos1.toLocaleTimeString("fi", optiot)}
                     </ListGroupItem>}
                     <Button type="button"
                             bsSize="small"
+                            id="nappi1"
                             value={toimeksiantomappi.toimeksiantoId} onClick={this.handlaamuokkaus}>Muokkaa
                     </Button>
                     <Button type="button" bsStyle="danger"
                             value={toimeksiantomappi.toimeksiantoId}
                             bsSize="small"
                             onClick={this.poistaToimeksiantoById}>Poista</Button>
-
-                </div>
+                </Col>
             }
         })
 

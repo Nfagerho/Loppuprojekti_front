@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {haeKoulunTiedot} from '../../../restpalvelu';
 import {withAuthorization} from '../../firebase/Session';
-import {Col, ControlLabel, Form, FormControl, FormGroup} from "react-bootstrap";
+import {Button, Col, ControlLabel, Form, FormControl, FormGroup, Grid, Row, Thumbnail} from "react-bootstrap";
+import koulu from "../koulu.png";
+import KoulunToimeksiannot from "./KoulunToimeksiannot";
 
 
 // Täällä haetaan koulun omat tiedot. Tällä hetkellä hakee kaikkien koulujen kaikki tiedot. 
@@ -38,56 +40,72 @@ class KoulunTiedot extends Component {
         console.log(this.state.kouluntiedotdata);
         var kouluntiedotolio = this.state.kouluntiedotdata.map((kouluntiedotmappi) => {
             if (kouluntiedotmappi && kouluntiedotmappi.kouluId) {
-                return <div>
-                    <FormGroup>
-                        <Col componentClass={ControlLabel} sm={2}>
-                            Koulun nimi
+                return <Grid>
+                    <Row>
+                        <Col sm={2}>
+                            <Thumbnail src={koulu}>
+                                <h3>Koulun nimi</h3>
+                                <p>Osoite</p>
+                                <p>
+                                    <Button bsStyle="info">Vaihda kuva</Button>
+                                </p>
+                            </Thumbnail>
                         </Col>
-
-                        <Col sm={3}>
-                            <FormControl type="text" placeholder={kouluntiedotmappi.kouluNimi}/>
+                        <Col sm={10}>
+                        <FormGroup>
+                            <Col componentClass={ControlLabel} sm={2}>
+                                Koulun nimi
+                            </Col>
+                            <Col sm={2}>
+                                <FormControl type="text" placeholder={kouluntiedotmappi.kouluNimi}/>
+                            </Col>
+                            <Col sm={3}>
+                                <FormControl type="text" placeholder={kouluntiedotmappi.kouluOsoite}/>
+                            </Col>
+                            <Col sm={2}>
+                                <FormControl type="text" placeholder="Y-tunnus"/>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup>
+                            <Col componentClass={ControlLabel} sm={2}>
+                                Rehtori
+                            </Col>
+                            <Col sm={2}>
+                                <FormControl type="text" placeholder={kouluntiedotmappi.rehtori}/>
+                            </Col>
+                            <Col sm={3}>
+                                <FormControl type="text" placeholder={kouluntiedotmappi.rehtoriEmail}/>
+                            </Col>
+                            <Col sm={2}>
+                                <FormControl type="text" placeholder={kouluntiedotmappi.rehtoriTel}/>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup>
+                            <Col componentClass={ControlLabel} sm={2}>
+                                Sihteeri
+                            </Col>
+                            <Col sm={2}>
+                                <FormControl type="text" placeholder={kouluntiedotmappi.sihteeri}/>
+                            </Col>
+                            <Col sm={3}>
+                                <FormControl type="text" placeholder={kouluntiedotmappi.sihteeriEmail}/>
+                            </Col>
+                            <Col sm={2}>
+                                <FormControl type="text" placeholder={kouluntiedotmappi.sihteeriTel}/>
+                            </Col>
+                            <Button
+                                id="muokkaatietojanappi"
+                                value={kouluntiedotmappi.kouluId}
+                                onClick={this.handlaatietojenmuokkaus}>
+                                Muokkaa tietoja
+                            </Button>
+                        </FormGroup>
+                            <b>Toimeksiannot:</b>
+                            <KoulunToimeksiannot/>
                         </Col>
-                        <Col sm={4}>
-                            <FormControl type="text" placeholder={kouluntiedotmappi.kouluOsoite}/>
-                        </Col>
-                        <Col sm={3}>
-                            <FormControl type="text" placeholder="Y-tunnus"/>
-                        </Col>
-                    </FormGroup>
-                    <FormGroup>
-                        <Col componentClass={ControlLabel} sm={2}>
-                            Rehtori
-                        </Col>
-
-                        <Col sm={3}>
-                            <FormControl type="text" placeholder={kouluntiedotmappi.rehtori}/>
-                        </Col>
-                        <Col sm={4}>
-                            <FormControl type="text" placeholder={kouluntiedotmappi.rehtoriEmail}/>
-                        </Col>
-                        <Col sm={3}>
-                            <FormControl type="text" placeholder={kouluntiedotmappi.rehtoriTel}/>
-                        </Col>
-                    </FormGroup>
-                    <FormGroup>
-                        <Col componentClass={ControlLabel} sm={2}>
-                            Sihteeri
-                        </Col>
-
-                        <Col sm={3}>
-                            <FormControl type="text" placeholder={kouluntiedotmappi.sihteeri}/>
-                        </Col>
-                        <Col sm={4}>
-                            <FormControl type="text" placeholder={kouluntiedotmappi.sihteeriEmail}/>
-                        </Col>
-                        <Col sm={3}>
-                            <FormControl type="text" placeholder={kouluntiedotmappi.sihteeriTel}/>
-                        </Col>
-                    </FormGroup>
-                </div>
+                    </Row>
+                </Grid>
             }
-
-
         })
         //ja näytetään se sivustolla:
         return (

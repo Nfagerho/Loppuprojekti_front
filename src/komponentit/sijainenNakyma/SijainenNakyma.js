@@ -34,7 +34,7 @@ class SijainenNakyma extends Component {
                     <a href='/'>
                         <img src={Substidudes2}/></a>
                 </div>
-
+                
 
                 <div style={styles}>
 

@@ -1,5 +1,8 @@
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
+import {haeKaikkiToimeksiannot} from '../../../restpalvelu';
+
+
 
 const mapStyles = {
     map: {
@@ -29,13 +32,17 @@ class KarttaNakyma extends Component {
                     this.setState({
                         currentLocation: {
                             lat: coords.latitude,
-                            lng: coords.longitude
+                            lng: coords.longitude,
+                            toimeksiantodata: []
                         }
                     });
                 });
             }
         }
         this.loadMap();
+        this.haekaikki();
+        
+       
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -86,6 +93,19 @@ class KarttaNakyma extends Component {
         }
     }
 
+    haekaikki() {
+        haeKaikkiToimeksiannot(this.kaikkihaettu);
+    }
+
+    kaikkihaettu = (haettudata, virhe) => {
+        if (virhe) {
+            alert("virhe");
+        } else {
+            this.setState({toimeksiantodata: haettudata});
+
+        }
+    }
+
     renderChildren() {
         const { children } = this.props;
 
@@ -94,7 +114,7 @@ class KarttaNakyma extends Component {
             position: {lat: 60.210270, lng: 24.945590},
             map: this.map,
             title: 'Käpylän peruskoulu',
-            label: '5',
+            label: '5'
         });
 
         // Tapahtuma, kun markeria klikataan
@@ -130,6 +150,10 @@ class KarttaNakyma extends Component {
     }
 
     render() {
+
+        var toimeksiantooliot = this.state.toimeksiantodata.map((toimeksiantomappi) => {
+            if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 2) {
+            return   }})
 
         const style = Object.assign({}, mapStyles.map);
 

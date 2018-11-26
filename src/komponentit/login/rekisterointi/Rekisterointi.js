@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import SignUpPage from '../../firebase/Firebase/SignUp';
-import SijaisenRekisterointilomake from '../../firebase/Firebase/SignUp/SijaisenRekisterointilomake';
-
 
 class Rekisterointi extends Component {
     render() {
@@ -13,7 +11,6 @@ class Rekisterointi extends Component {
                     <NavLink to='/sijainen'>Etusivu</NavLink><br/>
                 </nav>
                 <SignUpPage/>
-                <SijaisenRekisterointilomake/>
             </div>
         );
     }

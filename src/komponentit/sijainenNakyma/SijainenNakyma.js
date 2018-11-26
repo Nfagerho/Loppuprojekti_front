@@ -9,8 +9,8 @@ import Substidudes2 from '../substidudes2.png'
 
 // Autentikointiin liittyvää
 import {withAuthorization, AuthUserContext} from '../firebase/Session';
-// import SisaankirjautunutId from './SisaankirjautunutId';
-import { sisaankirjaantuneenId } from './SisaankirjautunutId';
+
+// import { sisaankirjaantuneenId } from './SisaankirjautunutId';
 
 
 // Valikkoon liittyviä tyylityksiä
@@ -38,14 +38,14 @@ class SijainenNakyma extends Component {
 
     render() {
 
-        console.log(this.props.firebase.naytaEmail());
+        // console.log(this.props.firebase.naytaEmail());
 
         return (
             
             <div>
                 <div className="logo">
                     <a href='/'>
-                        <img src={Substidudes2}/></a>
+                        <img src={Substidudes2} alt="Substidudes-logo"/></a>
                 </div>
 
                 {/* <SisaankirjautunutId/> */}

@@ -21,7 +21,7 @@ import KouluNakyma from './komponentit/kouluNakyma/KouluNakyma';
 import MuokkaaToimeksiantoa from "./komponentit/kouluNakyma/koulu/MuokkaaToimeksiantoa";
 
 import {withAuthentication} from './komponentit/firebase/Session';
-import SignInPage from './komponentit/firebase/SignIn';
+// import SignInPage from './komponentit/firebase/SignIn';
 
 const App = () => (
 

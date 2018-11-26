@@ -26,7 +26,7 @@ class Etusivu extends Component {
     return (
       <div>
         <div style={styles}>
-            <img src={Substidudes2}/>
+            <img src={Substidudes2} alt="Substidudes-logo"/>
           {/* <Sivupalkki /> */}
 
         <Popup 

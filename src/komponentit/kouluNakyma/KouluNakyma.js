@@ -4,8 +4,11 @@ import {Button, Col, ControlLabel, Form, FormControl, FormGroup, Grid, Row, Thum
 import koulu from './koulu.png';
 import './koulu.css';
 import KoulunToimeksiannot from "./KoulunToimeksiannot";
+import {haeKoulunTiedot} from "../../restpalvelu";
+import KoulunTiedot from "./koulu/KoulunTiedot";
 
 class KouluNakyma extends Component {
+
     render() {
         return (
             <div>
@@ -24,53 +27,6 @@ class KouluNakyma extends Component {
                             </Thumbnail>
                         </Col>
                         <Col sm={8}>
-                            <Form horizontal>
-                                <FormGroup>
-                                    <Col componentClass={ControlLabel} sm={2}>
-                                        Koulun nimi
-                                    </Col>
-
-                                    <Col sm={3}>
-                                        <FormControl type="text" placeholder="Default"/>
-                                    </Col>
-                                    <Col sm={4}>
-                                        <FormControl type="text" placeholder="Osoite"/>
-                                    </Col>
-                                    <Col sm={2}>
-                                        <FormControl type="text" placeholder="Y-tunnus"/>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup>
-                                    <Col componentClass={ControlLabel} sm={2}>
-                                        Rehtori
-                                    </Col>
-
-                                    <Col sm={3}>
-                                        <FormControl type="text" placeholder="Riku Rehtori"/>
-                                    </Col>
-                                    <Col sm={4}>
-                                        <FormControl type="text" placeholder="email"/>
-                                    </Col>
-                                    <Col sm={2}>
-                                        <FormControl type="text" placeholder="puhelin"/>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup>
-                                    <Col componentClass={ControlLabel} sm={2}>
-                                        Sihteeri
-                                    </Col>
-
-                                    <Col sm={3}>
-                                        <FormControl type="text" placeholder="Sihteeri"/>
-                                    </Col>
-                                    <Col sm={4}>
-                                        <FormControl type="text" placeholder="email"/>
-                                    </Col>
-                                    <Col sm={2}>
-                                        <FormControl type="text" placeholder="puhelin"/>
-                                    </Col>
-                                </FormGroup>
-                            </Form>
                             <KoulunToimeksiannot/>
                         </Col>
                     </Row>

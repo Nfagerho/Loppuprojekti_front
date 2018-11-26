@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import { Switch, Route } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import SijainenNakyma from './komponentit/sijainenNakyma/SijainenNakyma';
 import Etusivu from './komponentit/Etusivu';
@@ -17,14 +15,16 @@ import KoulunTietojenMuokkaus from './komponentit/kouluNakyma/koulu/KoulunTietoj
 import KoulunToimeksiannot from './komponentit/kouluNakyma/koulu/KoulunToimeksiannot';
 import SijaisenToimeksiannot from './komponentit/sijainenNakyma/valikko/SijaisenToimeksiannot';
 import SivuaEiLoytynyt from './komponentit/SivuaEiLoytynyt';
-import Lomake from "./komponentit/kouluNakyma/koulu/Lomake";
-import MuokkaaToimeksiantoa from "./komponentit/kouluNakyma/koulu/MuokkaaToimeksiantoa";
+import Lomake from './komponentit/kouluNakyma/koulu/Lomake';
 import KouluNakyma from './komponentit/kouluNakyma/KouluNakyma';
 
-import { withAuthentication } from './komponentit/firebase/Session';
+import MuokkaaToimeksiantoa from "./komponentit/kouluNakyma/koulu/MuokkaaToimeksiantoa";
+
+import {withAuthentication} from './komponentit/firebase/Session';
 import SignInPage from './komponentit/firebase/SignIn';
 
 const App = () => (
+
     <BrowserRouter>
         <Switch>
             <Route exact path='/' component={Etusivu}></Route>
@@ -54,8 +54,4 @@ const App = () => (
   );
   
   export default withAuthentication(App);
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
 

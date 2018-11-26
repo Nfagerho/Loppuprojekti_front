@@ -29,7 +29,6 @@ class KoulunToimeksiannot extends Component {
 
         var optiot = {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'};
         var toimeksiantooliot = this.state.toimeksiantodata.map(function (toimeksiantomappi) {
-                console.log(toimeksiantomappi);
                 var aikamuutos = new Date(toimeksiantomappi.toimeksiantoAlkuaika);
                 var aikamuutos1 = new Date(toimeksiantomappi.toimeksiantoLoppuaika);
                 // Tähän tulostus avoimista ja varatuista toimeksiannoista. Tee if lause niin että jos sijaista ei ole niin toimeksianto näkyy avoimena. tjsp

@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {lahetaToimeksianto, poistaToimeksianto} from "../../../restpalvelu";
-import { withAuthorization } from '../../firebase/Session';
+import {lahetaToimeksianto} from "../../../restpalvelu";
+import {Button, Col, ControlLabel, FormControl, FormGroup, Row} from "react-bootstrap";
+import withAuthorization from "../../firebase/Session/withAuthorization";
+import './Lomake.css';
 
 //Täällä koulu pystyy lisäämään uuden toimeksiannon. Tällä hetkellä kovakoodattu kouluID 1.
 class Lomake extends Component {
-
     state = {
         toimeksiantoId: '',
         kouluNimi: '',
@@ -15,42 +16,55 @@ class Lomake extends Component {
         oppiaine: '',
         koulu: 1
     };
-
-
-   lahetaLomake = () => {
-       lahetaToimeksianto(this.state)
-   };
-
+    lahetaLomake = () => {
+        lahetaToimeksianto(this.state)
+    };
 
     render() {
         return (
             <div>
-                <form>Koulun nimi:
-                    <input type="text" placeholder=""
-                           value={this.state.kouluNimi}
-                           onChange={this.handlaaKouluNimi}/><br/>
-                    Koulun osoite:
-                    <input type="text" placeholder=""
-                           value={this.state.kouluOsoite}
-                           onChange={this.handlaaKouluOsoite}/><br/>
-                    Koulun yhteyshenkilö:
-                    <input type="text" placeholder=""
-                           value={this.state.kouluYhteyshenkilo}
-                           onChange={this.handlaaKouluYhteyshenkilo}/><br/>
-                    Toimeksiannon Alkuaika:
-                    <input type="datetime-local" placeholder=""
-                           value={this.state.toimeksiantoAlkuaika}
-                           onChange={this.handlaatoimeksiantoAlkuaika}/><br/>
-                    Toimeksiannon Loppuaika:
-                    <input type="datetime-local" placeholder=""
-                           value={this.state.toimeksiantoLoppuaika}
-                           onChange={this.handlaatoimeksiantoLoppuaika}/><br/>
-                    Oppiaine:
-                    <input type="text" placeholder=""
-                           value={this.state.oppiaine}
-                           onChange={this.handlaaoppiaine}/><br/>
-                    <button type="submit" onClick={this.lahetaLomake}>Lisää toimeksianto</button>
-                </form>
+                <Row>
+                    <FormGroup>
+                        <Col componentClass={ControlLabel} sm={2}>
+                            Toimeksiannon Alkuaika:
+                        </Col>
+                        <Col sm={2}>
+                            <FormControl
+                                type="datetime-local"
+                                placeholder=""
+                                value={this.state.toimeksiantoAlkuaika}
+                                onChange={this.handlaatoimeksiantoAlkuaika}/><br/>
+                        </Col>
+                    </FormGroup>
+                </Row>
+                <Row>
+                    <FormGroup>
+                        <Col componentClass={ControlLabel} sm={2}>
+                            Toimeksiannon Loppuaika:
+                        </Col>
+                        <Col sm={2}>
+                            <FormControl
+                                type="datetime-local"
+                                placeholder=""
+                                value={this.state.toimeksiantoLoppuaika}
+                                onChange={this.handlaatoimeksiantoLoppuaika}/><br/>
+                        </Col>
+                    </FormGroup>
+                </Row>
+                <Row>
+                <FormGroup>
+                    <Col componentClass={ControlLabel} sm={2}>
+                        Oppiaine:
+                    </Col>
+                    <Col sm={2}>
+                        <FormControl
+                            type="text" placeholder=""
+                            value={this.state.oppiaine}
+                            onChange={this.handlaaoppiaine}/><br/>
+                    </Col>
+                </FormGroup>
+                </Row>
+                <span></span><Button id="submit-btn" onClick={this.lahetaLomake}>Luo toimeksianto</Button>
             </div>
         );
     }
@@ -76,8 +90,6 @@ class Lomake extends Component {
     handlaaPoistoByToimeksiantoId = (e) => {
         this.setState({toimeksiantoId: e.target.value})
     };
-    
-
 }
 
 const condition = authUser => !!authUser;

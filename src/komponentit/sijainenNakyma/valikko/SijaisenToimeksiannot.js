@@ -39,15 +39,17 @@ class SijaisenToimeksiannot extends Component {
             var d = new Date();
             var d1 = Date.parse(d);
             var d2 = Date.parse (aikamuutos1);
-                if (toimeksiantomappi.sijainen && toimeksiantomappi.sijainen.sijainenId === 1) {
-                    if (d2 > d1 ) {
-            return <li key={toimeksiantomappi.toimeksiantoId}>
-                
-                {toimeksiantomappi.koulu &&
-            <li class="toimeksiannot">Oppiaine: {toimeksiantomappi.oppiaine}<br/> Alkaa: {aikamuutos.toLocaleTimeString("fi", optiot)}<br/> 
-            Loppuu: {aikamuutos1.toLocaleTimeString("fi", optiot)}<br/> 
-            Koulu:{toimeksiantomappi.koulu.kouluNimi}<br/>  Osoite: {toimeksiantomappi.koulu.kouluOsoite}<br/>  Yhteyshenkilö:{toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>}</li> }}
-           
+                if (toimeksiantomappi.sijainen) {
+                    if(toimeksiantomappi.sijainen.sijainenSahkoposti === this.props.firebase.naytaEmail()) {
+                        if (d2 > d1 ) {
+                            return <li key={toimeksiantomappi.toimeksiantoId}>
+                            {toimeksiantomappi.koulu &&
+                            <li class="toimeksiannot">Oppiaine: {toimeksiantomappi.oppiaine}<br/> Alkaa: {aikamuutos.toLocaleTimeString("fi", optiot)}<br/> 
+                            Loppuu: {aikamuutos1.toLocaleTimeString("fi", optiot)}<br/> 
+                            Koulu:{toimeksiantomappi.koulu.kouluNimi}<br/>  Osoite: {toimeksiantomappi.koulu.kouluOsoite}<br/>  Yhteyshenkilö:{toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>}</li> 
+                        }
+                    }
+                }
         })
         //Ja tämä menneet toimeksiannot
         var optiot = {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'};
@@ -57,15 +59,17 @@ class SijaisenToimeksiannot extends Component {
         var d = new Date();
         var d1 = Date.parse(d);
         var d2 = Date.parse (aikamuutos1);
-            if (toimeksiantomappi.sijainen && toimeksiantomappi.sijainen.sijainenId === 1) {
-                if (d2 < d1 ) {
-        return <li key={toimeksiantomappi.toimeksiantoId}>
-            
-            {toimeksiantomappi.koulu &&
-        <li class="toimeksiannot">Oppiaine: {toimeksiantomappi.oppiaine}<br/> Alkaa: {aikamuutos.toLocaleTimeString("fi", optiot)}<br/> 
-        Loppuu: {aikamuutos1.toLocaleTimeString("fi", optiot)}<br/> 
-        Koulu:{toimeksiantomappi.koulu.kouluNimi}<br/>  Osoite: {toimeksiantomappi.koulu.kouluOsoite}<br/>  Yhteyshenkilö:{toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>}</li> }}
-       
+            if (toimeksiantomappi.sijainen) {
+                if(toimeksiantomappi.sijainen.sijainenSahkoposti === this.props.firebase.naytaEmail()) {
+                    if (d2 < d1 ) {
+                        return <li key={toimeksiantomappi.toimeksiantoId}>
+                        {toimeksiantomappi.koulu &&
+                        <li class="toimeksiannot">Oppiaine: {toimeksiantomappi.oppiaine}<br/> Alkaa: {aikamuutos.toLocaleTimeString("fi", optiot)}<br/> 
+                        Loppuu: {aikamuutos1.toLocaleTimeString("fi", optiot)}<br/> 
+                        Koulu:{toimeksiantomappi.koulu.kouluNimi}<br/>  Osoite: {toimeksiantomappi.koulu.kouluOsoite}<br/>  Yhteyshenkilö:{toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>}</li>
+                    }
+                }
+            } 
     })
     
         return (    

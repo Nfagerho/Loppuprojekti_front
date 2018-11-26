@@ -68,8 +68,8 @@ class SignUpFormBase extends Component {
     // Lähetetään sijaisen tiedot postgreSQL-tietokantaan:
     lahetaSijainen({
       sijainenNimi: this.state.username,
-      sijainenOsoite: 'Testiosoite2',
-      sijainenPuhelinnumero: '222222',
+      sijainenOsoite: this.state.sijainenOsoite,
+      sijainenPuhelinnumero: this.state.sijainenPuhelinnumero,
       sijainenSahkoposti: this.state.email
     });
 

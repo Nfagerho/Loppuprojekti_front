@@ -19,8 +19,7 @@ import SijaisenToimeksiannot from './komponentit/sijainenNakyma/valikko/Sijaisen
 import SivuaEiLoytynyt from './komponentit/SivuaEiLoytynyt';
 import Lomake from "./komponentit/kouluNakyma/koulu/Lomake";
 import MuokkaaToimeksiantoa from "./komponentit/kouluNakyma/koulu/MuokkaaToimeksiantoa";
-import KouluNakyma from "./komponentit/kouluNakyma/KouluNakyma";
-
+import KouluNakyma from './komponentit/kouluNakyma/KouluNakyma';
 import { withAuthentication } from './komponentit/firebase/Session';
 import SignInPage from './komponentit/firebase/SignIn';
 
@@ -36,6 +35,7 @@ const App = () => (
 
             {/* Alla olevat sivut ovat suojattuja (autentikoinnin takana) */}
             <Route exact path='/toimeksiannot' component={KaikkiToimeksiannot}></Route>
+            <Route path='/koulunakyma' component={KouluNakyma}></Route>
             <Route exact path='/kouluntiedot' component={KoulunTiedot}></Route>
             <Route exact path='/koulunakyma' component={KouluNakyma}></Route>
             <Route exact path='/sijaisentiedot' component={SijaisenTiedot}></Route>

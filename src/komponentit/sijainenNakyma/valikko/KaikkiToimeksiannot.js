@@ -41,7 +41,7 @@ render() {
         return <li key={toimeksiantomappi.toimeksiantoId}>{toimeksiantomappi.oppiaine}<li>Alkaa: {aikamuutos.toLocaleTimeString("fi", optiot)} Loppuu: {aikamuutos1.toLocaleTimeString("fi", optiot)}</li>
         {toimeksiantomappi.koulu &&
                  <li>Koulu:{toimeksiantomappi.koulu.kouluNimi} Osoite: {toimeksiantomappi.koulu.kouluOsoite} Yhteyshenkilö:{toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>}
-                 <button type="button"value={toimeksiantomappi.toimeksiantoId} onClick={this.handlaavaraus}>Varaa</button></li>
+                 <button type="button" value={toimeksiantomappi.toimeksiantoId} onClick={this.handlaavaraus}>Varaa</button></li>
                  
                 }
        

@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import {haeKoulunTiedot} from '../../../restpalvelu';
 import {withAuthorization} from '../../firebase/Session';
 import {Button, Col, ControlLabel, Form, FormControl, FormGroup, Grid, Row, Thumbnail} from "react-bootstrap";
-import koulu from "../koulu.png";
+import koulu from "../koulu.jpg";
 import KoulunToimeksiannot from "./KoulunToimeksiannot";
+import Lomake from "./Lomake";
+import {Link} from "react-router-dom";
 
 
 // Täällä haetaan koulun omat tiedot. Tällä hetkellä hakee kaikkien koulujen kaikki tiedot. 
@@ -12,24 +14,20 @@ class KoulunTiedot extends Component {
     constructor(props) {
         super(props);
         this.state = {kouluntiedotdata: []};
-
     }
-
     componentDidMount() {
         this.haekaikki();
     }
-
     haekaikki() {
         haeKoulunTiedot(this.kaikkihaettu);
     }
-
     kaikkihaettu = (haettudata, virhe) => {
         if (virhe) {
             alert("virhe");
         } else {
             this.setState({kouluntiedotdata: haettudata});
         }
-    }
+    };
 
     handlaatietojenmuokkaus = (e) => {
         this.props.history.push('/koulunomientietojenmuokkaus/' + e.target.value);
@@ -44,11 +42,9 @@ class KoulunTiedot extends Component {
                     <Row>
                         <Col sm={2}>
                             <Thumbnail src={koulu}>
-                                <h3>Koulun nimi</h3>
-                                <p>Osoite</p>
-                                <p>
-                                    <Button bsStyle="info">Vaihda kuva</Button>
-                                </p>
+                                <h3>{kouluntiedotmappi.kouluNimi}</h3>
+                                <p>{kouluntiedotmappi.kouluOsoite}</p>
+                                <Button onClick={this.siirryLomakkeelle}>Luo uusi toimeksianto</Button>
                             </Thumbnail>
                         </Col>
                         <Col sm={10}>
@@ -100,13 +96,13 @@ class KoulunTiedot extends Component {
                                 Muokkaa tietoja
                             </Button>
                         </FormGroup>
-                            <b>Toimeksiannot:</b>
+                            <div id="toimeksianto-teksti"><b>Toimeksiannot:</b></div>
                             <KoulunToimeksiannot/>
                         </Col>
                     </Row>
                 </Grid>
             }
-        })
+        });
         //ja näytetään se sivustolla:
         return (
             <Form horizontal>
@@ -114,6 +110,10 @@ class KoulunTiedot extends Component {
             </Form>
         );
 
+    }
+
+    siirryLomakkeelle= (e) => {
+        this.props.history.push('/lomake/'+ e.target.value);
     }
 }
 

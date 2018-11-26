@@ -178,7 +178,6 @@ class KoulunTietojenMuokkaus extends Component {
 
 }
 
-
 const condition = authUser => !!authUser;
 
 export default withAuthorization(condition)(KoulunTietojenMuokkaus);

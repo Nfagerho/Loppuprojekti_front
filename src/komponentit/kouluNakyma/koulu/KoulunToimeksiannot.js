@@ -28,7 +28,7 @@ class KoulunToimeksiannot extends Component {
             this.setState({toimeksiantodata: haettudata});
 
         }
-    }
+    };
     poistaToimeksiantoById = (e) => {
         e.preventDefault();
         poistaToimeksianto(e.target.value).then((function () {
@@ -47,8 +47,7 @@ class KoulunToimeksiannot extends Component {
             var aikamuutos = new Date(toimeksiantomappi.toimeksiantoAlkuaika);
             var aikamuutos1 = new Date(toimeksiantomappi.toimeksiantoLoppuaika);
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
-                return <Col sm={8} key={toimeksiantomappi.toimeksiantoId}>
-
+                return <Col id="toimeksiannot" sm={8} key={toimeksiantomappi.toimeksiantoId}>
                     {toimeksiantomappi.koulu &&
                     <ListGroupItem>
                         <b>Oppiaine:</b> {toimeksiantomappi.oppiaine} <b>Alkaa:</b> {aikamuutos.toLocaleTimeString("fi", optiot)} <b>Loppuu:</b> {aikamuutos1.toLocaleTimeString("fi", optiot)}
@@ -56,7 +55,8 @@ class KoulunToimeksiannot extends Component {
                     <Button type="button"
                             bsSize="small"
                             id="nappi1"
-                            value={toimeksiantomappi.toimeksiantoId} onClick={this.handlaamuokkaus}>Muokkaa
+                            value={toimeksiantomappi.toimeksiantoId}
+                            onClick={this.handlaamuokkaus}>Muokkaa
                     </Button>
                     <Button type="button" bsStyle="danger"
                             value={toimeksiantomappi.toimeksiantoId}
@@ -64,14 +64,12 @@ class KoulunToimeksiannot extends Component {
                             onClick={this.poistaToimeksiantoById}>Poista</Button>
                 </Col>
             }
-        })
-
+        });
         return (
             <ListGroup>
                 {toimeksiantooliot}
             </ListGroup>
         );
-
     }
 }
 

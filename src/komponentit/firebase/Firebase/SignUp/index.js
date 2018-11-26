@@ -4,9 +4,11 @@ import { compose } from 'recompose';
 
 import { withFirebase } from '../index.js';
 
+import { lahetaSijainen } from '../../../../restpalvelu';
+
 const SignUpPage = () => (
   <div>
-    <h1>SignUp</h1>
+    <h1>Rekisteröidy:</h1>
     <SignUpForm />
   </div>
 );
@@ -17,6 +19,10 @@ const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
   error: null,
+  sijainenNimi: '',
+  sijainenOsoite: '',
+  sijainenPuhelinnumero: '',
+  sijainenSahkoposti: ''
 };
 
 class SignUpFormBase extends Component {
@@ -34,21 +40,21 @@ class SignUpFormBase extends Component {
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
 
-        // Create a user in your Firebase realtime database
-        this.props.firebase
-        .user(authUser.user.uid)
-        .set({
-          username,
-          email,
-        })
-        .then(() => {
-          this.setState({ ...INITIAL_STATE });
-          this.props.history.push('/sijainen');
-        })
-        .catch(error => {
-          this.setState({ error });
-        });
-        // -------------------------------------
+        // Create a user in your Firebase realtime database (EI TOIMI!!!!!!!!!!)
+        // this.props.firebase
+        // .user(authUser.user.uid)
+        // .set({
+        //   username,
+        //   email,
+        // })
+        // .then(() => {
+        //   this.setState({ ...INITIAL_STATE });
+        //   this.props.history.push('/sijainen');
+        // })
+        // .catch(error => {
+        //   this.setState({ error });
+        // });
+        // // -------------------------------------
 
         this.setState({ ...INITIAL_STATE });
         this.props.history.push('/sijainen');
@@ -59,11 +65,28 @@ class SignUpFormBase extends Component {
 
     event.preventDefault();
 
+    // Lähetetään sijaisen tiedot postgreSQL-tietokantaan:
+    lahetaSijainen({
+      sijainenNimi: this.state.username,
+      sijainenOsoite: 'Testiosoite2',
+      sijainenPuhelinnumero: '222222',
+      sijainenSahkoposti: this.state.email
+    });
+
   }
 
+  // Tapahtumankäsittely nimi-, email- ja salasana-kentille
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
 
+  // Tapahtumankäsittelyt postgreSQL-tietokantaa varten
+  handlaaSijainenOsoite = (e) => {
+    this.setState({sijainenOsoite: e.target.value});
+  };
+
+  handlaaSijainenPuhelinnumero = (e) => {
+    this.setState({sijainenPuhelinnumero: e.target.value});
   };
 
   render() {
@@ -73,12 +96,17 @@ class SignUpFormBase extends Component {
       passwordOne,
       passwordTwo,
       error,
+      sijainenOsoite,
+      sijainenPuhelinnumero,
     } = this.state;
 
     const isInvalid =
     passwordOne !== passwordTwo ||
     passwordOne === '' ||
     email === '' ||
+    !email.includes('@') ||
+    sijainenOsoite === '' ||
+    sijainenPuhelinnumero === '' ||
     username === '';
 
     return (
@@ -88,30 +116,39 @@ class SignUpFormBase extends Component {
           value={username}
           onChange={this.onChange}
           type="text"
-          placeholder="Full Name"
+          placeholder="Nimi"
         />
+
+        <input type="text" placeholder="Osoite"
+          value={this.state.sijainenOsoite}
+          onChange={this.handlaaSijainenOsoite}/><br/>
+
+        <input type="text" placeholder="Puhelinnumero"
+          value={this.state.sijainenPuhelinnumero}
+          onChange={this.handlaaSijainenPuhelinnumero}/>
+
         <input
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
-          placeholder="Email Address"
-        />
+          placeholder="Sähköposti"
+        /><br/>
         <input
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
-          placeholder="Password"
+          placeholder="Salasana"
         />
         <input
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
           type="password"
-          placeholder="Confirm Password"
-        />
-        <button disabled={isInvalid} type="submit">Sign Up</button>
+          placeholder="Salasana uudelleen"
+        /><br/>
+        <button disabled={isInvalid} type="submit">Rekisteröidy</button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -121,7 +158,7 @@ class SignUpFormBase extends Component {
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={'/rekisterointi'}>Sign Up</Link>
+    Ei vielä käyttäjätiliä? <Link to={'/rekisterointi'}>Rekisteröidy</Link>
   </p>
 );
 

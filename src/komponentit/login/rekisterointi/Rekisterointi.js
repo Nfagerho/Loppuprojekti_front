@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import SignUpPage from '../../firebase/Firebase/SignUp';
 
-
 class Rekisterointi extends Component {
     render() {
         return (

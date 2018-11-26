@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import Substidudes2 from '../substidudes2.png'
-import {Button, Col, ControlLabel, Form, FormControl, FormGroup, Grid, Row, Thumbnail} from "react-bootstrap";
+import {Button, Col, Grid, Row, Thumbnail} from "react-bootstrap";
 import koulu from './koulu.png';
 import './koulu.css';
-import KoulunToimeksiannot from "./KoulunToimeksiannot";
+import KoulunTiedot from "./koulu/KoulunTiedot";
+import KoulunToimeksiannot from "./koulu/KoulunToimeksiannot";
 
 class KouluNakyma extends Component {
+
     render() {
         return (
             <div>
@@ -14,63 +16,17 @@ class KouluNakyma extends Component {
                 </div>
                 <Grid>
                     <Row className="show-grid">
-                        <Col sm={4}>
-                            <Thumbnail src={koulu} alt="242x200">
+                        <Col sm={2}>
+                            <Thumbnail src={koulu}>
                                 <h3>Koulun nimi</h3>
                                 <p>Osoite</p>
                                 <p>
-                                    <Button bsStyle="primary">Vaihda kuva</Button>
+                                    <Button bsStyle="info">Vaihda kuva</Button>
                                 </p>
                             </Thumbnail>
                         </Col>
                         <Col sm={8}>
-                            <Form horizontal>
-                                <FormGroup>
-                                    <Col componentClass={ControlLabel} sm={2}>
-                                        Koulun nimi
-                                    </Col>
-
-                                    <Col sm={3}>
-                                        <FormControl type="text" placeholder="Default"/>
-                                    </Col>
-                                    <Col sm={4}>
-                                        <FormControl type="text" placeholder="Osoite"/>
-                                    </Col>
-                                    <Col sm={2}>
-                                        <FormControl type="text" placeholder="Y-tunnus"/>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup>
-                                    <Col componentClass={ControlLabel} sm={2}>
-                                        Rehtori
-                                    </Col>
-
-                                    <Col sm={3}>
-                                        <FormControl type="text" placeholder="Riku Rehtori"/>
-                                    </Col>
-                                    <Col sm={4}>
-                                        <FormControl type="text" placeholder="email"/>
-                                    </Col>
-                                    <Col sm={2}>
-                                        <FormControl type="text" placeholder="puhelin"/>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup>
-                                    <Col componentClass={ControlLabel} sm={2}>
-                                        Sihteeri
-                                    </Col>
-
-                                    <Col sm={3}>
-                                        <FormControl type="text" placeholder="Sihteeri"/>
-                                    </Col>
-                                    <Col sm={4}>
-                                        <FormControl type="text" placeholder="email"/>
-                                    </Col>
-                                    <Col sm={2}>
-                                        <FormControl type="text" placeholder="puhelin"/>
-                                    </Col>
-                                </FormGroup>
-                            </Form>
+                            <KoulunTiedot/>
                             <KoulunToimeksiannot/>
                         </Col>
                     </Row>

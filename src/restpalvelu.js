@@ -15,7 +15,7 @@ export function haeKaikkiToimeksiannot(callback) {
 }
 
 //Kaikkien koulujen tietojen fetchaus databasesta
-const url1 = '/api/koulu.png/';
+const url1 = '/api/koulu/';
 
 export function haeKoulunTiedot(callback) {
     fetch(url1, {accept: 'application/json'})
@@ -118,7 +118,7 @@ export function muokkaaSijaista(id, lomake) {
 }
 
 //Haetaan yksittäinen koulu.png databasesta
-const yksittainenkoulunURL = '/api/koulu.png/';
+const yksittainenkoulunURL = '/api/koulu/';
 
 export function haeYksittainenKoulu(callback, id) {
     fetch(yksittainenkoulunURL + id, {accept: 'application/json'})
@@ -133,7 +133,7 @@ export function haeYksittainenKoulu(callback, id) {
 }
 
 //Muokataan yksittäisen koulun tietoja databasessa
-const koulunmuokkausurl = '/api/koulu.png/';
+const koulunmuokkausurl = '/api/koulu/';
 
 export function muokkaaKoulua(id, lomake) {
     return fetch(koulunmuokkausurl + id, {

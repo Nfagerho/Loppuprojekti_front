@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
-
-
+import KaikkiToimeksiannot from '../../sijainenNakyma/valikko/KaikkiToimeksiannot'
 
 const mapStyles = {
     map: {
@@ -92,7 +91,9 @@ class KarttaNakyma extends Component {
     renderChildren() {
         const { children } = this.props;
 
-        var contentString1 = '<div id="content"><h1>Käpylän peruskoulu</h1><a href="/toimeksiannot"><p>Vapaat toimeksiannot</p></a></div>';
+        var contentString1 = '<div id="content"><h1>Käpylän peruskoulu</h1><h3>Vapaat toimeksiannot</h3>' +
+            '<object type="text/html" data="/koulunomattoimeksiannot" width="600px" height="600px" >\n' +
+            '</object></div>';
 
         var infowindow1 = new window.google.maps.InfoWindow({
             content: contentString1

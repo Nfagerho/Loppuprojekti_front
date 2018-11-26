@@ -1,10 +1,13 @@
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 
+
+
 const mapStyles = {
     map: {
+        marginLeft: '1%',
         position: 'absolute',
-        width: '99%',
+        width: '98%',
         height: '77%'
     }
 };
@@ -89,6 +92,19 @@ class KarttaNakyma extends Component {
     renderChildren() {
         const { children } = this.props;
 
+        var contentString1 = '<div id="content"><h1>Käpylän peruskoulu</h1><a href="/toimeksiannot"><p>Vapaat toimeksiannot</p></a></div>';
+
+        var infowindow1 = new window.google.maps.InfoWindow({
+            content: contentString1
+        });
+
+        var contentString2 = '<div id="content"><h1>Ressun peruskoulu</h1><p>RESSUN PERUSKOULUN VAPAAT SIJAISUUDET: </p></div>';
+
+        var infowindow2 = new window.google.maps.InfoWindow({
+            content: contentString2
+        });
+
+
         // Markerin lisääminen (tämän koodin voi lisätä esim. renderinkin sisälle suoraan)
         var marker1 = new this.props.google.maps.Marker({
             position: {lat: 60.210270, lng: 24.945590},
@@ -101,11 +117,12 @@ class KarttaNakyma extends Component {
         marker1.addListener('click', function() {
             this.map.setZoom(18);
             this.map.setCenter(marker1.getPosition());
-            alert("Napsautit Käpylän peruskoulua. Olet hieno miäs. Miltei juna- tai testimiäs.");
+            infowindow1.open(this.map, marker1);
+
           });
 
         var marker2 = new this.props.google.maps.Marker({
-            position: {lat: 60.166950, lng: 24.927250},
+            position: {lat: 60.167211, lng: 24.924964},
             map: this.map,
             title: 'Ressun peruskoulu',
             label: '2'
@@ -114,7 +131,7 @@ class KarttaNakyma extends Component {
         marker2.addListener('click', function() {
             this.map.setZoom(18);
             this.map.setCenter(marker2.getPosition());
-            alert("Napsautit Ressun peruskoulua. Olet hieno miäs. Miltei juna- tai testimiäs.");
+            infowindow2.open(this.map, marker2);
             });
 
         if (!children) return;

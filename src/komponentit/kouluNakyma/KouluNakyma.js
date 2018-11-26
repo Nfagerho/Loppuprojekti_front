@@ -9,7 +9,8 @@ class KouluNakyma extends Component {
         return (
             <div>
                 <div className="logo">
-                    <img src={Substidudes2}/><br/><br/><br/><br/><br/>
+                    <a href='/'>
+                        <img src={Substidudes2}/></a><br/><br/><br/><br/><br/>
                 </div>
                 <KoulunTiedot/>
             </div>

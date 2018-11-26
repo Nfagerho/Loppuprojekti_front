@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
+import {withRouter, NavLink} from 'react-router-dom';
 import {compose} from 'recompose';
 
 // import { SignUpLink } from '../SignUp';
@@ -9,6 +9,7 @@ import {withFirebase} from '../Firebase';
 const SignInPage = () => (
     <div>
         <h1>Kirjaudu sisään</h1>
+        <br/>
         <SignInForm/>
         {/* Alla olevat lisätään kun ehtii */}
         {/* <PasswordForgetLink />
@@ -71,10 +72,10 @@ class SignInFormBase extends Component {
                     onChange={this.onChange}
                     type="password"
                     placeholder="Salasana"
-                />
+                /><br/><br/>
                 &nbsp;
                 <button className="SignIn" disabled={isInvalid} type="submit">
-                    Sign In
+                    Kirjaudu sisään
                 </button>
 
                 {error && <p>{error.message}</p>}

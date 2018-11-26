@@ -5,7 +5,7 @@ import Popup from 'reactjs-popup';
 import BurgerIkoni from './valikko/BurgerIkoni';
 import Valikko from './valikko/Valikko';
 import Substidudes2 from '../substidudes2.png'
-import SignOutButton from '../firebase/SignOut';
+
 
 // Autentikointiin liittyvää
 import {withAuthorization} from '../firebase/Session';
@@ -34,7 +34,7 @@ class SijainenNakyma extends Component {
                     <a href='/'>
                         <img src={Substidudes2}/></a>
                 </div>
-
+                
 
                 <div style={styles}>
 

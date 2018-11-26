@@ -29,7 +29,7 @@ class Kartta extends Component {
     render() {
         return (
             <KarttaNakyma centerAroundCurrentLocation google={this.props.google}>
-                <Marker onClick={this.onMarkerClick} name={'current location'} />
+                <Marker onClick={this.onMarkerClick} name={'Nykyinen sijainti'} />
                 <InfoWindow
                     marker={this.state.activeMarker}
                     visible={this.state.showingInfoWindow}

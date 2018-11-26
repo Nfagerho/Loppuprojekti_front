@@ -45,8 +45,8 @@ const App = () => (
             <Route exact path='/sijaisenomattoimeksiannot' component={SijaisenToimeksiannot}></Route>
             <Route exact path='/lomake' component={Lomake}></Route>
             <Route path='/muokkaalomake/:id' component={MuokkaaToimeksiantoa}></Route>
-            {/* Tätä testikirjautumista käytettiin testailuun. Nyt tarpeeton?
-             <Route path='/testikirjautuminen' component={SignInPage}></Route> */}
+           
+           {/* Not found -sivu ei ole suojattu: */}
             <Route component={SivuaEiLoytynyt} />
             {/* HUOM.!!!!!!!!!!! Kun lisäät uuden reitityksen, muista salaus kyseiseen komponenttiin. */}
         </Switch>

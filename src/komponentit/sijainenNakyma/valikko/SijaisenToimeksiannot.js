@@ -9,7 +9,6 @@ class SijaisenToimeksiannot extends Component {
     constructor(props) {
         super(props);
         this.state = {toimeksiantodata: []};
-        console.log("PROPSI", this.props.emaili);
     }
 
     componentDidMount () {
@@ -24,16 +23,9 @@ class SijaisenToimeksiannot extends Component {
         if(virhe) {
             alert("virhe");
         } else {
-            this.setState({toimeksiantodata: haettudata});
-            console.log(this.state.toimeksiantodata);
-        
+            this.setState({toimeksiantodata: haettudata});    
         }
     }
-
-
-//Alla olevaan mappaukseen on kovakoodattu sijaisenId 1. Eli IF-lause tsekkaa, onko toimeksiantoon kytketyn sijaisen ID 1, jos on niin
-//näyttää toimeksiannon. Jos ei, niin ei näytä mitään.
-
 
     render() {
 
@@ -66,7 +58,7 @@ class SijaisenToimeksiannot extends Component {
             }
         })
 
-    //     //Ja tämä menneet toimeksiannot
+    // Ja tämä menneet toimeksiannot
         var optiot = {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'};
         var toimeksiantooliotmenneet = this.state.toimeksiantodata.map(function(toimeksiantomappi){
             var aikamuutos = new Date(toimeksiantomappi.toimeksiantoAlkuaika);
@@ -79,11 +71,13 @@ class SijaisenToimeksiannot extends Component {
                 // if(toimeksiantomappi.sijainen.sijainenSahkoposti === "testi9@testi.fi") {
                 if(toimeksiantomappi.sijainen.sijainenSahkoposti === kirjautuneenEmail) {
                     if (d2 < d1 ) {
-                        return <li key={toimeksiantomappi.toimeksiantoId}>
+                        return <ul key={toimeksiantomappi.toimeksiantoId}>
                         {toimeksiantomappi.koulu &&
-                        <li class="toimeksiannot">Oppiaine: {toimeksiantomappi.oppiaine}<br/> Alkaa: {aikamuutos.toLocaleTimeString("fi", optiot)}<br/> 
+                        <li className="toimeksiannot">Oppiaine: {toimeksiantomappi.oppiaine}<br/> Alkaa: {aikamuutos.toLocaleTimeString("fi", optiot)}<br/> 
                         Loppuu: {aikamuutos1.toLocaleTimeString("fi", optiot)}<br/> 
-                        Koulu:{toimeksiantomappi.koulu.kouluNimi}<br/>  Osoite: {toimeksiantomappi.koulu.kouluOsoite}<br/>  Yhteyshenkilö:{toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>}</li>
+                        Koulu:{toimeksiantomappi.koulu.kouluNimi}<br/>  
+                        Osoite: {toimeksiantomappi.koulu.kouluOsoite}<br/>  
+                        Yhteyshenkilö:{toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>}</ul>
                     }
                 }
             } 

@@ -117,7 +117,7 @@ export function muokkaaSijaista(id, lomake) {
 
 }
 
-//Haetaan yksittäinen koulu.png databasesta
+//Haetaan yksittäinen koulu databasesta
 const yksittainenkoulunURL = '/api/koulu/';
 
 export function haeYksittainenKoulu(callback, id) {
@@ -142,4 +142,15 @@ export function muokkaaKoulua(id, lomake) {
         body: JSON.stringify(lomake)
     })
 
+}
+
+//Lisätään uusi sijainen POST:illa databaseen
+const sijaisenLisaysUrl = '/api/sijainen/';
+
+export function lahetaSijainen(lomake) {
+    return fetch(sijaisenLisaysUrl, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(lomake)
+    })
 }

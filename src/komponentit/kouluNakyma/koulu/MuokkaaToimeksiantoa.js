@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {haeYksittainenToimeksianto, poistaToimeksianto, muokkaaToimeksianto} from '../../../restpalvelu';
-import { withAuthorization } from '../../firebase/Session';
+import {haeYksittainenToimeksianto, muokkaaToimeksianto, poistaToimeksianto} from '../../../restpalvelu';
+import {withAuthorization} from '../../firebase/Session';
+import MDspinner from "react-md-spinner";
 
 //Täällä haetaan muokattavan toimeksiannon tiedot ja asetetaan ne stateen. 
 
@@ -11,32 +12,44 @@ class MuokkaaToimeksianto extends Component {
         toimeksiantoLoppuaika: '',
         oppiaine: '',
         koulu: 1,
-        sijainen: ''
+        sijainen: '',
+        showME: true
     };
 
+    componentWillMount() {
+        setTimeout(() => {
+            this.setState({
+                showME: false
+            })
+        }, 1000)
+    }
 
+    componentDidMount() {
+        this.haeyksi();
+    }
 
-    componentDidMount () {
-         this.haeyksi();
-     }
-
-     //Haetaan selaimesta tulevalla id:llä (this.props.match.params.id) yksittäisen toimeksiannon tiedot ja
-     //laitetaan sen jälkeen setStatella ne stateksi. Tällöin lomake saa tiedot automaattisesti ja voit muokata niitä haluamallasi tavalla
-     haeyksi() {
+    //Haetaan selaimesta tulevalla id:llä (this.props.match.params.id) yksittäisen toimeksiannon tiedot ja
+    //laitetaan sen jälkeen setStatella ne stateksi. Tällöin lomake saa tiedot automaattisesti ja voit muokata niitä haluamallasi tavalla
+    haeyksi() {
         haeYksittainenToimeksianto(this.yksihaettu, this.props.match.params.id);
     }
+
     yksihaettu = (haettudata, virhe) => {
         if (virhe) {
             alert("virhe");
         } else {
-            this.setState({toimeksiantoId: haettudata.toimeksiantoId, toimeksiantoAlkuaika: haettudata.toimeksiantoAlkuaika, toimeksiantoLoppuaika: haettudata.toimeksiantoLoppuaika,
-                oppiaine: haettudata.oppiaine, sijainen: haettudata.sijainen});
-                
-                
-            
+            this.setState({
+                toimeksiantoId: haettudata.toimeksiantoId,
+                toimeksiantoAlkuaika: haettudata.toimeksiantoAlkuaika,
+                toimeksiantoLoppuaika: haettudata.toimeksiantoLoppuaika,
+                oppiaine: haettudata.oppiaine,
+                sijainen: haettudata.sijainen
+            });
+
+
         }
     }
-   
+
     //Lomakkeen muokkausfunktio, joka aktivoituu buttonin painalluksesta. Kun muokkaus on tehty, siirtää se sivuston automaattisesti
     //omiin toimeksiantoihin.
     muokkaalomake = (e) => {
@@ -46,29 +59,33 @@ class MuokkaaToimeksianto extends Component {
     };
 
     render() {
-        console.log("Muokkaa, render", this.state);
         return (
-            <div>
-                <form>
-                    Toimeksiannon AlkuPvm: <br/>
-                    <input type="datetime-local" placeholder=""
-                           value={this.state.toimeksiantoAlkuaika}
-                           onChange={this.handlaatoimeksiantoAlkuaika}/><br/>
-                    Toimeksiannon LoppuPvm: <br/>
-                    <input type="datetime-local" placeholder=""
-                           value={this.state.toimeksiantoLoppuaika}
-                           onChange={this.handlaatoimeksiantoLoppuaika}/><br/>
-                    Oppiaine: <br/>
-                    <input type="text" placeholder=""
-                           value={this.state.oppiaine}
-                           onChange={this.handlaaoppiaine}/><br/>
-                    <button type="submit" onClick={this.muokkaalomake}>Muokkaa toimeksianto</button>
-                </form>
+            <div>{this.state.showME ?
+                <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
+                :
+                <div>
+                    <form>
+                        Toimeksiannon AlkuPvm: <br/>
+                        <input type="datetime-local" placeholder=""
+                               value={this.state.toimeksiantoAlkuaika}
+                               onChange={this.handlaatoimeksiantoAlkuaika}/><br/>
+                        Toimeksiannon LoppuPvm: <br/>
+                        <input type="datetime-local" placeholder=""
+                               value={this.state.toimeksiantoLoppuaika}
+                               onChange={this.handlaatoimeksiantoLoppuaika}/><br/>
+                        Oppiaine: <br/>
+                        <input type="text" placeholder=""
+                               value={this.state.oppiaine}
+                               onChange={this.handlaaoppiaine}/><br/>
+                        <button type="submit" onClick={this.muokkaalomake}>Muokkaa toimeksianto</button>
+                    </form>
+                </div>
+            }
             </div>
         );
     }
 
-  
+
     handlaatoimeksiantoAlkuaika = (e) => {
         this.setState({toimeksiantoAlkuaika: e.target.value});
     };

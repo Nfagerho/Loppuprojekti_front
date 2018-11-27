@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { haeYksittainenToimeksianto, muokkaaToimeksianto } from '../../../restpalvelu' ;
+import React, {Component} from 'react';
+import {haeYksittainenToimeksianto, muokkaaToimeksianto} from '../../../restpalvelu';
+import MDspinner from "react-md-spinner";
 
 class ToimeksiannonVaraus extends Component {
     state = {
@@ -8,57 +9,66 @@ class ToimeksiannonVaraus extends Component {
         toimeksiantoAlkuaika: '',
         toimeksiantoLoppuaika: '',
         koulu: '',
-        sijainen: this.props.sijaisenId
+        sijainen: this.props.sijaisenId,
+        showME: true
     };
 
+    componentWillMount() {
+        setTimeout(() => {
+            this.setState({
+                showME: false
+            })
+        }, 1000)
+    }
 
+    componentDidMount() {
+        this.haeyksitoimeksianto();
+    }
 
-    componentDidMount () {
-         this.haeyksitoimeksianto();
-     }
-
-     haeyksitoimeksianto() {
+    haeyksitoimeksianto() {
         haeYksittainenToimeksianto(this.yksihaettu, this.props.id);
     }
+
     yksihaettu = (haettudata, virhe) => {
         if (virhe) {
             alert("virhe");
         } else {
             this.setState({
-                toimeksiantoId: haettudata.toimeksiantoId, 
-                oppiaine: haettudata.oppiaine, 
-                toimeksiantoAlkuaika: haettudata.toimeksiantoAlkuaika, 
-                toimeksiantoLoppuaika: haettudata.toimeksiantoLoppuaika, 
-                koulu: haettudata.koulu.kouluId, 
-                kouluNimi: haettudata.koulu.kouluNimi, 
-                kouluOsoite: haettudata.koulu.kouluOsoite, 
+                toimeksiantoId: haettudata.toimeksiantoId,
+                oppiaine: haettudata.oppiaine,
+                toimeksiantoAlkuaika: haettudata.toimeksiantoAlkuaika,
+                toimeksiantoLoppuaika: haettudata.toimeksiantoLoppuaika,
+                koulu: haettudata.koulu.kouluId,
+                kouluNimi: haettudata.koulu.kouluNimi,
+                kouluOsoite: haettudata.koulu.kouluOsoite,
                 kouluYhteyshenkilo: haettudata.koulu.kouluYhteyshenkilo,
                 // Sijaisen ID on noukittava sisäänkirjautuneen emailin avulla!!!!!!!!
                 // sijainen: haettudata.sijainen.sijainenId
             });
-                
-                
-            
+
+
         }
     }
-   
+
     muokkaatietoja = (e) => {
         e.preventDefault();
         muokkaaToimeksianto(this.state.toimeksiantoId, this.state)
         this.props.varaus();
-       
+
     };
 
     render() {
-        console.log("Muokkaa, render", this.state);
         return (
-            <div>   
-                    <input type="text" value={this.state.oppiaine}/><br/> 
+            <div>{this.state.showME ?
+                <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
+                :
+                <div>
+                    <input type="text" value={this.state.oppiaine}/><br/>
 
                     <input type="datetime-local" value={this.state.toimeksiantoAlkuaika}/><br/>
-                    
+
                     <input type="datetime-local" value={this.state.toimeksiantoLoppuaika}/><br/>
-                   
+
                     <input type="text" value={this.state.kouluNimi}/><br/>
 
                     <input type="text" value={this.state.kouluOsoite}/><br/>
@@ -66,12 +76,12 @@ class ToimeksiannonVaraus extends Component {
                     <input type="text" value={this.state.kouluYhteyshenkilo}/><br/>
 
                     <button type="submit" onClick={this.muokkaatietoja}>Vahvista varaus</button>
-               
+
+                </div>}
             </div>
         );
     }
 }
-
 
 
 export default ToimeksiannonVaraus;

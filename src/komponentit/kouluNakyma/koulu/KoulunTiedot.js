@@ -52,7 +52,8 @@ class KoulunTiedot extends Component {
     render() {
 
         var kouluntiedotolio = this.state.kouluntiedotdata.map((kouluntiedotmappi) => {
-            if (kouluntiedotmappi && kouluntiedotmappi.kouluId) {
+
+            if (kouluntiedotmappi && kouluntiedotmappi.kouluId === 1) {
                 return <Grid>
                     <Row>
                         <Col sm={2}>
@@ -122,7 +123,7 @@ class KoulunTiedot extends Component {
         return (
             <div>
                 {this.state.showME ?
-                    <div id="spinneri"><MDspinner /></div>
+                    <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
                     :
                     <div>
                         <Form horizontal>

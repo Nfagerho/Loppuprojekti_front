@@ -4,6 +4,7 @@ import {Button, Col, ControlLabel, FormControl, FormGroup, Row} from "react-boot
 import withAuthorization from "../../firebase/Session/withAuthorization";
 import './Lomake.css';
 import MDspinner from "react-md-spinner";
+import Substidudes2 from "../../substidudes2.png";
 
 //Täällä koulu pystyy lisäämään uuden toimeksiannon. Tällä hetkellä kovakoodattu kouluID 1.
 class Lomake extends Component {
@@ -37,15 +38,21 @@ class Lomake extends Component {
     render() {
         return (
             <div>{this.state.showME ?
-                <div id="spinneri"><MDspinner/></div>
+                <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
                 :
+
                 <div>
+                    <div className="logo">
+                        <a href='/'>
+                            <img src={Substidudes2} alt="Substidudes-logo"/></a><br/><br/><br/><br/><br/><br/>
+                    </div>
+                    <Col id="lomakeCol">
                     <Row>
                         <FormGroup>
                             <Col componentClass={ControlLabel} sm={2}>
-                                Toimeksiannon Alkuaika:
+                                Toimeksiannon alkuaika:
                             </Col>
-                            <Col sm={2}>
+                            <Col sm={3}>
                                 <FormControl
                                     type="datetime-local"
                                     placeholder=""
@@ -54,12 +61,13 @@ class Lomake extends Component {
                             </Col>
                         </FormGroup>
                     </Row>
+
                     <Row>
                         <FormGroup>
                             <Col componentClass={ControlLabel} sm={2}>
-                                Toimeksiannon Loppuaika:
+                                Toimeksiannon loppuaika:
                             </Col>
-                            <Col sm={2}>
+                            <Col sm={3}>
                                 <FormControl
                                     type="datetime-local"
                                     placeholder=""
@@ -73,7 +81,7 @@ class Lomake extends Component {
                             <Col componentClass={ControlLabel} sm={2}>
                                 Oppiaine:
                             </Col>
-                            <Col sm={2}>
+                            <Col sm={3}>
                                 <FormControl
                                     type="text" placeholder=""
                                     value={this.state.oppiaine}
@@ -81,6 +89,8 @@ class Lomake extends Component {
                             </Col>
                         </FormGroup>
                     </Row>
+                    </Col>
+                    <br/>
                     <Button id="submit-btn" onClick={this.lahetaLomake}>Luo</Button>
                     <Button onClick={this.peruuta}>Peruuta</Button>
                 </div>

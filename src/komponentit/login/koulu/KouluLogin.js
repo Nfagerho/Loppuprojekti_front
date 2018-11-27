@@ -13,6 +13,7 @@ class KouluLogin extends Component {
                 </div>
                 <h1 align="center">Kirjaudu sisään</h1><br/>
                 <nav className="button-menu">
+
                         <form onSubmit={this.onSubmit}>
                             <input
                                 name="email"
@@ -35,8 +36,8 @@ class KouluLogin extends Component {
                             <button className="SignIn" type="submit">
                                 Kirjaudu sisään
                             </button>
-                    </NavLink><br/><br/><br/>
-                    <NavLink className="button" to='/rekisterointi'><span className="buttontext3">REKISTERÖIDY</span></NavLink>
+                    </NavLink><br/><br/>
+                    <NavLink className="button2" to='/rekisterointi'><span className="buttontext3">REKISTERÖIDY</span></NavLink>
                 </nav>
             </div>
         );

@@ -1,13 +1,26 @@
 import React, {Component} from 'react';
 import {haeSijaisenTiedot} from '../../../restpalvelu';
 import withAuthorization from "../../firebase/Session/withAuthorization";
+import {Button} from "react-bootstrap";
+import MDspinner from "react-md-spinner";
 
 
 // Täällä haetaan sijaisen omat tiedot. Tällä hetkellä hakee kaikkien sijaisten kaikki tiedot. 
 class SijaisenTiedot extends Component {
     constructor(props) {
         super(props);
-        this.state = {sijaisentiedotdata: []};
+        this.state = {
+            sijaisentiedotdata: [],
+            showME: true
+        };
+    }
+
+    componentWillMount() {
+        setTimeout(() => {
+            this.setState({
+                showME: false
+            })
+        }, 1000)
     }
 
     componentDidMount() {
@@ -25,7 +38,7 @@ class SijaisenTiedot extends Component {
             this.setState({sijaisentiedotdata: haettudata});
 
         }
-    }
+    };
     handlaamuokkaus = (e) => {
         this.props.muokkaus(e.target.value);
         //this.props.history.push('/sijaisenomientietojenmuokkaus/'+ e.target.value);
@@ -36,24 +49,30 @@ class SijaisenTiedot extends Component {
     //Täällä mapataan data
     render() {
         var kirjautuneenEmail = this.props.emaili;
-
         var sijaisentiedotolio = this.state.sijaisentiedotdata.map((sijaisentiedotmappi) => {
-            if (sijaisentiedotmappi){
-                if(sijaisentiedotmappi.sijainenSahkoposti === kirjautuneenEmail) {
-            return <li key={sijaisentiedotmappi.sijainenId}>
-
-            Nimi: {sijaisentiedotmappi.sijainenNimi} <li>Osoite: {sijaisentiedotmappi.sijainenOsoite}</li> <li>Yhteystiedot: {sijaisentiedotmappi.sijainenPuhelinnumero}, {sijaisentiedotmappi.sijainenSahkoposti}</li>
-            <button type="button"
-                            value={sijaisentiedotmappi.sijainenId} onClick={this.handlaamuokkaus}>Muokkaa tietoja</button>
+            if (sijaisentiedotmappi) {
+                if (sijaisentiedotmappi.sijainenSahkoposti === kirjautuneenEmail) {
+                    return <li key={sijaisentiedotmappi.sijainenId}>
+                        Nimi: {sijaisentiedotmappi.sijainenNimi}
+                        <li>Osoite: {sijaisentiedotmappi.sijainenOsoite}</li>
+                        <li>Yhteystiedot: {sijaisentiedotmappi.sijainenPuhelinnumero}, {sijaisentiedotmappi.sijainenSahkoposti}</li>
+                        <Button type="button"
+                                value={sijaisentiedotmappi.sijainenId} onClick={this.handlaamuokkaus}>Muokkaa
+                            tietoja</Button>
                     </li>
                 }
             }
         });
-    //ja näytetään se sivustolla:
+        //ja näytetään se sivustolla:
         return (
-            <ul>
-                {sijaisentiedotolio}
-            </ul>
+            <div>{this.state.showME ?
+                <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
+                :
+                <ul>
+                    {sijaisentiedotolio}
+                </ul>
+            }
+            </div>
         );
 
     }

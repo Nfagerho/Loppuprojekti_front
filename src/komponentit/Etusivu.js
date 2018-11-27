@@ -24,7 +24,7 @@ class Etusivu extends Component {
         return (
             <div>
                 {this.state.showME ?
-                    <div id="spinneri1"><MDspinner /></div>
+                    <div id="spinneri1"><MDspinner singleColor="#e42226"/></div>
                     :
                     <div>
                         <div className="logo">

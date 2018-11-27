@@ -17,12 +17,41 @@ body {
     border: 10px solid black;
     padding: 65px;
     line-height: 0px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    margin: auto;
+    display: inline-block;
+    text-align: center;
+}
+
+.button2 {
+    height: 32px;
+    width: 32px;
+    border-radius: 100%;
+    background-color: #e42226;
+    border: 10px solid black;
+    padding: 50px;
+    line-height: 0px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     margin: auto;
     display: inline-block;
     text-align: center;
 }
+
+.button2:hover {
+    background-color: black;
+    color: white;
+    border: 10px solid #e42226;
+}
+
+a.button2 {
+    font-size: 12px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 .buttontext {
     margin-left: -45px;
     font-family: sans-serif;
@@ -34,9 +63,9 @@ body {
 }
 
 .buttontext3 {
-    margin-left: -55px;
+    margin-left: -45px;
     font-family: sans-serif;
-    font-size: 15px;
+
 }
 .sijainen {
     text-align: center;

@@ -13,10 +13,10 @@ class SijainenLogin extends Component {
                 </div>
                 <br/><br/><br/><br/><br/>
                 <div className="sijainenSignIn">
-                    <SignInPage/><br/><br/>
+                    <SignInPage/><br/>
                 </div>
                 <nav className="button-menu">
-                    <NavLink className="button" to='/rekisterointi'><span
+                    <NavLink className="button2" to='/rekisterointi'><span
                         className="buttontext3">REKISTERÖIDY</span></NavLink>
                 </nav>
             </div>

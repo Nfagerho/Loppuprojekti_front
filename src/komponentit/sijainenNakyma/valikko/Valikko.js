@@ -95,7 +95,7 @@ class Valikko extends Component {
           
                   <Popup trigger={<li onClick={this.props.close}>Omat tiedot</li>} modal closeOnDocumentClick>
                       <span> Tähän sijaisen omat tiedot. </span>
-                      {!this.state.sijaisenNakyma &&<SijaisenTiedot histroy={this.props.history} muokkaus={this.muokkaus}/>}
+                      {!this.state.sijaisenNakyma &&<SijaisenTiedot emaili={emailii} histroy={this.props.history} muokkaus={this.muokkaus}/>}
                       
                       {this.state.sijaisenNakyma && <SijaisenTietojenMuokkaus id={this.state.id} muokkaus={this.muokkaus}/>}
                   </Popup>

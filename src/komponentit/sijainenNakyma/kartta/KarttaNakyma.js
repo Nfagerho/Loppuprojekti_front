@@ -132,34 +132,34 @@ class KarttaNakyma extends Component {
         });
 
 
-        // Markerin lisääminen (tämän koodin voi lisätä esim. renderinkin sisälle suoraan)
-        var marker1 = new this.props.google.maps.Marker({
-            position: {lat: 60.210270, lng: 24.945590},
-            map: this.map,
-            title: 'Käpylän peruskoulu',
-            label: '5'
-        });
+        // // Markerin lisääminen (tämän koodin voi lisätä esim. renderinkin sisälle suoraan)
+        // var marker1 = new this.props.google.maps.Marker({
+        //     position: {lat: 60.210270, lng: 24.945590},
+        //     map: this.map,
+        //     title: 'Käpylän peruskoulu',
+        //     label: '5'
+        // });
 
-        // Tapahtuma, kun markeria klikataan
-        marker1.addListener('click', function() {
-            this.map.setZoom(18);
-            this.map.setCenter(marker1.getPosition());
-            infowindow1.open(this.map, marker1);
+        // // Tapahtuma, kun markeria klikataan
+        // marker1.addListener('click', function() {
+        //     this.map.setZoom(18);
+        //     this.map.setCenter(marker1.getPosition());
+        //     infowindow1.open(this.map, marker1);
 
-          });
+        //   });
 
-        var marker2 = new this.props.google.maps.Marker({
-            position: {lat: 60.166950, lng: 24.927250},
-            map: this.map,
-            title: 'Ressun peruskoulu',
-            label: '2'
-        });
+        // var marker2 = new this.props.google.maps.Marker({
+        //     position: {lat: 60.166950, lng: 24.927250},
+        //     map: this.map,
+        //     title: 'Ressun peruskoulu',
+        //     label: '2'
+        // });
 
-        marker2.addListener('click', function() {
-            this.map.setZoom(18);
-            this.map.setCenter(marker2.getPosition());
-            infowindow2.open(this.map, marker2);
-            });
+        // marker2.addListener('click', function() {
+        //     this.map.setZoom(18);
+        //     this.map.setCenter(marker2.getPosition());
+        //     infowindow2.open(this.map, marker2);
+        // });
 
         if (!children) return;
 
@@ -175,15 +175,17 @@ class KarttaNakyma extends Component {
 
     render() {
 
+        var markerit, i;
         // Mäpätään toimeksiannot markkereiksi
         for(var i = 0; i < this.state.toimeksiantodata.length; ++i){
             console.log(this.state.toimeksiantodata[i]);
-            // var marker1 + i = new this.props.google.maps.Marker({
-            //     position: {lat: 60.210270, lng: 24.945590},
-            //     map: this.map,
-            //     title: 'Käpylän peruskoulu',
-            //     label: '5',
-            // });
+            markerit = new this.props.google.maps.Marker({
+                position: {lat: this.state.toimeksiantodata[i].koulu.kouluKoordLat, lng: this.state.toimeksiantodata[i].koulu.kouluKoordLong},
+                map: this.map,
+                title: this.state.toimeksiantodata[i].koulu.kouluNimi,
+                // Labeliin ++1
+                label: 1,
+            });
         }
 
         const style = Object.assign({}, mapStyles.map);

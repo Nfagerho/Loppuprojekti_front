@@ -5,6 +5,7 @@ import {compose} from 'recompose';
 // import { SignUpLink } from '../SignUp';
 // import { PasswordForgetLink } from '../PasswordForget';
 import {withFirebase} from '../Firebase';
+import {Button} from "react-bootstrap";
 
 const SignInPage = () => (
     <div>
@@ -74,9 +75,9 @@ class SignInFormBase extends Component {
                     placeholder="Salasana"
                 /><br/><br/>
                 &nbsp;
-                <button className="SignIn" disabled={isInvalid} type="submit">
+                <Button className="SignIn" disabled={isInvalid} type="submit">
                     Kirjaudu sisään
-                </button>
+                </Button>
 
                 {error && <p>{error.message}</p>}
             </form>

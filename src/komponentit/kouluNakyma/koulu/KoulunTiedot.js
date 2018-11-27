@@ -52,7 +52,8 @@ class KoulunTiedot extends Component {
     render() {
 
         var kouluntiedotolio = this.state.kouluntiedotdata.map((kouluntiedotmappi) => {
-            if (kouluntiedotmappi && kouluntiedotmappi.kouluId) {
+            //Tässä mäpätään ainoastaan kouluIDllä olevan koulun tiedot, joka on kovakoodattuna tässä kohtaa numerolla 1
+            if (kouluntiedotmappi && kouluntiedotmappi.kouluId === 1) {
                 return <Grid>
                     <Row>
                         <Col sm={2}>

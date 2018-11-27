@@ -3,6 +3,7 @@ import {NavLink} from 'react-router-dom';
 import Substidudes2 from "../../substidudes2.png";
 import SignInPage from '../../firebase/SignIn';
 
+
 class SijainenLogin extends Component {
     render() {
         return (

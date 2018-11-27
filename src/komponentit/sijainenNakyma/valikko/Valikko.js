@@ -28,26 +28,28 @@ class Valikko extends Component {
     }
     
 
-//     componentDidMount () {
-//         this.haeyksisijainen();
-//     }
+    componentDidMount () {
+        this.haeyksisijainen();
+    }
 
-//     haeyksisijainen() {
-//         haeSijaisenTiedotEmaililla(this.yksihaettu, this.props.firebase.naytaEmail());
-//    }
-//    yksihaettu = (haettudata, virhe) => {
-//        if (virhe) {
-//            alert("virhe");
-//        } else {
-//            console.log( "Sijainen id" + haettudata.sijainen.sijainenId)
-//            this.setState({
-//                sijainen: haettudata.sijainen.sijainenId
-//            });
+    haeyksisijainen() {
+       var emaili3 = this.props.firebase.naytaEmail();
+       console.log( "sposti" + emaili3)
+        haeSijaisenTiedotEmaililla(this.yksihaettu, emaili3);
+        
+   }
+   yksihaettu = (haettudata, virhe) => {
+       if (virhe) {
+           alert("virhe");
+       } else {
+           
+           this.setState({sijainen: haettudata.sijainenId});
+           
                
                
            
-//        }
-//    }
+       }
+   }
 
     muokkaus = (id) => {
         this.setState({
@@ -87,7 +89,7 @@ class Valikko extends Component {
                       {/* Tähän täytyy laittaa ehtolause (jos lista tyhjä, mitä näytetään) */}
                       {!this.state.toimeksiantoNakyma &&<KaikkiToimeksiannot histroy={this.props.history} varaus={this.varaus}/>}
                       
-                      {this.state.toimeksiantoNakyma && <ToimeksiannonVaraus id={this.state.toimeksiantoid} varaus={this.varaus}/>}
+                      {this.state.toimeksiantoNakyma && <ToimeksiannonVaraus id={this.state.toimeksiantoid} sijaisenId={this.state.sijainen} varaus={this.varaus}/>}
             
                   </Popup>
           

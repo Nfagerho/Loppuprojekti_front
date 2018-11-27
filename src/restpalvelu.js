@@ -158,7 +158,7 @@ export function lahetaSijainen(lomake) {
 //Kaikkien sijaisten tietojen fetchaus databasesta
 const url3 = '/api/sijainenemail/';
 
-export function haeSijaisenTiedotEmaililla(email, callback) {
+export function haeSijaisenTiedotEmaililla(callback, email) {
     fetch(url3 + email, {accept: 'application/json'})
         .then(function (response) {
             response.json().then(function (json) {

@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 ///////////////////////////////
 import { haeKaikkiToimeksiannot } from '../../../restpalvelu';
+import { runInThisContext } from 'vm';
 // Tarviiko lisätä autentikointia?
 
 
@@ -27,6 +28,8 @@ class KarttaNakyma extends Component {
             //////////////////////////
             toimeksiantodata: []
         };
+
+        // var markkerit = [];
     }
     componentDidMount() {
         //////////////////////////
@@ -61,7 +64,96 @@ class KarttaNakyma extends Component {
             alert("virhe");
         } else {
             this.setState({toimeksiantodata: haettudata});
-            console.log(this.state.toimeksiantodata);
+         
+            // Tehdään toimeksiannoista taulukko, jonka yksi alkio vastaa yhtä koulua (nimi, lat, long, toimeksiantojen lkm)
+            var markkerit = new Array ( );
+            var matchi = false;
+            for(var i = 0; i < this.state.toimeksiantodata.length; ++i){
+
+                matchi = false;
+
+                if(markkerit.length == 0) {
+                        markkerit[i] = new Array ( 
+                        this.state.toimeksiantodata[i].koulu.kouluNimi,
+                        this.state.toimeksiantodata[i].koulu.kouluKoordLat,
+                        this.state.toimeksiantodata[i].koulu.kouluKoordLong,
+                        1);
+                } else {
+                    for(var y = 0; y < markkerit.length; ++y) {
+                        console.log(this.state.toimeksiantodata[i].koulu.kouluNimi);
+                        console.log("TÄMÄ ON ACADEMY:", markkerit[0][0]);
+                        if(markkerit[y][0] === this.state.toimeksiantodata[i].koulu.kouluNimi){
+                            markkerit[y][3] += 1;
+                            console.log("Nyt sen piti lisätä +1 Ressun kouluun");
+                            matchi = true;
+                            break;
+                        }
+                    }
+
+                    if(matchi == false) {
+                        markkerit[i] = new Array ( 
+                            this.state.toimeksiantodata[i].koulu.kouluNimi,
+                            this.state.toimeksiantodata[i].koulu.kouluKoordLat,
+                            this.state.toimeksiantodata[i].koulu.kouluKoordLong,
+                            1); 
+                    }
+                }
+
+                console.log("MARKKERIT!!!!!!!!!!!!!!!!!!", markkerit);
+                console.log(markkerit[0][1]);
+
+                
+                for(var x = 0; x < markkerit.length; ++x) {
+                    console.log("KOULU " + x);
+                    for(var xx = 0; xx < 4; ++xx) {
+                        console.log(markkerit[x][xx]);
+                    }
+                }
+
+                // Mäpätään toimeksiannot taulukosta markkereiksi
+                var markerit;
+                for(var i2 = 0; i2 < markkerit.length; ++i2){
+                    // console.log(this.state.toimeksiantodata[i]);
+                    console.log("iiiiiiiiiiiiiii", i2);
+                    console.log(markkerit[i2][1]);
+                    markerit = new this.props.google.maps.Marker({
+                        position: {lat: markkerit[i2][1], lng: markkerit[i2][2]},
+                        map: this.map,
+                        title: markkerit[i2][0],
+                        label: markkerit[i2][3].toString(),
+                    });
+                }
+                
+                  
+                // markkerit[i].push(this.state.toimeksiantodata[i].koulu.kouluNimi);
+                // markkerit[i].push(this.state.toimeksiantodata[i].koulu.kouluKoordLat);
+                // markkerit[i].push(this.state.toimeksiantodata[i].koulu.kouluKoordLong);
+                // markkerit[i].push(this.state.toimeksiantodata[i].koulu.kouluKoordLong);
+                // console.log("Yksi koulu" + JSON.stringify(this.state.toimeksiantodata[i].koulu));
+                // console.log("MARKERIT", markerit);
+                // markerit = new this.props.google.maps.Marker({
+                //     position: {lat: this.state.toimeksiantodata[i].koulu.kouluKoordLat, lng: this.state.toimeksiantodata[i].koulu.kouluKoordLong},
+                //     map: this.map,
+                //     title: this.state.toimeksiantodata[i].koulu.kouluNimi,
+                //     // Labeliin ++1
+                //     label: "1",
+                // });
+            }
+
+            // var markerit;
+            // // Mäpätään toimeksiannot markkereiksi
+            // for(var i = 0; i < this.state.toimeksiantodata.length; ++i){
+            //     // console.log(this.state.toimeksiantodata[i]);
+            //     console.log("MARKERIT", markerit);
+            //     markerit = new this.props.google.maps.Marker({
+            //         position: {lat: this.state.toimeksiantodata[i].koulu.kouluKoordLat, lng: this.state.toimeksiantodata[i].koulu.kouluKoordLong},
+            //         map: this.map,
+            //         title: this.state.toimeksiantodata[i].koulu.kouluNimi,
+            //         // Labeliin ++1
+            //         label: "1",
+            //     });
+            // }
+
         }
     };
     /////////////////////////
@@ -131,36 +223,6 @@ class KarttaNakyma extends Component {
             content: contentString2
         });
 
-
-        // // Markerin lisääminen (tämän koodin voi lisätä esim. renderinkin sisälle suoraan)
-        // var marker1 = new this.props.google.maps.Marker({
-        //     position: {lat: 60.210270, lng: 24.945590},
-        //     map: this.map,
-        //     title: 'Käpylän peruskoulu',
-        //     label: '5'
-        // });
-
-        // // Tapahtuma, kun markeria klikataan
-        // marker1.addListener('click', function() {
-        //     this.map.setZoom(18);
-        //     this.map.setCenter(marker1.getPosition());
-        //     infowindow1.open(this.map, marker1);
-
-        //   });
-
-        // var marker2 = new this.props.google.maps.Marker({
-        //     position: {lat: 60.166950, lng: 24.927250},
-        //     map: this.map,
-        //     title: 'Ressun peruskoulu',
-        //     label: '2'
-        // });
-
-        // marker2.addListener('click', function() {
-        //     this.map.setZoom(18);
-        //     this.map.setCenter(marker2.getPosition());
-        //     infowindow2.open(this.map, marker2);
-        // });
-
         if (!children) return;
 
         return React.Children.map(children, c => {
@@ -175,25 +237,26 @@ class KarttaNakyma extends Component {
 
     render() {
 
-        var markerit, i;
-        // Mäpätään toimeksiannot markkereiksi
-        for(var i = 0; i < this.state.toimeksiantodata.length; ++i){
-            console.log(this.state.toimeksiantodata[i]);
-            markerit = new this.props.google.maps.Marker({
-                position: {lat: this.state.toimeksiantodata[i].koulu.kouluKoordLat, lng: this.state.toimeksiantodata[i].koulu.kouluKoordLong},
-                map: this.map,
-                title: this.state.toimeksiantodata[i].koulu.kouluNimi,
-                // Labeliin ++1
-                label: 1,
-            });
-        }
+        // var markerit, i;
+        // // Mäpätään toimeksiannot markkereiksi
+        // for(var i = 0; i < this.state.toimeksiantodata.length; ++i){
+        //     // console.log(this.state.toimeksiantodata[i]);
+        //     console.log("MARKERIT", markerit);
+        //     markerit = new this.props.google.maps.Marker({
+        //         position: {lat: this.state.toimeksiantodata[i].koulu.kouluKoordLat, lng: this.state.toimeksiantodata[i].koulu.kouluKoordLong},
+        //         map: this.map,
+        //         title: this.state.toimeksiantodata[i].koulu.kouluNimi,
+        //         // Labeliin ++1
+        //         label: "1",
+        //     });
+        // }
 
         const style = Object.assign({}, mapStyles.map);
 
         return (
             <div>
                 <div style={style} ref="map">
-                    Loading map...
+                    Ladataan karttaa...
                 </div>
                 {this.renderChildren()}
             </div>

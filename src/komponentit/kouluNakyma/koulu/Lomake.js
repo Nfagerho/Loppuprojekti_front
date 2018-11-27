@@ -3,6 +3,7 @@ import {lahetaToimeksianto} from "../../../restpalvelu";
 import {Button, Col, ControlLabel, FormControl, FormGroup, Row} from "react-bootstrap";
 import withAuthorization from "../../firebase/Session/withAuthorization";
 import './Lomake.css';
+import MDspinner from "react-md-spinner";
 
 //Täällä koulu pystyy lisäämään uuden toimeksiannon. Tällä hetkellä kovakoodattu kouluID 1.
 class Lomake extends Component {
@@ -14,8 +15,18 @@ class Lomake extends Component {
         toimeksiantoAlkuaika: '',
         toimeksiantoLoppuaika: '',
         oppiaine: '',
-        koulu: 1
+        koulu: 1,
+        showME: true
     };
+
+    componentWillMount() {
+        setTimeout(() => {
+            this.setState({
+                showME: false
+            })
+        }, 1000)
+    }
+
     lahetaLomake = () => {
         lahetaToimeksianto(this.state)
     };
@@ -25,50 +36,55 @@ class Lomake extends Component {
 
     render() {
         return (
-            <div>
-                <Row>
-                    <FormGroup>
-                        <Col componentClass={ControlLabel} sm={2}>
-                            Toimeksiannon Alkuaika:
-                        </Col>
-                        <Col sm={2}>
-                            <FormControl
-                                type="datetime-local"
-                                placeholder=""
-                                value={this.state.toimeksiantoAlkuaika}
-                                onChange={this.handlaatoimeksiantoAlkuaika}/><br/>
-                        </Col>
-                    </FormGroup>
-                </Row>
-                <Row>
-                    <FormGroup>
-                        <Col componentClass={ControlLabel} sm={2}>
-                            Toimeksiannon Loppuaika:
-                        </Col>
-                        <Col sm={2}>
-                            <FormControl
-                                type="datetime-local"
-                                placeholder=""
-                                value={this.state.toimeksiantoLoppuaika}
-                                onChange={this.handlaatoimeksiantoLoppuaika}/><br/>
-                        </Col>
-                    </FormGroup>
-                </Row>
-                <Row>
-                <FormGroup>
-                    <Col componentClass={ControlLabel} sm={2}>
-                        Oppiaine:
-                    </Col>
-                    <Col sm={2}>
-                        <FormControl
-                            type="text" placeholder=""
-                            value={this.state.oppiaine}
-                            onChange={this.handlaaoppiaine}/><br/>
-                    </Col>
-                </FormGroup>
-                </Row>
-                <Button id="submit-btn" onClick={this.lahetaLomake}>Luo</Button>
-                <Button onClick={this.peruuta}>Peruuta</Button>
+            <div>{this.state.showME ?
+                <div id="spinneri"><MDspinner/></div>
+                :
+                <div>
+                    <Row>
+                        <FormGroup>
+                            <Col componentClass={ControlLabel} sm={2}>
+                                Toimeksiannon Alkuaika:
+                            </Col>
+                            <Col sm={2}>
+                                <FormControl
+                                    type="datetime-local"
+                                    placeholder=""
+                                    value={this.state.toimeksiantoAlkuaika}
+                                    onChange={this.handlaatoimeksiantoAlkuaika}/><br/>
+                            </Col>
+                        </FormGroup>
+                    </Row>
+                    <Row>
+                        <FormGroup>
+                            <Col componentClass={ControlLabel} sm={2}>
+                                Toimeksiannon Loppuaika:
+                            </Col>
+                            <Col sm={2}>
+                                <FormControl
+                                    type="datetime-local"
+                                    placeholder=""
+                                    value={this.state.toimeksiantoLoppuaika}
+                                    onChange={this.handlaatoimeksiantoLoppuaika}/><br/>
+                            </Col>
+                        </FormGroup>
+                    </Row>
+                    <Row>
+                        <FormGroup>
+                            <Col componentClass={ControlLabel} sm={2}>
+                                Oppiaine:
+                            </Col>
+                            <Col sm={2}>
+                                <FormControl
+                                    type="text" placeholder=""
+                                    value={this.state.oppiaine}
+                                    onChange={this.handlaaoppiaine}/><br/>
+                            </Col>
+                        </FormGroup>
+                    </Row>
+                    <Button id="submit-btn" onClick={this.lahetaLomake}>Luo</Button>
+                    <Button onClick={this.peruuta}>Peruuta</Button>
+                </div>
+            }
             </div>
         );
     }

@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {compose} from 'recompose';
-
 // import { SignUpLink } from '../SignUp';
 // import { PasswordForgetLink } from '../PasswordForget';
 import {withFirebase} from '../Firebase';
+import {Button} from "react-bootstrap";
+import MDspinner from "react-md-spinner";
 
 const SignInPage = () => (
     <div>
@@ -21,7 +22,9 @@ const INITIAL_STATE = {
     email: '',
     password: '',
     error: null,
+    showME: true
 };
+
 
 class SignInFormBase extends Component {
     constructor(props) {
@@ -47,6 +50,14 @@ class SignInFormBase extends Component {
         event.preventDefault();
     };
 
+    componentWillMount() {
+        setTimeout(() => {
+            this.setState({
+                showME: false
+            })
+        }, 1000)
+    }
+
     onChange = event => {
         this.setState({[event.target.name]: event.target.value});
     };
@@ -57,29 +68,34 @@ class SignInFormBase extends Component {
         const isInvalid = password === '' || email === '';
 
         return (
-            <form onSubmit={this.onSubmit}>
-                <input
-                    name="email"
-                    value={email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Sähköposti"
-                />
-                &nbsp;
-                <input
-                    name="password"
-                    value={password}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Salasana"
-                /><br/><br/>
-                &nbsp;
-                <button className="SignIn" disabled={isInvalid} type="submit">
-                    Kirjaudu sisään
-                </button>
+            <div>{this.state.showME ?
+                <div id="spinneri"><MDspinner/></div>
+                :
+                <form onSubmit={this.onSubmit}>
+                    <input
+                        name="email"
+                        value={email}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Sähköposti"
+                    />
+                    &nbsp;
+                    <input
+                        name="password"
+                        value={password}
+                        onChange={this.onChange}
+                        type="password"
+                        placeholder="Salasana"
+                    /><br/><br/>
+                    &nbsp;
+                    <Button disabled={isInvalid} type="submit">
+                        Kirjaudu sisään
+                    </Button>
 
-                {error && <p>{error.message}</p>}
-            </form>
+                    {error && <p>{error.message}</p>}
+                </form>
+            }
+            </div>
         );
     }
 }

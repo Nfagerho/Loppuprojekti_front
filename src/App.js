@@ -17,9 +17,7 @@ import SijaisenToimeksiannot from './komponentit/sijainenNakyma/valikko/Sijaisen
 import SivuaEiLoytynyt from './komponentit/SivuaEiLoytynyt';
 import Lomake from './komponentit/kouluNakyma/koulu/Lomake';
 import KouluNakyma from './komponentit/kouluNakyma/KouluNakyma';
-
 import MuokkaaToimeksiantoa from "./komponentit/kouluNakyma/koulu/MuokkaaToimeksiantoa";
-
 import {withAuthentication} from './komponentit/firebase/Session';
 // import SignInPage from './komponentit/firebase/SignIn';
 
@@ -38,6 +36,7 @@ const App = () => (
             <Route exact path='/toimeksiannot' component={KaikkiToimeksiannot}></Route>
             <Route path='/koulunakyma' component={KouluNakyma}></Route>
             <Route exact path='/kouluntiedot' component={KoulunTiedot}></Route>
+            <Route exact path='/koulunakyma' component={KouluNakyma}></Route>
             <Route exact path='/sijaisentiedot' component={SijaisenTiedot}></Route>
             <Route path='/sijaisenomientietojenmuokkaus/:id' component={SijaisenTietojenMuokkaus}></Route>
             <Route path='/koulunomientietojenmuokkaus/:id' component={KoulunTietojenMuokkaus}></Route>

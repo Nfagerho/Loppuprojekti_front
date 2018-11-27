@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { haeKaikkiToimeksiannot } from '../../../restpalvelu';
 // Tarviiko lisätä autentikointia?
 
+
 const mapStyles = {
     map: {
         marginLeft: '1%',
@@ -38,13 +39,17 @@ class KarttaNakyma extends Component {
                     this.setState({
                         currentLocation: {
                             lat: coords.latitude,
-                            lng: coords.longitude
+                            lng: coords.longitude,
+                            
                         }
                     });
                 });
             }
         }
         this.loadMap();
+      
+        
+       
     }
 
     // HAETAAN KAIKKI TOIMEKSIANNOT
@@ -132,7 +137,7 @@ class KarttaNakyma extends Component {
             position: {lat: 60.210270, lng: 24.945590},
             map: this.map,
             title: 'Käpylän peruskoulu',
-            label: '5',
+            label: '5'
         });
 
         // Tapahtuma, kun markeria klikataan
@@ -169,6 +174,7 @@ class KarttaNakyma extends Component {
     }
 
     render() {
+<<<<<<< HEAD
 
         // Mäpätään toimeksiannot markkereiksi
         for(var i = 0; i < this.state.toimeksiantodata.length; ++i){
@@ -181,6 +187,8 @@ class KarttaNakyma extends Component {
             // });
         }
 
+=======
+>>>>>>> 172c74a9b86239f78dd0bff8d806c5035122a84e
         const style = Object.assign({}, mapStyles.map);
 
         return (

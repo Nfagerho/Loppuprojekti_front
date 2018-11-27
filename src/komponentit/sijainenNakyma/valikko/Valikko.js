@@ -64,7 +64,7 @@ class Valikko extends Component {
                       {!this.state.toimeksiantoNakyma &&<KaikkiToimeksiannot histroy={this.props.history} varaus={this.varaus}/>}
                       
                       {this.state.toimeksiantoNakyma && <ToimeksiannonVaraus id={this.state.toimeksiantoid} varaus={this.varaus}/>}
-                      {/* <KaikkiToimeksiannot/> */}
+            
                   </Popup>
           
                   <Popup trigger={<li onClick={this.props.close}>Omat tiedot</li>} modal closeOnDocumentClick>

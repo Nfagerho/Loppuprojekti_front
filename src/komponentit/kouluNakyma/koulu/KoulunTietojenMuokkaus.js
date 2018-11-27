@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {haeYksittainenKoulu, muokkaaKoulua} from '../../../restpalvelu';
 import {withAuthorization} from '../../firebase/Session';
 import {Button, Col, Form, FormControl} from "react-bootstrap";
+import './Lomake.css';
 
 class KoulunTietojenMuokkaus extends Component {
     state = {
@@ -129,12 +130,11 @@ class KoulunTietojenMuokkaus extends Component {
                             onChange={this.handlaaSihteeriTel}/>
                         <br/>
                         <Button
-                            id="muokkauksenperuutusnappi"
-                            onClick={this.peruuta}>Peruuta</Button>
-                        <Button
                             id="muokkaatietolomakenappi"
                             onClick={this.muokkaatietoja}>Tallenna</Button>
-                          
+                        <Button
+                            id="muokkauksenperuutusnappi1"
+                            onClick={this.peruuta}>Peruuta</Button>
                     </Col>
                 </Form>
             </div>

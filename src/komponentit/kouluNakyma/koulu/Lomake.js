@@ -19,6 +19,9 @@ class Lomake extends Component {
     lahetaLomake = () => {
         lahetaToimeksianto(this.state)
     };
+    peruuta = (e) => {
+        this.props.history.push('/koulunakyma/' + e.target.value);
+    };
 
     render() {
         return (
@@ -64,7 +67,8 @@ class Lomake extends Component {
                     </Col>
                 </FormGroup>
                 </Row>
-                <span></span><Button id="submit-btn" onClick={this.lahetaLomake}>Luo toimeksianto</Button>
+                <Button id="submit-btn" onClick={this.lahetaLomake}>Luo</Button>
+                <Button onClick={this.peruuta}>Peruuta</Button>
             </div>
         );
     }

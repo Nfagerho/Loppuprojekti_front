@@ -4,8 +4,8 @@ import {withAuthorization} from '../../firebase/Session';
 import {Button, Col, ControlLabel, Form, FormControl, FormGroup, Grid, Row, Thumbnail} from "react-bootstrap";
 import koulu from "../koulu.jpg";
 import KoulunToimeksiannot from "./KoulunToimeksiannot";
-import Lomake from "./Lomake";
-import {Link} from "react-router-dom";
+import MDspinner from 'react-md-spinner';
+import '../koulu.css';
 
 
 // Täällä haetaan koulun omat tiedot. Tällä hetkellä hakee kaikkien koulujen kaikki tiedot. 
@@ -13,8 +13,19 @@ class KoulunTiedot extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {kouluntiedotdata: []};
+        this.state = {
+            kouluntiedotdata: [],
+            showME: true
+        };
     }
+    componentWillMount() {
+        setTimeout(()=>{
+            this.setState({
+                showME: false
+            })
+        }, 1000)
+    }
+
     componentDidMount() {
         this.haekaikki();
     }
@@ -109,14 +120,19 @@ class KoulunTiedot extends Component {
         });
         //ja näytetään se sivustolla:
         return (
-            <Form horizontal>
-                {kouluntiedotolio}
-            </Form>
+            <div>
+                {this.state.showME ?
+                    <div id="spinneri"><MDspinner /></div>
+                    :
+                    <div>
+                        <Form horizontal>
+                            {kouluntiedotolio}
+                        </Form>
+                    </div>
+                }
+            </div>
         );
-
     }
-
-
 }
 
 const condition = authUser => !!authUser;

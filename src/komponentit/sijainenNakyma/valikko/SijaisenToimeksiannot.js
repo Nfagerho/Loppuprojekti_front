@@ -92,7 +92,7 @@ class SijaisenToimeksiannot extends Component {
 
         return (
             <div>{this.state.showME ?
-                <div id="spinneri"><MDspinner/></div>
+                <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
                 :
                 <ul>
                     <li><p id="tuleva">Tulevat toimeksiannot:</p></li>

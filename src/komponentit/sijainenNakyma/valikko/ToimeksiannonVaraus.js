@@ -8,7 +8,7 @@ class ToimeksiannonVaraus extends Component {
         toimeksiantoAlkuaika: '',
         toimeksiantoLoppuaika: '',
         koulu: '',
-        sijainen: ''
+        sijainen: this.props.sijaisenId
     };
 
 
@@ -34,7 +34,7 @@ class ToimeksiannonVaraus extends Component {
                 kouluOsoite: haettudata.koulu.kouluOsoite, 
                 kouluYhteyshenkilo: haettudata.koulu.kouluYhteyshenkilo,
                 // Sijaisen ID on noukittava sisäänkirjautuneen emailin avulla!!!!!!!!
-                sijainen: haettudata.sijainen.sijainenId
+                // sijainen: haettudata.sijainen.sijainenId
             });
                 
                 

@@ -39,9 +39,6 @@ class SijaisenToimeksiannot extends Component {
             var d1 = Date.parse(d);
             var d2 = Date.parse (aikamuutos1);
             if (toimeksiantomappi.sijainen) {
-                // Alla this.props.firebase.naytaEmail()) on jostain syystä null!!!!!!!!!!!!!!!!!!!!
-                // if(toimeksiantomappi.sijainen.sijainenSahkoposti === this.props.firebase.naytaEmail()) {
-                // if(toimeksiantomappi.sijainen.sijainenSahkoposti === "testi9@testi.fi") {
                 if(toimeksiantomappi.sijainen.sijainenSahkoposti === kirjautuneenEmail) {
                     if (d2 > d1 ) {
                         return <li key={toimeksiantomappi.toimeksiantoId}>{
@@ -67,8 +64,6 @@ class SijaisenToimeksiannot extends Component {
             var d1 = Date.parse(d);
             var d2 = Date.parse (aikamuutos1);
             if (toimeksiantomappi.sijainen) {
-                // Alla this.props.firebase.naytaEmail()) on jostain syystä null!!!!!!!!!!!!!!!!!!!!
-                // if(toimeksiantomappi.sijainen.sijainenSahkoposti === "testi9@testi.fi") {
                 if(toimeksiantomappi.sijainen.sijainenSahkoposti === kirjautuneenEmail) {
                     if (d2 < d1 ) {
                         return <ul key={toimeksiantomappi.toimeksiantoId}>

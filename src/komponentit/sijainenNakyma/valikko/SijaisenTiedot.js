@@ -35,9 +35,11 @@ class SijaisenTiedot extends Component {
 
     //Täällä mapataan data
     render() {
+        var kirjautuneenEmail = this.props.emaili;
+
         var sijaisentiedotolio = this.state.sijaisentiedotdata.map((sijaisentiedotmappi) => {
             if (sijaisentiedotmappi){
-                if(sijaisentiedotmappi.sijainenSahkoposti === this.props.firebase.naytaEmail()) {
+                if(sijaisentiedotmappi.sijainenSahkoposti === kirjautuneenEmail) {
             return <li key={sijaisentiedotmappi.sijainenId}>
 
             Nimi: {sijaisentiedotmappi.sijainenNimi} <li>Osoite: {sijaisentiedotmappi.sijainenOsoite}</li> <li>Yhteystiedot: {sijaisentiedotmappi.sijainenPuhelinnumero}, {sijaisentiedotmappi.sijainenSahkoposti}</li>

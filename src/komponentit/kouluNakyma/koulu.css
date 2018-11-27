@@ -1,5 +1,16 @@
-#koulu {
-    height: 50%;
-    width: auto;
+.thumbnail>img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.thumbnail {
+    width: 145%;
+    margin-right: 0;
+}
+#toimeksiannot {
+    margin-left: 87px;
+}
+#toimeksianto-teksti {
+    margin-left: 105px;
 }
 

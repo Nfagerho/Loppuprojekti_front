@@ -1,9 +1,6 @@
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
-import {haeKaikkiToimeksiannot} from '../../../restpalvelu';
-
-
-
+import KaikkiToimeksiannot from '../../sijainenNakyma/valikko/KaikkiToimeksiannot'
 
 
 const mapStyles = {
@@ -36,14 +33,14 @@ class KarttaNakyma extends Component {
                         currentLocation: {
                             lat: coords.latitude,
                             lng: coords.longitude,
-                            toimeksiantodata: []
+                            
                         }
                     });
                 });
             }
         }
         this.loadMap();
-        this.haekaikki();
+      
         
        
     }
@@ -96,23 +93,12 @@ class KarttaNakyma extends Component {
         }
     }
 
-    haekaikki() {
-        haeKaikkiToimeksiannot(this.kaikkihaettu);
-    }
-
-    kaikkihaettu = (haettudata, virhe) => {
-        if (virhe) {
-            alert("virhe");
-        } else {
-            this.setState({toimeksiantodata: haettudata});
-
-        }
-    }
-
     renderChildren() {
         const { children } = this.props;
 
-        var contentString1 = '<div id="content"><h1>Käpylän peruskoulu</h1><a href="/toimeksiannot"><p>Vapaat toimeksiannot</p></a></div>';
+        var contentString1 = '<div id="content"><h1>Käpylän peruskoulu</h1><h3>Vapaat toimeksiannot</h3>' +
+            '<object type="text/html" data="/koulunomattoimeksiannot" width="600px" height="600px" >\n' +
+            '</object></div>';
 
         var infowindow1 = new window.google.maps.InfoWindow({
             content: contentString1
@@ -167,11 +153,6 @@ class KarttaNakyma extends Component {
     }
 
     render() {
-
-        var toimeksiantooliot = this.state.toimeksiantodata.map((toimeksiantomappi) => {
-            if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 2) {
-            return   }})
-
         const style = Object.assign({}, mapStyles.map);
 
         return (

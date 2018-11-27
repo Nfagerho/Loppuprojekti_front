@@ -44,6 +44,7 @@
   text-align: center;
   padding: 0px;
 }
+
 .menu ul {
   position: relative;
   top: 0px;
@@ -56,7 +57,7 @@
   padding: 0;
   cursor: pointer;
 }
-.menu li:hover {
+.valikkoAlku:hover {
   color: #e42226;
 }
 .menu #tuleva {

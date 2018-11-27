@@ -79,12 +79,12 @@ class Valikko extends Component {
                 <li onClick={close}>Omat tiedot</li> */}
               
               {/* Näissä alla olevissa linkeissä valikon sulkeminen (onClick={close}) ei toimi*/}
-                  <Popup trigger={<li onClick={this.props.close}>Omat sijaisuudet</li>} modal closeOnDocumentClick>
+                  <Popup trigger={<li onClick={this.props.close} className="valikkoAlku">Omat sijaisuudet</li>} modal closeOnDocumentClick>
                       {/* Tähän täytyy laittaa ehtolause (jos lista tyhjä, mitä näytetään) */}
                       <SijaisenToimeksiannot emaili={emailii}/>
                   </Popup>
           
-                  <Popup trigger={<li onClick={this.props.close}>Näytä kaikki vapaat sijaisuudet</li>} modal closeOnDocumentClick>
+                  <Popup trigger={<li onClick={this.props.close} className="valikkoAlku">Näytä kaikki vapaat sijaisuudet</li>} modal closeOnDocumentClick>
                       
                       {/* Tähän täytyy laittaa ehtolause (jos lista tyhjä, mitä näytetään) */}
                       {!this.state.toimeksiantoNakyma &&<KaikkiToimeksiannot histroy={this.props.history} varaus={this.varaus}/>}
@@ -93,7 +93,7 @@ class Valikko extends Component {
             
                   </Popup>
           
-                  <Popup trigger={<li onClick={this.props.close}>Omat tiedot</li>} modal closeOnDocumentClick>
+                  <Popup trigger={<li onClick={this.props.close} className="valikkoAlku">Omat tiedot</li>} modal closeOnDocumentClick>
                       <span> Tähän sijaisen omat tiedot. </span>
                       {!this.state.sijaisenNakyma &&<SijaisenTiedot emaili={emailii} histroy={this.props.history} muokkaus={this.muokkaus}/>}
                       

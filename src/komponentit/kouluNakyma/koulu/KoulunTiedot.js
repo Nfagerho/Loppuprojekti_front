@@ -52,7 +52,7 @@ class KoulunTiedot extends Component {
     render() {
 
         var kouluntiedotolio = this.state.kouluntiedotdata.map((kouluntiedotmappi) => {
-            if (kouluntiedotmappi && kouluntiedotmappi.kouluId) {
+            if (kouluntiedotmappi && kouluntiedotmappi.kouluId === 1) {
                 return <Grid>
                     <Row>
                         <Col sm={2}>

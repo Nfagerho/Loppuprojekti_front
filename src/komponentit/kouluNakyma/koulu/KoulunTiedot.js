@@ -29,13 +29,17 @@ class KoulunTiedot extends Component {
         }
     };
 
+    siirryLomakkeelle= (e) => {
+        this.props.history.push('/lomake/'+ e.target.value);
+    };
+
     handlaatietojenmuokkaus = (e) => {
         this.props.history.push('/koulunomientietojenmuokkaus/' + e.target.value);
     };
 
     //Täällä mapataan data
     render() {
-        console.log(this.state.kouluntiedotdata);
+
         var kouluntiedotolio = this.state.kouluntiedotdata.map((kouluntiedotmappi) => {
             if (kouluntiedotmappi && kouluntiedotmappi.kouluId) {
                 return <Grid>
@@ -112,9 +116,7 @@ class KoulunTiedot extends Component {
 
     }
 
-    siirryLomakkeelle= (e) => {
-        this.props.history.push('/lomake/'+ e.target.value);
-    }
+
 }
 
 const condition = authUser => !!authUser;

@@ -58,7 +58,6 @@ class SijainenNakyma extends Component {
         );
     }
 }
-
 // Autentikointiin liittyvää
 const condition = authUser => !!authUser;
 // Autentikointiin liittyvää

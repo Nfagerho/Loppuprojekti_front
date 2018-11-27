@@ -61,7 +61,7 @@ class MuokkaaToimeksianto extends Component {
     render() {
         return (
             <div>{this.state.showME ?
-                <div id="spinneri"><MDspinner/></div>
+                <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
                 :
                 <div>
                     <form>

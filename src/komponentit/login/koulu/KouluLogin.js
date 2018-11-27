@@ -7,7 +7,7 @@ class KouluLogin extends Component {
         return (
             <div>
                 <div className="logo">
-                    <img src={Substidudes2}/><br/><br/><br/><br/><br/>
+                    <img src={Substidudes2} alt="Substidudes-logo"/><br/><br/><br/><br/><br/>
                 </div>
                 <nav className="button-menu">
                     <NavLink to='/koulu'>Etusivu</NavLink><br/><br/><br/>

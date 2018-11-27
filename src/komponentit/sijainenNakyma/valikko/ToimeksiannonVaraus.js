@@ -8,7 +8,7 @@ class ToimeksiannonVaraus extends Component {
         toimeksiantoAlkuaika: '',
         toimeksiantoLoppuaika: '',
         koulu: '',
-        sijainen: 1
+        sijainen: ''
     };
 
 
@@ -24,8 +24,18 @@ class ToimeksiannonVaraus extends Component {
         if (virhe) {
             alert("virhe");
         } else {
-            this.setState({toimeksiantoId: haettudata.toimeksiantoId, oppiaine: haettudata.oppiaine, toimeksiantoAlkuaika: haettudata.toimeksiantoAlkuaika, toimeksiantoLoppuaika: haettudata.toimeksiantoLoppuaika, koulu: haettudata.koulu.kouluId, kouluNimi: haettudata.koulu.kouluNimi, kouluOsoite: haettudata.koulu.kouluOsoite, kouluYhteyshenkilo: haettudata.koulu.kouluYhteyshenkilo
-                  });
+            this.setState({
+                toimeksiantoId: haettudata.toimeksiantoId, 
+                oppiaine: haettudata.oppiaine, 
+                toimeksiantoAlkuaika: haettudata.toimeksiantoAlkuaika, 
+                toimeksiantoLoppuaika: haettudata.toimeksiantoLoppuaika, 
+                koulu: haettudata.koulu.kouluId, 
+                kouluNimi: haettudata.koulu.kouluNimi, 
+                kouluOsoite: haettudata.koulu.kouluOsoite, 
+                kouluYhteyshenkilo: haettudata.koulu.kouluYhteyshenkilo,
+                // Sijaisen ID on noukittava sisäänkirjautuneen emailin avulla!!!!!!!!
+                sijainen: haettudata.sijainen.sijainenId
+            });
                 
                 
             
@@ -60,10 +70,6 @@ class ToimeksiannonVaraus extends Component {
             </div>
         );
     }
-
-  
-
-
 }
 
 

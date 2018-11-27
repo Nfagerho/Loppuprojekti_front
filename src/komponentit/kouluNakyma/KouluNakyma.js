@@ -10,7 +10,7 @@ class KouluNakyma extends Component {
             <div>
                 <div className="logo">
                     <a href='/'>
-                        <img src={Substidudes2}/></a><br/><br/><br/><br/><br/>
+                        <img src={Substidudes2} alt="Substidudes"/></a><br/><br/><br/><br/><br/>
                 </div>
                 <KoulunTiedot/>
             </div>

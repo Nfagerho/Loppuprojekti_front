@@ -7,8 +7,13 @@ import SijaisenTietojenMuokkaus from './SijaisenTietojenMuokkaus'
 import ToimeksiannonVaraus from './ToimeksiannonVaraus'
 import SignOutButton from "../../firebase/SignOut";
 
+// testihommia
+import { withAuthorization } from '../../firebase/Session';
+
 // Tämä valikko tulee näkyviin, kun hampurilaista klikataan.
-export default class Valikko extends Component {
+// export default class Valikko extends Component {
+class Valikko extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -16,6 +21,7 @@ export default class Valikko extends Component {
             toimeksiantoNakyma: false,
             id : undefined,
             toimeksiantoid: undefined
+
         }
     }
 
@@ -36,6 +42,9 @@ export default class Valikko extends Component {
     }
 
     render() {
+
+        var emailii = this.props.firebase.naytaEmail();
+
         return   (
             <div className="menu">
               <ul>
@@ -46,7 +55,7 @@ export default class Valikko extends Component {
               {/* Näissä alla olevissa linkeissä valikon sulkeminen (onClick={close}) ei toimi*/}
                   <Popup trigger={<li onClick={this.props.close}>Omat sijaisuudet</li>} modal closeOnDocumentClick>
                       {/* Tähän täytyy laittaa ehtolause (jos lista tyhjä, mitä näytetään) */}
-                      <SijaisenToimeksiannot/>
+                      <SijaisenToimeksiannot emaili={emailii}/>
                   </Popup>
           
                   <Popup trigger={<li onClick={this.props.close}>Näytä kaikki vapaat sijaisuudet</li>} modal closeOnDocumentClick>
@@ -71,3 +80,7 @@ export default class Valikko extends Component {
           );
     }
  }
+
+ const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(Valikko);

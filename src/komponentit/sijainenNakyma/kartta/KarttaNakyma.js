@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
-import KaikkiToimeksiannot from '../../sijainenNakyma/valikko/KaikkiToimeksiannot'
+///////////////////////////////
+import { haeKaikkiToimeksiannot } from '../../../restpalvelu';
+// Tarviiko lisätä autentikointia?
 
 const mapStyles = {
     map: {
@@ -20,10 +22,15 @@ class KarttaNakyma extends Component {
             currentLocation: {
                 lat: lat,
                 lng: lng
-            }
+            },
+            //////////////////////////
+            toimeksiantodata: []
         };
     }
     componentDidMount() {
+        //////////////////////////
+        this.haekaikki();
+
         if (this.props.centerAroundCurrentLocation) {
             if (navigator && navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(pos => {
@@ -39,6 +46,20 @@ class KarttaNakyma extends Component {
         }
         this.loadMap();
     }
+
+    // HAETAAN KAIKKI TOIMEKSIANNOT
+    haekaikki() {
+        haeKaikkiToimeksiannot(this.kaikkihaettu);
+    }
+    kaikkihaettu = (haettudata, virhe) => {
+        if(virhe) {
+            alert("virhe");
+        } else {
+            this.setState({toimeksiantodata: haettudata});
+            console.log(this.state.toimeksiantodata);
+        }
+    };
+    /////////////////////////
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.google !== this.props.google) {
@@ -123,7 +144,7 @@ class KarttaNakyma extends Component {
           });
 
         var marker2 = new this.props.google.maps.Marker({
-            position: {lat: 60.167211, lng: 24.924964},
+            position: {lat: 60.166950, lng: 24.927250},
             map: this.map,
             title: 'Ressun peruskoulu',
             label: '2'
@@ -148,6 +169,17 @@ class KarttaNakyma extends Component {
     }
 
     render() {
+
+        // Mäpätään toimeksiannot markkereiksi
+        for(var i = 0; i < this.state.toimeksiantodata.length; ++i){
+            console.log(this.state.toimeksiantodata[i]);
+            // var marker1 + i = new this.props.google.maps.Marker({
+            //     position: {lat: 60.210270, lng: 24.945590},
+            //     map: this.map,
+            //     title: 'Käpylän peruskoulu',
+            //     label: '5',
+            // });
+        }
 
         const style = Object.assign({}, mapStyles.map);
 

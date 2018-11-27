@@ -174,7 +174,6 @@ class KarttaNakyma extends Component {
     }
 
     render() {
-<<<<<<< HEAD
 
         // Mäpätään toimeksiannot markkereiksi
         for(var i = 0; i < this.state.toimeksiantodata.length; ++i){
@@ -187,8 +186,6 @@ class KarttaNakyma extends Component {
             // });
         }
 
-=======
->>>>>>> 172c74a9b86239f78dd0bff8d806c5035122a84e
         const style = Object.assign({}, mapStyles.map);
 
         return (

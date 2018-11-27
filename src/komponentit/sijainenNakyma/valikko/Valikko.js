@@ -27,7 +27,8 @@ class Valikko extends Component {
         }
     }
     
-
+//Täällä haetaan sisäänkirjautuneena olevan sijaisen email ja verrataan sitä tietokannassa olevaan emailiin. Tätä kautta saadaan
+//sijaisen ID 
     componentDidMount () {
         this.haeyksisijainen();
     }
@@ -43,11 +44,7 @@ class Valikko extends Component {
            alert("virhe");
        } else {
            
-           this.setState({sijainen: haettudata.sijainenId});
-           
-               
-               
-           
+           this.setState({sijainen: haettudata.sijainenId});   
        }
    }
 
@@ -85,7 +82,7 @@ class Valikko extends Component {
                   </Popup>
           
                   <Popup trigger={<li onClick={this.props.close} className="valikkoAlku">Näytä kaikki vapaat sijaisuudet</li>} modal closeOnDocumentClick>
-                      
+                
                       {/* Tähän täytyy laittaa ehtolause (jos lista tyhjä, mitä näytetään) */}
                       {!this.state.toimeksiantoNakyma &&<KaikkiToimeksiannot histroy={this.props.history} varaus={this.varaus}/>}
                       
@@ -94,7 +91,6 @@ class Valikko extends Component {
                   </Popup>
           
                   <Popup trigger={<li onClick={this.props.close} className="valikkoAlku">Omat tiedot</li>} modal closeOnDocumentClick>
-                      <span> Tähän sijaisen omat tiedot. </span>
                       {!this.state.sijaisenNakyma &&<SijaisenTiedot emaili={emailii} histroy={this.props.history} muokkaus={this.muokkaus}/>}
                       
                       {this.state.sijaisenNakyma && <SijaisenTietojenMuokkaus id={this.state.id} muokkaus={this.muokkaus}/>}

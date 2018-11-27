@@ -47,6 +47,12 @@ import 'firebase/database';
     // Kaikki käyttäjät
     users = () => this.db.ref('users');
 
+    // Testihommia:
+    naytaEmail = () => {
+      // console.log(this.auth.currentUser.email);
+      return this.auth.currentUser.email;
+    };
+
 }
 
   export default Firebase;

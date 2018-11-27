@@ -11,7 +11,7 @@ class Etusivu extends Component {
             <div>
                 <div className="logo">
                     <a href='/'>
-                        <img src={Substidudes2}/></a>
+                        <img src={Substidudes2} alt="Substidudes-logo"/></a>
                 </div>
                 <br/><br/><br/><br/><br/>
                 <nav className="button-menu">

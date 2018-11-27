@@ -8,7 +8,9 @@ import Substidudes2 from '../substidudes2.png'
 
 
 // Autentikointiin liittyvää
-import {withAuthorization} from '../firebase/Session';
+import {withAuthorization, AuthUserContext} from '../firebase/Session';
+
+// import { sisaankirjaantuneenId } from './SisaankirjautunutId';
 
 
 // Valikkoon liittyviä tyylityksiä
@@ -27,14 +29,34 @@ const contentStyle = {
 };
 
 class SijainenNakyma extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { sisaankirjautunut: '' };
+    }
+
+
     render() {
+
+        // console.log(this.props.firebase.naytaEmail());
+
         return (
+            
             <div>
                 <div className="logo">
                     <a href='/'>
-                        <img src={Substidudes2}/></a>
+                        <img src={Substidudes2} alt="Substidudes-logo"/></a>
                 </div>
-                
+
+                {/* <SisaankirjautunutId/> */}
+
+                <AuthUserContext.Consumer callbackfromparent = {this.callbackDataKomponentilta}>
+                    {authUser => (
+                        <div>
+                            <p>Sisäänkirjautunut: {authUser.email}</p>
+                        </div>
+                    )}
+                </AuthUserContext.Consumer>
 
                 <div style={styles}>
 

@@ -36,20 +36,18 @@ class SijaisenTiedot extends Component {
     //Täällä mapataan data
     render() {
         var sijaisentiedotolio = this.state.sijaisentiedotdata.map((sijaisentiedotmappi) => {
-            if (sijaisentiedotmappi && sijaisentiedotmappi.sijainenId) {
-                return <li key={sijaisentiedotmappi.sijainenId}>
+            if (sijaisentiedotmappi){
+                if(sijaisentiedotmappi.sijainenSahkoposti === this.props.firebase.naytaEmail()) {
+            return <li key={sijaisentiedotmappi.sijainenId}>
 
-                    Nimi: {sijaisentiedotmappi.sijainenNimi}
-                    <li>Osoite: {sijaisentiedotmappi.sijainenOsoite}</li>
-                    <li>Yhteystiedot: {sijaisentiedotmappi.sijainenPuhelinnumero}, {sijaisentiedotmappi.sijainenSahkoposti}</li>
-                    <button type="button"
-                            value={sijaisentiedotmappi.sijainenId} onClick={this.handlaamuokkaus}>Muokkaa tietoja
-                    </button>
-                </li>
-
+            Nimi: {sijaisentiedotmappi.sijainenNimi} <li>Osoite: {sijaisentiedotmappi.sijainenOsoite}</li> <li>Yhteystiedot: {sijaisentiedotmappi.sijainenPuhelinnumero}, {sijaisentiedotmappi.sijainenSahkoposti}</li>
+            <button type="button"
+                            value={sijaisentiedotmappi.sijainenId} onClick={this.handlaamuokkaus}>Muokkaa tietoja</button>
+                    </li>
+                }
             }
         });
-        //ja näytetään se sivustolla:
+    //ja näytetään se sivustolla:
         return (
             <ul>
                 {sijaisentiedotolio}

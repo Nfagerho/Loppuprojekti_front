@@ -43,8 +43,6 @@ class KoulunTietojenMuokkaus extends Component {
                 sihteeri: haettudata.sihteeri,
                 sihteeriEmail: haettudata.sihteeriEmail,
                 sihteeriTel: haettudata.sihteeriTel,
-                kouluKoordLat: haettudata.kouluKoordLat,
-                kouluKoordLong: haettudata.kouluKoordLong
             });
 
 
@@ -54,8 +52,18 @@ class KoulunTietojenMuokkaus extends Component {
     muokkaatietoja = (e) => {
         e.preventDefault();
         muokkaaKoulua(this.state.kouluId, this.state)
+        this.props.history.push('/koulunakyma/');
+
 
     };
+    
+    peruuta = (e) => {
+        e.preventDefault();
+        this.props.history.push('/koulunakyma/');
+
+    }
+
+    
 
     render() {
         return (
@@ -79,18 +87,6 @@ class KoulunTietojenMuokkaus extends Component {
                             type="text"
                             placeholder={this.state.kouluYhteyshenkilo}
                             onChange={this.handlaaYhteystieto}/>
-                        <br/>
-                        <b>Leveyskoordinaatti:</b> <br/>
-                        <FormControl
-                            type="text"
-                            placeholder={this.state.kouluKoordLat}
-                            onChange={this.handlaaKoordLat}/>
-                        <br/>
-                        <b>Pituuskoordinaatti:</b> <br/>
-                        <FormControl
-                            type="text"
-                            placeholder={this.state.kouluKoordLong}
-                            onChange={this.handlaaKoordLong}/>
                         <br/>
                     </Col>
                     <Col sm={2}>
@@ -133,8 +129,12 @@ class KoulunTietojenMuokkaus extends Component {
                             onChange={this.handlaaSihteeriTel}/>
                         <br/>
                         <Button
+                            id="muokkauksenperuutusnappi"
+                            onClick={this.peruuta}>Peruuta</Button>
+                        <Button
                             id="muokkaatietolomakenappi"
                             onClick={this.muokkaatietoja}>Tallenna</Button>
+                          
                     </Col>
                 </Form>
             </div>
@@ -151,12 +151,7 @@ class KoulunTietojenMuokkaus extends Component {
     handlaaYhteystieto = (e) => {
         this.setState({kouluYhteyshenkilo: e.target.value});
     };
-    handlaaKoordLat = (e) => {
-        this.setState({kouluKoordLat: e.target.value});
-    };
-    handlaaKoordLong = (e) => {
-        this.setState({kouluKoordLong: e.target.value});
-    };
+
     handlaaReksi = (e) => {
         this.setState({rehtori: e.target.value});
     };

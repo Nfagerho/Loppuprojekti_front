@@ -27,7 +27,9 @@ const contentStyle = {
     // background: "rgba(255,255,255,0",
     background: "rgba(255,255,255,0.7",
     width: "40%",
-    border: "none"
+    border: "none",
+    borderRadius: "50px"
+
 };
 
 class SijainenNakyma extends Component {
@@ -55,6 +57,7 @@ class SijainenNakyma extends Component {
 
                 <AuthUserContext.Consumer callbackfromparent = {this.callbackDataKomponentilta}>
                     {authUser => (
+                        /*Näyttää sisäänkirjautuneen käyttäjän emailin ja user-logon sen edessä*/
                         <div className="sisaanKirjautunut">
                             <p><img src={userSymbol} alt="userSymbol-logo" /> {authUser.email}</p>
                         </div>

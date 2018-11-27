@@ -6,6 +6,7 @@ import SijaisenTiedot from "./SijaisenTiedot";
 import SijaisenTietojenMuokkaus from './SijaisenTietojenMuokkaus'
 import ToimeksiannonVaraus from './ToimeksiannonVaraus'
 import SignOutButton from "../../firebase/SignOut";
+import { haeSijaisenTiedotEmaililla } from '../../../restpalvelu' ;
 
 // testihommia
 import { withAuthorization } from '../../firebase/Session';
@@ -20,10 +21,33 @@ class Valikko extends Component {
             sijaisenNakyma: false,
             toimeksiantoNakyma: false,
             id : undefined,
-            toimeksiantoid: undefined
+            toimeksiantoid: undefined,
+            sijainen: ''
 
         }
     }
+    
+
+//     componentDidMount () {
+//         this.haeyksisijainen();
+//     }
+
+//     haeyksisijainen() {
+//         haeSijaisenTiedotEmaililla(this.yksihaettu, this.props.firebase.naytaEmail());
+//    }
+//    yksihaettu = (haettudata, virhe) => {
+//        if (virhe) {
+//            alert("virhe");
+//        } else {
+//            console.log( "Sijainen id" + haettudata.sijainen.sijainenId)
+//            this.setState({
+//                sijainen: haettudata.sijainen.sijainenId
+//            });
+               
+               
+           
+//        }
+//    }
 
     muokkaus = (id) => {
         this.setState({

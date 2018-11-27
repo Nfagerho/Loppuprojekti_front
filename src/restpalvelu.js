@@ -154,3 +154,18 @@ export function lahetaSijainen(lomake) {
         body: JSON.stringify(lomake)
     })
 }
+
+//Kaikkien sijaisten tietojen fetchaus databasesta
+const url3 = '/api/sijainenemail/';
+
+export function haeSijaisenTiedotEmaililla(email, callback) {
+    fetch(url3 + email, {accept: 'application/json'})
+        .then(function (response) {
+            response.json().then(function (json) {
+                if (response.status >= 400)
+                    callback(null, response.status);
+                else
+                    callback(json);
+            });
+        });
+}

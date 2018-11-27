@@ -47,58 +47,68 @@ class KoulunToimeksiannot extends Component {
             var aikamuutos = new Date(toimeksiantomappi.toimeksiantoAlkuaika);
             var aikamuutos1 = new Date(toimeksiantomappi.toimeksiantoLoppuaika);
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
-                if(toimeksiantomappi.sijainen !== null) {
-                return <Col id="toimeksiannot" sm={8} key={toimeksiantomappi.toimeksiantoId}>
-                    {toimeksiantomappi.koulu &&
-                    <ListGroupItem>
-                        <b>Oppiaine:</b> {toimeksiantomappi.oppiaine} <b>Alkaa:</b> {aikamuutos.toLocaleTimeString("fi", optiot)} <b>Loppuu:</b> {aikamuutos1.toLocaleTimeString("fi", optiot)}
-                    </ListGroupItem>}
-                    <Button type="button"
-                            bsSize="small"
-                            id="nappi1"
-                            value={toimeksiantomappi.toimeksiantoId}
-                            onClick={this.handlaamuokkaus}>Muokkaa
-                    </Button>
-                    <Button type="button" bsStyle="danger"
-                            value={toimeksiantomappi.toimeksiantoId}
-                            bsSize="small"
-                            onClick={this.poistaToimeksiantoById}>Poista</Button>
-                </Col>
-            }}
-            
+                if (toimeksiantomappi.sijainen !== null) {
+                    return <Col id="toimeksiannot"
+                                sm={8}
+                                key={toimeksiantomappi.toimeksiantoId}>
+                        {toimeksiantomappi.koulu &&
+                        <ListGroupItem>
+                            <b id="varatutTeksti">VARATTU SIJAISUUS</b><br/>
+                            <b>Oppiaine:</b> {toimeksiantomappi.oppiaine}<br/>
+                            <b>Alkaa:</b> {aikamuutos.toLocaleTimeString("fi", optiot)}<span> </span> <b>Loppuu:</b> {aikamuutos1.toLocaleTimeString("fi", optiot)}<br/>
+                            <b>Sijainen:</b> {toimeksiantomappi.sijainen.sijainenNimi}
+                        </ListGroupItem>}
+                        <Button type="button"
+                                bsSize="small"
+                                id="nappi1"
+                                value={toimeksiantomappi.toimeksiantoId}
+                                onClick={this.handlaamuokkaus}>Muokkaa
+                        </Button>
+                        <Button type="button" bsStyle="danger"
+                                value={toimeksiantomappi.toimeksiantoId}
+                                bsSize="small"
+                                onClick={this.poistaToimeksiantoById}>Poista</Button>
+                    </Col>
+                }
+            }
+
         });
         var optiot = {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'};
         var toimeksiantooliot2 = this.state.toimeksiantodata.map((toimeksiantomappi) => {
             var aikamuutos = new Date(toimeksiantomappi.toimeksiantoAlkuaika);
             var aikamuutos1 = new Date(toimeksiantomappi.toimeksiantoLoppuaika);
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
-                if(toimeksiantomappi.sijainen === null) {
-                return <Col id="toimeksiannot" sm={8} key={toimeksiantomappi.toimeksiantoId}>
-                    {toimeksiantomappi.koulu &&
-                    <ListGroupItem>
-                        <b>Oppiaine:</b> {toimeksiantomappi.oppiaine} <b>Alkaa:</b> {aikamuutos.toLocaleTimeString("fi", optiot)} <b>Loppuu:</b> {aikamuutos1.toLocaleTimeString("fi", optiot)}
-                    </ListGroupItem>}
-                    <Button type="button"
-                            bsSize="small"
-                            id="nappi1"
-                            value={toimeksiantomappi.toimeksiantoId}
-                            onClick={this.handlaamuokkaus}>Muokkaa
-                    </Button>
-                    <Button type="button" bsStyle="danger"
-                            value={toimeksiantomappi.toimeksiantoId}
-                            bsSize="small"
-                            onClick={this.poistaToimeksiantoById}>Poista</Button>
-                </Col>
-            }}
+                if (toimeksiantomappi.sijainen === null) {
+                    return <Col id="toimeksiannot"
+                                sm={8}
+                                key={toimeksiantomappi.toimeksiantoId}>
+                        {toimeksiantomappi.koulu &&
+                        <ListGroup>
+                            <ListGroupItem>
+                                <b id="avoimetTeksti">AVOIN SIJAISUUS</b><br/>
+                                <b>Oppiaine:</b> {toimeksiantomappi.oppiaine}<br/>
+                                <b>Alkaa:</b> {aikamuutos.toLocaleTimeString("fi", optiot)}<span> </span>
+                                <b>Loppuu:</b> {aikamuutos1.toLocaleTimeString("fi", optiot)}
+                            </ListGroupItem>
+                        </ListGroup>}
+                        <Button type="button"
+                                bsSize="small"
+                                id="nappi1"
+                                value={toimeksiantomappi.toimeksiantoId}
+                                onClick={this.handlaamuokkaus}>Muokkaa
+                        </Button>
+                        <Button type="button" bsStyle="danger"
+                                value={toimeksiantomappi.toimeksiantoId}
+                                bsSize="small"
+                                onClick={this.poistaToimeksiantoById}>Poista</Button>
+                    </Col>
+                }
+            }
         });
-        return (
-            <ListGroup>
-              <h1>Varatut toimeksiannot</h1>
+        return (<div>
                 {toimeksiantooliot}
-                <h1>Avoimet toimeksiannot</h1>
                 {toimeksiantooliot2}
-            </ListGroup>
-            
+            </div>
         );
     }
 }

@@ -3,12 +3,9 @@
 }
 
 #nappi1 {
-    margin-left: 473px;
+margin-left: 78.8%;
 }
 
-#nappi2 {
-    margin-left: 400px;
-}
 
 #muokkaatietojanappi {
     margin-left: 592px;
@@ -16,4 +13,18 @@
 
 #muokkaatietolomakenappi {
     margin-left: 48px;
+}
+#spinneri {
+    margin-right: 200px;
+}
+#varatutTeksti {
+     font-size: 14px;
+     color: darkgreen;
+ }
+#avoimetTeksti {
+    font-size: 14px;
+    color: darkred;
+}
+#kouluntiedotTeksti {
+    color: black;
 }

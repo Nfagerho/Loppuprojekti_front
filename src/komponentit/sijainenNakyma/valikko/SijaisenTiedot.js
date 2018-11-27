@@ -3,6 +3,7 @@ import {haeSijaisenTiedot} from '../../../restpalvelu';
 import withAuthorization from "../../firebase/Session/withAuthorization";
 import {Button} from "react-bootstrap";
 import MDspinner from "react-md-spinner";
+import './SijaisenTietojenMuokkaus.css'
 
 
 // Täällä haetaan sijaisen omat tiedot. Tällä hetkellä hakee kaikkien sijaisten kaikki tiedot. 

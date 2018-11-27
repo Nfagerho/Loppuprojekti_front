@@ -16,7 +16,8 @@ class Lomake extends Component {
         toimeksiantoLoppuaika: '',
         oppiaine: '',
         koulu: 1,
-        showME: true
+        showME: true,
+        toimeksiantoLuotu: false
     };
 
     componentWillMount() {
@@ -28,7 +29,9 @@ class Lomake extends Component {
     }
 
     lahetaLomake = () => {
-        lahetaToimeksianto(this.state)
+        lahetaToimeksianto(this.state);
+        this.setState({toimeksiantoLuotu: true});
+        this.props.history.push('/koulunakyma/');
     };
     peruuta = (e) => {
         this.props.history.push('/koulunakyma/' + e.target.value);

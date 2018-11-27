@@ -52,7 +52,7 @@ class SijainenNakyma extends Component {
                 </div>
 
                 {/* <SisaankirjautunutId/> */}
-
+                
                 <AuthUserContext.Consumer callbackfromparent = {this.callbackDataKomponentilta}>
                     {authUser => (
                         <div className="sisaanKirjautunut">

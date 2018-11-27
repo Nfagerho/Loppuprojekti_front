@@ -83,14 +83,13 @@ class KoulunToimeksiannot extends Component {
                                 sm={8}
                                 key={toimeksiantomappi.toimeksiantoId}>
                         {toimeksiantomappi.koulu &&
-                        <ListGroup>
+
                             <ListGroupItem>
                                 <b id="avoimetTeksti">AVOIN SIJAISUUS</b><br/>
                                 <b>Oppiaine:</b> {toimeksiantomappi.oppiaine}<br/>
                                 <b>Alkaa:</b> {aikamuutos.toLocaleTimeString("fi", optiot)}<span> </span>
                                 <b>Loppuu:</b> {aikamuutos1.toLocaleTimeString("fi", optiot)}
-                            </ListGroupItem>
-                        </ListGroup>}
+                            </ListGroupItem>}
                         <Button type="button"
                                 bsSize="small"
                                 id="nappi1"

@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
-import React, { Component } from 'react';
-import { haeKaikkiToimeksiannot } from '../../../restpalvelu';
+import React, {Component} from 'react';
+import {haeKaikkiToimeksiannot} from '../../../restpalvelu';
 // Tarviiko lisätä autentikointia?
 
 
@@ -17,7 +17,7 @@ class KarttaNakyma extends Component {
     constructor(props) {
         super(props);
 
-        const { lat, lng } = this.props.initialCenter;
+        const {lat, lng} = this.props.initialCenter;
         this.state = {
             currentLocation: {
                 lat: lat,
@@ -29,6 +29,7 @@ class KarttaNakyma extends Component {
 
         // var markkerit = [];
     }
+
     componentDidMount() {
         //////////////////////////
         this.haekaikki();
@@ -41,24 +42,24 @@ class KarttaNakyma extends Component {
                         currentLocation: {
                             lat: coords.latitude,
                             lng: coords.longitude,
-                            
+
                         }
                     });
                 });
             }
         }
         this.loadMap();
-      
-        
-       
+
+
     }
 
     // HAETAAN KAIKKI TOIMEKSIANNOT
     haekaikki() {
         haeKaikkiToimeksiannot(this.kaikkihaettu);
     }
+
     kaikkihaettu = (haettudata, virhe) => {
-        if(virhe) {
+        if (virhe) {
             alert("virhe");
         } else {
             this.setState({toimeksiantodata: haettudata});
@@ -79,7 +80,7 @@ class KarttaNakyma extends Component {
     loadMap() {
         if (this.props && this.props.google) {
             // checks if google is available
-            const { google } = this.props;
+            const {google} = this.props;
             const maps = google.maps;
 
             const mapRef = this.refs.map;
@@ -87,8 +88,8 @@ class KarttaNakyma extends Component {
             // reference to the actual DOM element
             const node = ReactDOM.findDOMNode(mapRef);
 
-            let { zoom } = this.props;
-            const { lat, lng } = this.state.currentLocation;
+            let {zoom} = this.props;
+            const {lat, lng} = this.state.currentLocation;
             const center = new maps.LatLng(lat, lng);
             const mapConfig = Object.assign(
                 {},
@@ -100,7 +101,7 @@ class KarttaNakyma extends Component {
             // maps.Map() is constructor that instantiates the map
             this.map = new maps.Map(node, mapConfig);
         }
-        
+
     }
 
     recenterMap() {
@@ -117,7 +118,7 @@ class KarttaNakyma extends Component {
     }
 
     renderChildren() {
-        const { children } = this.props;
+        const {children} = this.props;
 
         // var contentString1 = '<div id="content"><h1>Käpylän peruskoulu</h1><h3>Vapaat toimeksiannot</h3>' +
         //     '<object type="text/html" data="/koulunomattoimeksiannot" width="600px" height="600px" >\n' +
@@ -135,66 +136,57 @@ class KarttaNakyma extends Component {
             content: contentString2
         });
 
-        // Tehdään toimeksiannoista taulukko, jonka yksi alkio vastaa yhtä koulua (nimi, lat, long, toimeksiantojen lkm)
-        var markkerit = new Array ( );
-        var matchi = false;
-        for(var i = 0; i < this.state.toimeksiantodata.length; ++i){
-
-            matchi = false;
-
-            if(markkerit.length == 0) {
-                    markkerit[i] = new Array ( 
-                    this.state.toimeksiantodata[i].koulu.kouluNimi,
-                    this.state.toimeksiantodata[i].koulu.kouluKoordLat,
-                    this.state.toimeksiantodata[i].koulu.kouluKoordLong,
-                    1);
-            } else {
-                for(var y = 0; y < markkerit.length; ++y) {
-                    console.log(this.state.toimeksiantodata[i].koulu.kouluNimi);
-                    console.log("TÄMÄ ON ACADEMY:", markkerit[0][0]);
-                    if(markkerit[y][0] === this.state.toimeksiantodata[i].koulu.kouluNimi){
-                        markkerit[y][3] += 1;
-                        console.log("Nyt sen piti lisätä +1 Ressun kouluun");
-                        matchi = true;
-                        break;
-                    }
-                }
-
-                if(matchi == false) {
-                    markkerit[i] = new Array ( 
-                        this.state.toimeksiantodata[i].koulu.kouluNimi,
-                        this.state.toimeksiantodata[i].koulu.kouluKoordLat,
-                        this.state.toimeksiantodata[i].koulu.kouluKoordLong,
-                        1); 
-                }
-            }
-
-            // Console log: markkeritaulukon data
-            for(var x = 0; x < markkerit.length; ++x) {
-                console.log("KOULU " + x);
-                for(var xx = 0; xx < 4; ++xx) {
-                    console.log(markkerit[x][xx]);
-                }
-            }
-
-            // Mäpätään toimeksiannot taulukosta markkereiksi
-            var markerit;
-            for(var i2 = 0; i2 < markkerit.length; ++i2){
-                markerit = new this.props.google.maps.Marker({
-                    position: {lat: markkerit[i2][1], lng: markkerit[i2][2]},
-                    map: this.map,
-                    title: markkerit[i2][0],
-                    label: markkerit[i2][3].toString(),
-                });
-
-                markerit.addListener('click', function() {
-                    this.map.setZoom(18);
-                    this.map.setCenter(markerit.getPosition());
-                    infowindow1.open(this.map, markerit);
-                    });
-            }
-            
-        }
+        // // Tehdään toimeksiannoista taulukko, jonka yksi alkio vastaa yhtä koulua (nimi, lat, long, toimeksiantojen lkm)
+        // var markkerit = [];
+        // var matchi = false;
+        // for (var i = 0; i < this.state.toimeksiantodata.length; ++i) {
+        //
+        //     matchi = false;
+        //
+        //     if (markkerit.length === 0) {
+        //         markkerit[i] = [this.state.toimeksiantodata[i].koulu.kouluNimi,
+        //             this.state.toimeksiantodata[i].koulu.kouluKoordLat,
+        //             this.state.toimeksiantodata[i].koulu.kouluKoordLong,
+        //             1];
+        //     } else {
+        //         for (var y = 0; y < markkerit.length; ++y) {
+        //             console.log(this.state.toimeksiantodata[i].koulu.kouluNimi);
+        //             console.log("TÄMÄ ON ACADEMY:", markkerit[0][0]);
+        //             if (markkerit[y][0] === this.state.toimeksiantodata[i].koulu.kouluNimi) {
+        //                 markkerit[y][3] += 1;
+        //                 console.log("Nyt sen piti lisätä +1 Ressun kouluun");
+        //                 matchi = true;
+        //                 break;
+        //             }
+        //         }
+        //
+        //         if (matchi == false) {
+        //             markkerit[i] = [this.state.toimeksiantodata[i].koulu.kouluNimi,
+        //                 this.state.toimeksiantodata[i].koulu.kouluKoordLat,
+        //                 this.state.toimeksiantodata[i].koulu.kouluKoordLong,
+        //                 1];
+        //         }
+        //     }
+        //
+        //
+        //     // Mäpätään toimeksiannot taulukosta markkereiksi
+        //     var markerit;
+        //     for (var i2 = 0; i2 < markkerit.length; ++i2) {
+        //         markerit = new this.props.google.maps.Marker({
+        //             position: {lat: markkerit[i2][1], lng: markkerit[i2][2]},
+        //             map: this.map,
+        //             title: markkerit[i2][0],
+        //             label: markkerit[i2][3].toString(),
+        //         });
+        //
+        //         markerit.addListener('click', function () {
+        //             this.map.setZoom(18);
+        //             this.map.setCenter(markerit.getPosition());
+        //             infowindow1.open(this.map, markerit);
+        //         });
+        //     }
+        //
+        // }
 
         if (!children) return;
 

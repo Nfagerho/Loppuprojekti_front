@@ -30,6 +30,7 @@ class Lomake extends Component {
 
     lahetaLomake = () => {
         lahetaToimeksianto(this.state)
+        this.props.history.push('/koulunakyma/')
     };
     peruuta = (e) => {
         this.props.history.push('/koulunakyma/' + e.target.value);

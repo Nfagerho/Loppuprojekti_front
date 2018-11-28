@@ -41,8 +41,8 @@ class KaikkiToimeksiannot extends Component {
     };
 
     handlaavaraus = (e) => {
-        this.props.varaus(e.target.value);
-        //this.props.history.push('/sijaisenomientietojenmuokkaus/'+ e.target.value);
+        // this.props.varaus(e.target.value);
+        this.props.history.push('/toimeksiannonvaraus/'+ e.target.value);
 
     };
 

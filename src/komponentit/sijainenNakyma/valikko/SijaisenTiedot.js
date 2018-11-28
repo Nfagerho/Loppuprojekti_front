@@ -41,8 +41,8 @@ class SijaisenTiedot extends Component {
         }
     };
     handlaamuokkaus = (e) => {
-        this.props.muokkaus(e.target.value);
-        //this.props.history.push('/sijaisenomientietojenmuokkaus/'+ e.target.value);
+        // this.props.muokkaus(e.target.value);
+        this.props.history.push('/sijaisenomientietojenmuokkaus/'+ e.target.value);
 
     };
 

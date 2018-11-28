@@ -7,7 +7,7 @@ import './SijaisenTietojenMuokkaus.css';
 
 class SijaisenTietojenMuokkaus extends Component {
     state = {
-        sijainenId: this.props.id,
+        sijainenId: this.props.match.params.id,
         sijainenNimi: '',
         sijainenOsoite: '',
         sijainenPuhelinnumero: '',
@@ -28,7 +28,7 @@ class SijaisenTietojenMuokkaus extends Component {
     }
 
     haeyksisijainen() {
-        haeYksittainenSijainen(this.yksihaettu, this.props.id);
+        haeYksittainenSijainen(this.yksihaettu, this.props.match.params.id);
     }
 
     yksihaettu = (haettudata, virhe) => {
@@ -49,7 +49,8 @@ class SijaisenTietojenMuokkaus extends Component {
     muokkaatietoja = (e) => {
         e.preventDefault();
         muokkaaSijaista(this.state.sijainenId, this.state)
-        this.props.muokkaus();
+        // this.props.muokkaus();
+        this.props.history.push('/sijainen/sijaisentiedot/');
 
     };
 
@@ -77,12 +78,12 @@ class SijaisenTietojenMuokkaus extends Component {
                                      value={this.state.sijainenPuhelinnumero}
                                      onChange={this.handlaaPuhelinnumero}/><br/>
                     </Col>
-                    <Col sm={4}>
+                    {/* <Col sm={4}>
                         Sahköposti:
                         <FormControl type="text" placeholder=""
                                      value={this.state.sijainenSahkoposti}
                                      onChange={this.handlaaSahkoposti}/><br/>
-                    </Col>
+                    </Col> */}
                     <Col>
                     <Button type="submit" onClick={this.muokkaatietoja}>Tallenna</Button></Col>
                 </Form>
@@ -101,9 +102,9 @@ class SijaisenTietojenMuokkaus extends Component {
     handlaaPuhelinnumero = (e) => {
         this.setState({sijainenPuhelinnumero: e.target.value});
     };
-    handlaaSahkoposti = (e) => {
-        this.setState({sijainenSahkoposti: e.target.value})
-    };
+    // handlaaSahkoposti = (e) => {
+    //     this.setState({sijainenSahkoposti: e.target.value})
+    // };
 
 }
 

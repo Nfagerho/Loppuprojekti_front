@@ -27,7 +27,7 @@ class ToimeksiannonVaraus extends Component {
     }
 
     haeyksitoimeksianto() {
-        haeYksittainenToimeksianto(this.yksihaettu, this.props.id);
+        haeYksittainenToimeksianto(this.yksihaettu, this.props.match.params.id);
     }
 
     yksihaettu = (haettudata, virhe) => {
@@ -55,7 +55,8 @@ class ToimeksiannonVaraus extends Component {
     muokkaatietoja = (e) => {
         e.preventDefault();
         muokkaaToimeksianto(this.state.toimeksiantoId, this.state)
-        this.props.varaus();
+        // this.props.varaus();
+        this.props.history.push('/sijainen/toimeksiannot/');
 
     };
 

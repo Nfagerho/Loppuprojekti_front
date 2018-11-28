@@ -17,6 +17,9 @@ import KaikkiToimeksiannot from './valikko/KaikkiToimeksiannot';
 // Autentikointiin liittyvää
 import {withAuthorization, AuthUserContext} from '../firebase/Session';
 import SignOutButton from "../firebase/SignOut";
+import ToimeksiannonVaraus from './valikko/ToimeksiannonVaraus';
+import { haeSijaisenTiedotEmaililla } from '../../restpalvelu';
+import SijaisenTietojenMuokkaus from './valikko/SijaisenTietojenMuokkaus';
 
 // import { sisaankirjaantuneenId } from './SisaankirjautunutId';
 
@@ -38,6 +41,7 @@ const contentStyle = {
 
 };
 
+
 const Navigointipalkki = () => (
     <div>
         <Link to="/sijainen/"><Button className="Valikkonapit" bsStyle="danger">Kartta</Button></Link> &nbsp; &nbsp;
@@ -53,8 +57,30 @@ class SijainenNakyma extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { sisaankirjautunut: '' };
+        this.state = { 
+            sisaankirjautunut: '',
+            sijainen: ''
+        };
     }
+
+    // Haetaan sisäänkirjautuneen emailin perusteella sijaisen id.
+    componentDidMount() {
+        this.haeyksisijainen();
+    }
+
+    haeyksisijainen() {
+        var emaili3 = this.props.firebase.naytaEmail();
+        haeSijaisenTiedotEmaililla(this.yksihaettu, emaili3);
+    }
+
+    yksihaettu = (haettudata, virhe) => {
+        if (virhe) {
+            alert("virhe");
+        } else {
+            this.setState({sijainen: haettudata.sijainenId});
+        }
+    }
+    /////////
 
 
     render() {
@@ -103,6 +129,9 @@ class SijainenNakyma extends Component {
                             <Route path="/sijainen/toimeksiannot" exact component={KaikkiToimeksiannot}/>
                             <Route path="/sijainen/sijaisenomattoimeksiannot" exact render={(props) => <SijaisenToimeksiannot {...props} emaili={emailii} />}/>
                             <Route path="/sijainen/sijaisentiedot" exact render={(props) => <SijaisenTiedot {...props} emaili={emailii} />}/>
+
+                            <Route path='/toimeksiannonvaraus/:id' render={(props) => <ToimeksiannonVaraus {...props} sijaisenId={this.state.sijainen}/>}/>
+                            <Route path='/sijaisenomientietojenmuokkaus/:id' render={(props) => <SijaisenTietojenMuokkaus {...props} sijaisenId={this.state.sijainen}/>}/>
                             <Route component={SivuaEiLoytynyt}/>
                         </Switch>
                         </div>

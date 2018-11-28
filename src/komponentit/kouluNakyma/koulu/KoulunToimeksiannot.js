@@ -53,7 +53,7 @@ class KoulunToimeksiannot extends Component {
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
                 if (toimeksiantomappi.sijainen !== null && toimeksiantomappi.vahvistus === true) {
                     return <Col id="toimeksiannot"
-                                sm={8}
+                                sm={7}
                                 key={toimeksiantomappi.toimeksiantoId}>
                         {toimeksiantomappi.koulu &&
                         <ListGroupItem>
@@ -83,7 +83,7 @@ class KoulunToimeksiannot extends Component {
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
                 if (toimeksiantomappi.sijainen === null && toimeksiantomappi.vahvistus === false) {
                     return <Col id="toimeksiannot"
-                                sm={5}
+                                sm={7}
                                 key={toimeksiantomappi.toimeksiantoId}>
                         {toimeksiantomappi.koulu &&
 
@@ -115,7 +115,7 @@ class KoulunToimeksiannot extends Component {
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
                 if (toimeksiantomappi.sijainen !== null && toimeksiantomappi.vahvistus === false) {
                     return <Col id="toimeksiannot"
-                                sm={8}
+                                sm={7}
                                 key={toimeksiantomappi.toimeksiantoId}>
                         {toimeksiantomappi.koulu &&
                         <ListGroupItem>

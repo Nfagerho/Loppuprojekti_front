@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
-import React, { Component } from 'react';
-import { haeKaikkiToimeksiannot } from '../../../restpalvelu';
+import React, {Component} from 'react';
+import {haeKaikkiToimeksiannot} from '../../../restpalvelu';
 // Tarviiko lisätä autentikointia?
 
 
@@ -9,7 +9,7 @@ const mapStyles = {
         marginLeft: '1%',
         position: 'absolute',
         width: '98%',
-        height: '77%'
+        height: '75%'
     }
 };
 
@@ -17,7 +17,7 @@ class KarttaNakyma extends Component {
     constructor(props) {
         super(props);
 
-        const { lat, lng } = this.props.initialCenter;
+        const {lat, lng} = this.props.initialCenter;
         this.state = {
             currentLocation: {
                 lat: lat,
@@ -29,6 +29,7 @@ class KarttaNakyma extends Component {
 
         // var koulutaulukko = [];
     }
+
     componentDidMount() {
         //////////////////////////
         this.haekaikki();
@@ -41,24 +42,24 @@ class KarttaNakyma extends Component {
                         currentLocation: {
                             lat: coords.latitude,
                             lng: coords.longitude,
-                            
+
                         }
                     });
                 });
             }
         }
         this.loadMap();
-      
-        
-       
+
+
     }
 
     // HAETAAN KAIKKI TOIMEKSIANNOT
     haekaikki() {
         haeKaikkiToimeksiannot(this.kaikkihaettu);
     }
+
     kaikkihaettu = (haettudata, virhe) => {
-        if(virhe) {
+        if (virhe) {
             alert("virhe");
         } else {
             this.setState({toimeksiantodata: haettudata});
@@ -79,7 +80,7 @@ class KarttaNakyma extends Component {
     loadMap() {
         if (this.props && this.props.google) {
             // checks if google is available
-            const { google } = this.props;
+            const {google} = this.props;
             const maps = google.maps;
 
             const mapRef = this.refs.map;
@@ -87,8 +88,8 @@ class KarttaNakyma extends Component {
             // reference to the actual DOM element
             const node = ReactDOM.findDOMNode(mapRef);
 
-            let { zoom } = this.props;
-            const { lat, lng } = this.state.currentLocation;
+            let {zoom} = this.props;
+            const {lat, lng} = this.state.currentLocation;
             const center = new maps.LatLng(lat, lng);
             const mapConfig = Object.assign(
                 {},
@@ -100,7 +101,7 @@ class KarttaNakyma extends Component {
             // maps.Map() is constructor that instantiates the map
             this.map = new maps.Map(node, mapConfig);
         }
-        
+
     }
 
     recenterMap() {
@@ -117,7 +118,7 @@ class KarttaNakyma extends Component {
     }
 
     renderChildren() {
-        const { children } = this.props;
+        const {children} = this.props;
 
         // var contentString1 = '<div id="content"><h1>Käpylän peruskoulu</h1><h3>Vapaat toimeksiannot</h3>' +
         //     '<object type="text/html" data="/koulunomattoimeksiannot" width="600px" height="600px" >\n' +
@@ -136,54 +137,56 @@ class KarttaNakyma extends Component {
         });
 
         // Tehdään toimeksiannoista taulukko, jonka yksi alkio vastaa yhtä koulua (nimi, lat, long, toimeksiantojen lkm)
-        var koulutaulukko = new Array ( );
+        var koulutaulukko = [];
         var loytyykoKoulutaulukosta = false;
-        for(var i = 0; i < this.state.toimeksiantodata.length; ++i){
-
+        for (var i = 0; i < this.state.toimeksiantodata.length; ++i) {
             loytyykoKoulutaulukosta = false;
 
-            if(koulutaulukko.length == 0) {
-                    koulutaulukko[i] = new Array ( 
-                    this.state.toimeksiantodata[i].koulu.kouluNimi,
+            if (koulutaulukko.length == 0) {
+                koulutaulukko[i] = [this.state.toimeksiantodata[i].koulu.kouluNimi,
                     this.state.toimeksiantodata[i].koulu.kouluKoordLat,
                     this.state.toimeksiantodata[i].koulu.kouluKoordLong,
-                    1);
+                    1];
+
             } else {
-                for(var y = 0; y < koulutaulukko.length; ++y) {
-               
-                    if(koulutaulukko[y][0] === this.state.toimeksiantodata[i].koulu.kouluNimi){
+
+                for (var y = 0; y < koulutaulukko.length; ++y) {
+
+                    if (koulutaulukko[y][0] === this.state.toimeksiantodata[i].koulu.kouluNimi) {
                         koulutaulukko[y][3] += 1;
                         loytyykoKoulutaulukosta = true;
                         break;
                     }
                 }
 
-                if(loytyykoKoulutaulukosta == false) {
-                    koulutaulukko[i] = new Array ( 
-                        this.state.toimeksiantodata[i].koulu.kouluNimi,
+                if (loytyykoKoulutaulukosta == false) {
+                    koulutaulukko[i] = [this.state.toimeksiantodata[i].koulu.kouluNimi,
                         this.state.toimeksiantodata[i].koulu.kouluKoordLat,
                         this.state.toimeksiantodata[i].koulu.kouluKoordLong,
-                        1); 
+                        1];
                 }
             }
+
             console.log("MONTAKOHAN KERTAA TÄMÄ NÄKYY");
             // Mäpätään toimeksiannot taulukosta markkereiksi
             var markerit;
-            for(var toimeksianto = 0; toimeksianto < koulutaulukko.length; ++toimeksianto){
+            for (var toimeksianto = 0; toimeksianto < koulutaulukko.length; ++toimeksianto) {
                 markerit = new this.props.google.maps.Marker({
                     position: {lat: koulutaulukko[toimeksianto][1], lng: koulutaulukko[toimeksianto][2]},
                     map: this.map,
+                    // label: markkerit[i2][3].toString(),
+
+                    // markerit.addListener('click', function () {
+                    //     this.map.setZoom(18);
+                    //     this.map.setCenter(markerit.getPosition());
+                    //     infowindow1.open(this.map, markerit);
+                    // });
                     title: koulutaulukko[toimeksianto][0],
-                    label: koulutaulukko[toimeksianto][3].toString(),
                 });
-                // Lisätään onClick-toiminnallisuus:
-                markerit.addListener('click', function() {
-                    this.map.setZoom(18);
-                    // this.map.setCenter(markerit.getPosition());
-                    // infowindow1.open(this.map, markerit);
-                    });
+
+
             }
-            
+
         }
 
         if (!children) return;

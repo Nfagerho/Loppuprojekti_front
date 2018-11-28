@@ -10,8 +10,8 @@ export function haeKaikkiToimeksiannot(callback) {
                     callback(null, response.status);
                 else
                     callback(json);
-            });
-        });
+            })
+        })
 }
 
 //Kaikkien koulujen tietojen fetchaus databasesta
@@ -25,8 +25,8 @@ export function haeKoulunTiedot(callback) {
                     callback(null, response.status);
                 else
                     callback(json);
-            });
-        });
+            })
+        })
 }
 
 //Kaikkien sijaisten tietojen fetchaus databasesta
@@ -40,8 +40,8 @@ export function haeSijaisenTiedot(callback) {
                     callback(null, response.status);
                 else
                     callback(json);
-            });
-        });
+            })
+        })
 }
 
 //Lisätään uusi toimeksianto POST:illa databaseen
@@ -87,8 +87,8 @@ export function haeYksittainenToimeksianto(callback, id) {
                     callback(null, response.status);
                 else
                     callback(json);
-            });
-        });
+            })
+        })
 }
 
 //Haetaan yksittäinen sijainen databasesta
@@ -102,8 +102,8 @@ export function haeYksittainenSijainen(callback, id) {
                     callback(null, response.status);
                 else
                     callback(json);
-            });
-        });
+            })
+        })
 }
 //Muokataan yksittäisen sijaisen tietoja databasessa
 const sijaisenmuokkausurl = '/api/sijainen/';
@@ -128,8 +128,8 @@ export function haeYksittainenKoulu(callback, id) {
                     callback(null, response.status);
                 else
                     callback(json);
-            });
-        });
+            })
+        })
 }
 
 //Muokataan yksittäisen koulun tietoja databasessa
@@ -166,6 +166,6 @@ export function haeSijaisenTiedotEmaililla(callback, email) {
                     callback(null, response.status);
                 else
                     callback(json);
-            });
-        });
+            })
+        })
 }

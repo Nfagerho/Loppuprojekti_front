@@ -7,7 +7,7 @@
 }
 
 #nappi1 {
-margin-left: 78.8%;
+margin-left: 72.3%;
 }
 
 #nappi2 {
@@ -16,7 +16,7 @@ margin-left: 78.8%;
 
 
 #muokkaatietojanappi {
-    margin-left: 592px;
+    margin-left: 64%;
 }
 
 #muokkaatietolomakenappi {
@@ -39,7 +39,7 @@ margin-left: 78.8%;
     color: grey;
 }
 #kouluntiedotTeksti {
-    color: black;
+    margin-left: 6.2%;
 }
 
 #lomakeCol {
@@ -47,5 +47,14 @@ margin-left: 78.8%;
 }
 
 #lomake2Col {
-    margin-left: 35%;
+     margin-left: 35%;
+ }
+
+#thumb {
+    margin-left: 10%;
+
+}
+
+#kenttatext {
+    color: white;
 }

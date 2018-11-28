@@ -1,6 +1,6 @@
 body {
-    background-image: url("helsinki.png");
-    background-repeat: no-repeat;
+    background-image: url("tausta.jpg");
+    background-repeat: repeat;
     background-size: cover;
 }
 
@@ -124,6 +124,7 @@ a.button {
 
 h1 {
     font-family: sans-serif;
+    color: black;
 }
 
 footer {
@@ -133,13 +134,23 @@ footer {
     text-align: center;
     font-family: sans-serif;
     font-size: 15px;
+    color: white;
 }
 
 .sisaanKirjautunut {
     margin-left: 85%;
+    color: white;
 }
 
 .SignUpPage {
     text-align: center;
 }
+
+#linkki {
+    color: white;
+}
+
+
+
+
 

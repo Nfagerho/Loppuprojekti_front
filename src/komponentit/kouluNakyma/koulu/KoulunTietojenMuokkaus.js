@@ -45,7 +45,7 @@ class KoulunTietojenMuokkaus extends Component {
                 sihteeri: haettudata.sihteeri,
                 sihteeriEmail: haettudata.sihteeriEmail,
                 sihteeriTel: haettudata.sihteeriTel,
-                showME: true
+
             });
 
 
@@ -66,13 +66,6 @@ class KoulunTietojenMuokkaus extends Component {
 
     }
 
-    componentWillMount() {
-        setTimeout(() => {
-            this.setState({
-                showME: false
-            })
-        }, 1000)
-    }
 
     render() {
         return (
@@ -82,19 +75,19 @@ class KoulunTietojenMuokkaus extends Component {
                 <div>
                     <Form>
                         <Col sm={2}>
-                            <b>Koulun nimi:</b> <br/>
+                            <b id="kenttatext">Koulun nimi:</b> <br/>
                             <FormControl
                                 type="text"
                                 placeholder={this.state.kouluNimi}
                                 onChange={this.handlaaNimi}/>
                             <br/>
-                            <b>Koulun osoite:</b> <br/>
+                            <b id="kenttatext">Koulun osoite:</b> <br/>
                             <FormControl
                                 type="text"
                                 placeholder={this.state.kouluOsoite}
                                 onChange={this.handlaaOsoite}/>
                             <br/>
-                            <b>Yhteyshenkilö:</b> <br/>
+                            <b id="kenttatext">Yhteyshenkilö:</b> <br/>
                             <FormControl
                                 type="text"
                                 placeholder={this.state.kouluYhteyshenkilo}
@@ -102,19 +95,19 @@ class KoulunTietojenMuokkaus extends Component {
                             <br/>
                         </Col>
                         <Col sm={2}>
-                            <b>Rehtori:</b> <br/>
+                            <b id="kenttatext">Rehtori:</b> <br/>
                             <FormControl
                                 type="text"
                                 placeholder={this.state.rehtori}
                                 onChange={this.handlaaReksi}/>
                             <br/>
-                            <b>Rehtorin email:</b> <br/>
+                            <b id="kenttatext">Rehtorin email:</b> <br/>
                             <FormControl
                                 type="text"
                                 placeholder={this.state.rehtoriEmail}
                                 onChange={this.handlaaReksiEmail}/>
                             <br/>
-                            <b>Rehtorin puhelin:</b> <br/>
+                            <b id="kenttatext">Rehtorin puhelin:</b> <br/>
                             <FormControl
                                 type="text"
                                 placeholder={this.state.rehtoriTel}
@@ -122,19 +115,19 @@ class KoulunTietojenMuokkaus extends Component {
                             <br/>
                         </Col>
                         <Col sm={2}>
-                            <b>Sihteeri:</b> <br/>
+                            <b id="kenttatext">Sihteeri:</b> <br/>
                             <FormControl
                                 type="text"
                                 placeholder={this.state.sihteeri}
                                 onChange={this.handlaaSihteeri}/>
                             <br/>
-                            <b>Sihteerin email:</b> <br/>
+                            <b id="kenttatext">Sihteerin email:</b> <br/>
                             <FormControl
                                 type="text"
                                 placeholder={this.state.sihteeriEmail}
                                 onChange={this.handlaaSihteeriEmail}/>
                             <br/>
-                            <b>Sihteerin puhelin:</b> <br/>
+                            <b id="kenttatext">Sihteerin puhelin:</b> <br/>
                             <FormControl
                                 type="text"
                                 placeholder={this.state.sihteeriTel}

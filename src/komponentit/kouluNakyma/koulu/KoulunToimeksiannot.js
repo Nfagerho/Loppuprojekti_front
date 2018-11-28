@@ -75,7 +75,6 @@ class KoulunToimeksiannot extends Component {
                     </Col>
                 }
             }
-
         });
         var optiot = {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'};
         var toimeksiantooliot2 = this.state.toimeksiantodata.map((toimeksiantomappi) => {
@@ -84,17 +83,16 @@ class KoulunToimeksiannot extends Component {
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
                 if (toimeksiantomappi.sijainen === null && toimeksiantomappi.vahvistus === false) {
                     return <Col id="toimeksiannot"
-                                sm={8}
+                                sm={5}
                                 key={toimeksiantomappi.toimeksiantoId}>
                         {toimeksiantomappi.koulu &&
-                        <ListGroup>
+
                             <ListGroupItem>
                                 <b id="avoimetTeksti">AVOIN SIJAISUUS</b><br/>
                                 <b>Oppiaine:</b> {toimeksiantomappi.oppiaine}<br/>
                                 <b>Alkaa:</b> {aikamuutos.toLocaleTimeString("fi", optiot)}<span> </span>
                                 <b>Loppuu:</b> {aikamuutos1.toLocaleTimeString("fi", optiot)}
-                            </ListGroupItem>
-                        </ListGroup>}
+                            </ListGroupItem>}
                         <Button type="button"
                                 bsSize="small"
                                 id="nappi1"

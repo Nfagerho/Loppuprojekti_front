@@ -69,6 +69,7 @@ class MuokkaaToimeksianto extends Component {
                 <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
                 :
                 <div>
+                    <br/>
                     <div className="logo">
                         <a href='/'>
                             <img src={Substidudes2} alt="Substidudes-logo"/></a><br/><br/><br/><br/><br/><br/>

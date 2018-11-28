@@ -9,6 +9,7 @@ class KouluNakyma extends Component {
     render() {
         return (
             <div>
+                <br/>
                 <div className="logo">
                     <a href='/'>
                         <img src={Substidudes2} alt="Substidudes"/></a><br/><br/><br/><br/><br/>

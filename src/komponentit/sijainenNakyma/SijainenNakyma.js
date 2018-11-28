@@ -48,6 +48,7 @@ class SijainenNakyma extends Component {
         return (
             
             <div>
+                <br/>
                 <div className="logo">
                     <a href='/'>
                         <img src={Substidudes2} alt="Substidudes-logo"/></a>

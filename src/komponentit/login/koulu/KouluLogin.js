@@ -7,6 +7,7 @@ class KouluLogin extends Component {
     render() {
         return (
             <div>
+                <br/>
                 <div className="logo">
                     <a href='/'>
                         <img src={Substidudes2} alt="Substidudes-logo"/></a><br/><br/><br/><br/><br/><br/>

@@ -5,7 +5,7 @@ import {Button} from "react-bootstrap";
 
 const SignOutButton = ({firebase}) => (
     <Button bsStyle="danger" type="button" onClick={firebase.doSignOut}>
-        Kirjaudu ulos
+        <h1>Kirjaudu ulos</h1>
     </Button>
 );
 

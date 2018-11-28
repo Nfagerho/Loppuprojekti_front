@@ -25,6 +25,7 @@ class Etusivu extends Component {
   render() {
     return (
       <div>
+          <br/>
         <div style={styles}>
             <img src={Substidudes2} alt="Substidudes-logo"/>
           {/* <Sivupalkki /> */}

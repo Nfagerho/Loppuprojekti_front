@@ -7,6 +7,7 @@ class Rekisterointi extends Component {
     render() {
         return (
             <div>
+                <br/>
                 <div className="logo">
                     <a href='/'>
                         <img src={Substidudes2} alt="Substidudes-logo"/></a>

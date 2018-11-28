@@ -27,6 +27,7 @@ class Etusivu extends Component {
                     <div id="spinneri1"><MDspinner singleColor="#e42226"/></div>
                     :
                     <div>
+                        <br/>
                         <div className="logo">
                             <a href='/'>
                                 <img src={Substidudes2} alt="Substidudes-logo"/></a>
@@ -41,7 +42,7 @@ class Etusivu extends Component {
                         </nav>
                         <footer>
                             © 2018 Substidudes Inc. All rights reserved.<br/>
-                            <a href="mailto:info.substidudes@gmail.com" target="_top">info.substidudes@gmail.com</a>
+                            <a id="linkki" href="mailto:info.substidudes@gmail.com" target="_top">info.substidudes@gmail.com</a>
                         </footer>
                     </div>
                 }

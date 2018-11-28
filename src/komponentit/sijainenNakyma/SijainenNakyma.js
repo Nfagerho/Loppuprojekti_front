@@ -11,6 +11,7 @@ import userSymbol from './userSymbol.png';
 
 // Autentikointiin liittyvää
 import {withAuthorization, AuthUserContext} from '../firebase/Session';
+import SignOutButton from "../firebase/SignOut";
 
 // import { sisaankirjaantuneenId } from './SisaankirjautunutId';
 
@@ -55,12 +56,12 @@ class SijainenNakyma extends Component {
                 </div>
 
                 {/* <SisaankirjautunutId/> */}
-                
+
                 <AuthUserContext.Consumer callbackfromparent = {this.callbackDataKomponentilta}>
                     {authUser => (
                         /*Näyttää sisäänkirjautuneen käyttäjän emailin ja user-logon sen edessä*/
                         <div className="sisaanKirjautunut">
-                            <p><img src={userSymbol} alt="userSymbol-logo" /> {authUser.email}</p>
+                            <p><img src={userSymbol} alt="userSymbol-logo" />{authUser.email}</p> 
                         </div>
                     )}
                 </AuthUserContext.Consumer>

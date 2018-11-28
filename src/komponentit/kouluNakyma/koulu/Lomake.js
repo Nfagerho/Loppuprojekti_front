@@ -17,6 +17,7 @@ class Lomake extends Component {
         toimeksiantoLoppuaika: '',
         oppiaine: '',
         koulu: 1,
+        vahvistus: false,
         showME: true,
         toimeksiantoLuotu: false
     };

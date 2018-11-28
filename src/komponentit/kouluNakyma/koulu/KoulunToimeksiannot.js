@@ -39,6 +39,10 @@ class KoulunToimeksiannot extends Component {
         this.props.history.push('/muokkaalomake/' + e.target.value);
     };
 
+    vahvistaToimeksianto = (e) => {
+        this.props.history.push('/vahvistatoimeksianto/' + e.target.value);
+    }
+
 //Alla olevaan mappaukseen on kovakoodattu kouluID 1. Eli IF-lause tsekkaa, onko toimeksiantoon kytketyn koulun ID 1, jos on niin
 //näyttää toimeksiannon. Jos ei, niin ei näytä mitään.
     render() {
@@ -47,13 +51,13 @@ class KoulunToimeksiannot extends Component {
             var aikamuutos = new Date(toimeksiantomappi.toimeksiantoAlkuaika);
             var aikamuutos1 = new Date(toimeksiantomappi.toimeksiantoLoppuaika);
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
-                if (toimeksiantomappi.sijainen !== null) {
+                if (toimeksiantomappi.sijainen !== null && toimeksiantomappi.vahvistus === true) {
                     return <Col id="toimeksiannot"
                                 sm={8}
                                 key={toimeksiantomappi.toimeksiantoId}>
                         {toimeksiantomappi.koulu &&
                         <ListGroupItem>
-                            <b id="varatutTeksti">VARATTU SIJAISUUS</b><br/>
+                            <b id="varatutTeksti">VAHVISTETTU SIJAISUUS</b><br/>
                             <b>Oppiaine:</b> {toimeksiantomappi.oppiaine}<br/>
                             <b>Alkaa:</b> {aikamuutos.toLocaleTimeString("fi", optiot)}<span> </span> <b>Loppuu:</b> {aikamuutos1.toLocaleTimeString("fi", optiot)}<br/>
                             <b>Sijainen:</b> {toimeksiantomappi.sijainen.sijainenNimi}
@@ -78,7 +82,7 @@ class KoulunToimeksiannot extends Component {
             var aikamuutos = new Date(toimeksiantomappi.toimeksiantoAlkuaika);
             var aikamuutos1 = new Date(toimeksiantomappi.toimeksiantoLoppuaika);
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
-                if (toimeksiantomappi.sijainen === null) {
+                if (toimeksiantomappi.sijainen === null && toimeksiantomappi.vahvistus === false) {
                     return <Col id="toimeksiannot"
                                 sm={8}
                                 key={toimeksiantomappi.toimeksiantoId}>
@@ -105,9 +109,37 @@ class KoulunToimeksiannot extends Component {
                 }
             }
         });
+
+        var optiot = {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'};
+        var toimeksiantooliot3 = this.state.toimeksiantodata.map((toimeksiantomappi) => {
+            var aikamuutos = new Date(toimeksiantomappi.toimeksiantoAlkuaika);
+            var aikamuutos1 = new Date(toimeksiantomappi.toimeksiantoLoppuaika);
+            if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
+                if (toimeksiantomappi.sijainen !== null && toimeksiantomappi.vahvistus === false) {
+                    return <Col id="toimeksiannot"
+                                sm={8}
+                                key={toimeksiantomappi.toimeksiantoId}>
+                        {toimeksiantomappi.koulu &&
+                        <ListGroupItem>
+                            <b id="vahvistamatonteksti">VAHVISTAMATON SIJAISUUS</b><br/>
+                            <b>Oppiaine:</b> {toimeksiantomappi.oppiaine}<br/>
+                            <b>Alkaa:</b> {aikamuutos.toLocaleTimeString("fi", optiot)}<span> </span> <b>Loppuu:</b> {aikamuutos1.toLocaleTimeString("fi", optiot)}<br/>
+                            <b>Sijainen:</b> {toimeksiantomappi.sijainen.sijainenNimi}
+                        </ListGroupItem>}
+                        <Button type="button" bsStyle="danger"
+                                id="nappi2"
+                                value={toimeksiantomappi.toimeksiantoId}
+                                bsSize="small"
+                                onClick={this.vahvistaToimeksianto}>Tarkastele</Button>
+                    </Col>
+                }
+            }
+
+        });
         return (<div>
                 {toimeksiantooliot}
                 {toimeksiantooliot2}
+                {toimeksiantooliot3}
             </div>
         );
     }

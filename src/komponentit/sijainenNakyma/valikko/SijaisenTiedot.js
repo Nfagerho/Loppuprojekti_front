@@ -4,6 +4,7 @@ import withAuthorization from "../../firebase/Session/withAuthorization";
 import {Button} from "react-bootstrap";
 import MDspinner from "react-md-spinner";
 import './SijaisenTietojenMuokkaus.css'
+import SignOutButton from '../../firebase/SignOut';
 
 
 // Täällä haetaan sijaisen omat tiedot. Tällä hetkellä hakee kaikkien sijaisten kaikki tiedot. 
@@ -66,13 +67,12 @@ class SijaisenTiedot extends Component {
         });
         //ja näytetään se sivustolla:
         return (
-            <div>{this.state.showME ?
-                <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
-                :
+            <div>
                 <ul>
                     {sijaisentiedotolio}
                 </ul>
-            }
+                <br/>
+            <SignOutButton/>
             </div>
         );
 

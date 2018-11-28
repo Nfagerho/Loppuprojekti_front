@@ -11,10 +11,12 @@ class KouluNakyma extends Component {
             <div>
                 <br/>
                 <div className="logo">
-                    <a href='/'>
+                    <a href='/koulunakyma'>
                         <img src={Substidudes2} alt="Substidudes"/></a><br/><br/><br/><br/><br/>
                 </div>
+                <div className="koulunTiedot">
                 <KoulunTiedot/>
+                </div>
             </div>
         );
     }

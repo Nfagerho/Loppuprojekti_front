@@ -8,6 +8,7 @@
     "google-maps-react": "^2.0.2",
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",
+    "react-bootstrap-dropdown-menu": "^1.1.15",
     "react-burger-menu": "^2.5.4",
     "react-dom": "^16.6.3",
     "react-google-maps": "^9.4.5",

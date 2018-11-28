@@ -53,7 +53,7 @@ class KaikkiToimeksiannot extends Component {
         var toimeksiantooliot = this.state.toimeksiantodata.map((toimeksiantomappi) => {
             var aikamuutos = new Date(toimeksiantomappi.toimeksiantoAlkuaika);
             var aikamuutos1 = new Date(toimeksiantomappi.toimeksiantoLoppuaika);
-            if (toimeksiantomappi.sijainen === null) {
+            if (toimeksiantomappi.sijainen === null && toimeksiantomappi.vahvistus === false) {
                 return <li key={toimeksiantomappi.toimeksiantoId}>{toimeksiantomappi.oppiaine}
                     <li>Alkaa: {aikamuutos.toLocaleTimeString("fi", optiot)} Loppuu: {aikamuutos1.toLocaleTimeString("fi", optiot)}</li>
                     {toimeksiantomappi.koulu &&
@@ -66,6 +66,7 @@ class KaikkiToimeksiannot extends Component {
 
         })
 //Datan näyttö sivustolla:
+
         return (
             <div>{this.state.showME ?
                     <div id="spinneri"><MDspinner singleColor="#e42226"/></div>

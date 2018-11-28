@@ -19,6 +19,7 @@ import Lomake from './komponentit/kouluNakyma/koulu/Lomake';
 import KouluNakyma from './komponentit/kouluNakyma/KouluNakyma';
 import MuokkaaToimeksiantoa from "./komponentit/kouluNakyma/koulu/MuokkaaToimeksiantoa";
 import {withAuthentication} from './komponentit/firebase/Session';
+import VahvistaToimeksianto from './komponentit/kouluNakyma/koulu/VahvistaToimeksianto';
 // import SignInPage from './komponentit/firebase/SignIn';
 
 const App = () => (
@@ -44,6 +45,7 @@ const App = () => (
             <Route exact path='/sijaisenomattoimeksiannot' component={SijaisenToimeksiannot}></Route>
             <Route exact path='/lomake' component={Lomake}></Route>
             <Route path='/muokkaalomake/:id' component={MuokkaaToimeksiantoa}></Route>
+            <Route path='/vahvistatoimeksianto/:id' component={VahvistaToimeksianto}></Route>
            
            {/* Not found -sivu ei ole suojattu: */}
             <Route component={SivuaEiLoytynyt} />

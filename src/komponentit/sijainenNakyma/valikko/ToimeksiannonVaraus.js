@@ -10,6 +10,7 @@ class ToimeksiannonVaraus extends Component {
         toimeksiantoLoppuaika: '',
         koulu: '',
         sijainen: this.props.sijaisenId,
+        vahvistus: '',
         showME: true
     };
 
@@ -42,6 +43,7 @@ class ToimeksiannonVaraus extends Component {
                 kouluNimi: haettudata.koulu.kouluNimi,
                 kouluOsoite: haettudata.koulu.kouluOsoite,
                 kouluYhteyshenkilo: haettudata.koulu.kouluYhteyshenkilo,
+                vahvistus: false
                 // Sijaisen ID on noukittava sisäänkirjautuneen emailin avulla!!!!!!!!
                 // sijainen: haettudata.sijainen.sijainenId
             });

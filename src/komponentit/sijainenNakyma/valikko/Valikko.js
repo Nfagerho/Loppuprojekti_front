@@ -44,6 +44,7 @@ class Valikko extends Component {
         console.log("sposti" + emaili3)
         haeSijaisenTiedotEmaililla(this.yksihaettu, emaili3);
 
+
     }
 
     yksihaettu = (haettudata, virhe) => {
@@ -56,6 +57,7 @@ class Valikko extends Component {
 
         }
     }
+
 
     muokkaus = (id) => {
         this.setState({

@@ -136,57 +136,57 @@ class KarttaNakyma extends Component {
             content: contentString2
         });
 
-        // // Tehdään toimeksiannoista taulukko, jonka yksi alkio vastaa yhtä koulua (nimi, lat, long, toimeksiantojen lkm)
-        // var markkerit = [];
-        // var matchi = false;
-        // for (var i = 0; i < this.state.toimeksiantodata.length; ++i) {
-        //
-        //     matchi = false;
-        //
-        //     if (markkerit.length === 0) {
-        //         markkerit[i] = [this.state.toimeksiantodata[i].koulu.kouluNimi,
-        //             this.state.toimeksiantodata[i].koulu.kouluKoordLat,
-        //             this.state.toimeksiantodata[i].koulu.kouluKoordLong,
-        //             1];
-        //     } else {
-        //         for (var y = 0; y < markkerit.length; ++y) {
-        //             console.log(this.state.toimeksiantodata[i].koulu.kouluNimi);
-        //             console.log("TÄMÄ ON ACADEMY:", markkerit[0][0]);
-        //             if (markkerit[y][0] === this.state.toimeksiantodata[i].koulu.kouluNimi) {
-        //                 markkerit[y][3] += 1;
-        //                 console.log("Nyt sen piti lisätä +1 Ressun kouluun");
-        //                 matchi = true;
-        //                 break;
-        //             }
-        //         }
-        //
-        //         if (matchi == false) {
-        //             markkerit[i] = [this.state.toimeksiantodata[i].koulu.kouluNimi,
-        //                 this.state.toimeksiantodata[i].koulu.kouluKoordLat,
-        //                 this.state.toimeksiantodata[i].koulu.kouluKoordLong,
-        //                 1];
-        //         }
-        //     }
-        //
-        //
-        //     // Mäpätään toimeksiannot taulukosta markkereiksi
-        //     var markerit;
-        //     for (var i2 = 0; i2 < markkerit.length; ++i2) {
-        //         markerit = new this.props.google.maps.Marker({
-        //             position: {lat: markkerit[i2][1], lng: markkerit[i2][2]},
-        //             map: this.map,
-        //             title: markkerit[i2][0],
-        //             label: markkerit[i2][3].toString(),
-        //         });
-        //
-        //         markerit.addListener('click', function () {
-        //             this.map.setZoom(18);
-        //             this.map.setCenter(markerit.getPosition());
-        //             infowindow1.open(this.map, markerit);
-        //         });
-        //     }
-        //
-        // }
+        // Tehdään toimeksiannoista taulukko, jonka yksi alkio vastaa yhtä koulua (nimi, lat, long, toimeksiantojen lkm)
+        var markkerit = [];
+        var matchi = false;
+        for (var i = 0; i < this.state.toimeksiantodata.length; ++i) {
+
+            matchi = false;
+
+            if (markkerit.length === 0) {
+                markkerit[i] = [this.state.toimeksiantodata[i].koulu.kouluNimi,
+                    this.state.toimeksiantodata[i].koulu.kouluKoordLat,
+                    this.state.toimeksiantodata[i].koulu.kouluKoordLong,
+                    1];
+            } else {
+                for (var y = 0; y < markkerit.length; ++y) {
+                    console.log(this.state.toimeksiantodata[i].koulu.kouluNimi);
+                    console.log("TÄMÄ ON ACADEMY:", markkerit[0][0]);
+                    if (markkerit[y][0] === this.state.toimeksiantodata[i].koulu.kouluNimi) {
+                        markkerit[y][3] += 1;
+                        console.log("Nyt sen piti lisätä +1 Ressun kouluun");
+                        matchi = true;
+                        break;
+                    }
+                }
+
+                if (matchi == false) {
+                    markkerit[i] = [this.state.toimeksiantodata[i].koulu.kouluNimi,
+                        this.state.toimeksiantodata[i].koulu.kouluKoordLat,
+                        this.state.toimeksiantodata[i].koulu.kouluKoordLong,
+                        1];
+                }
+            }
+
+
+            // Mäpätään toimeksiannot taulukosta markkereiksi
+            var markerit;
+            for (var i2 = 0; i2 < markkerit.length; ++i2) {
+                markerit = new this.props.google.maps.Marker({
+                    position: {lat: markkerit[i2][1], lng: markkerit[i2][2]},
+                    map: this.map,
+                    title: markkerit[i2][0],
+                    // label: markkerit[i2][3].toString(),
+                });
+
+                // markerit.addListener('click', function () {
+                //     this.map.setZoom(18);
+                //     this.map.setCenter(markerit.getPosition());
+                //     infowindow1.open(this.map, markerit);
+                // });
+            }
+
+        }
 
         if (!children) return;
 

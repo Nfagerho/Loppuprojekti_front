@@ -49,7 +49,7 @@ class KoulunToimeksiannot extends Component {
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
                 if (toimeksiantomappi.sijainen !== null) {
                     return <Col id="toimeksiannot"
-                                sm={8}
+                                sm={7}
                                 key={toimeksiantomappi.toimeksiantoId}>
                         {toimeksiantomappi.koulu &&
                         <ListGroupItem>

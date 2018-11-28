@@ -106,7 +106,6 @@ class Valikko extends Component {
                             {this.state.toimeksiantoNakyma &&
                             <ToimeksiannonVaraus id={this.state.toimeksiantoid} sijaisenId={this.state.sijainen}
                                                  varaus={this.varaus}/>}
-
                         </Popup>
 
                         <Popup trigger={<li onClick={this.props.close} className="valikkoAlku">Omat tiedot</li>} modal

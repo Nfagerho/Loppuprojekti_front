@@ -50,9 +50,7 @@ class KoulunTiedot extends Component {
 
     //Täällä mapataan data
     render() {
-
         var kouluntiedotolio = this.state.kouluntiedotdata.map((kouluntiedotmappi) => {
-
             if (kouluntiedotmappi && kouluntiedotmappi.kouluId === 1) {
                 return <Grid>
                     <Row>
@@ -112,7 +110,6 @@ class KoulunTiedot extends Component {
                                 Muokkaa tietoja
                             </Button>
                         </FormGroup>
-                            <div id="toimeksianto-teksti"><b>Toimeksiannot:</b></div>
                             <KoulunToimeksiannot/>
                         </Col>
                     </Row>

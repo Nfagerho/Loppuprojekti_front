@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {haeYksittainenToimeksianto, muokkaaToimeksianto, poistaToimeksianto} from '../../../restpalvelu';
 import {withAuthorization} from '../../firebase/Session';
 import MDspinner from "react-md-spinner";
+import Substidudes2 from "../../substidudes2.png";
+import {Button, Col, ControlLabel, FormControl, FormGroup, Row} from "react-bootstrap";
 
 //Täällä haetaan muokattavan toimeksiannon tiedot ja asetetaan ne stateen. 
 
@@ -21,7 +23,7 @@ class MuokkaaToimeksianto extends Component {
             this.setState({
                 showME: false
             })
-        }, 1000)
+        }, 0)
     }
 
     componentDidMount() {
@@ -55,7 +57,10 @@ class MuokkaaToimeksianto extends Component {
     muokkaalomake = (e) => {
         e.preventDefault();
         muokkaaToimeksianto(this.state.toimeksiantoId, this.state)
-        this.props.history.push('/koulunomattoimeksiannot/');
+        this.props.history.push('/koulunakyma/');
+    };
+    peruuta = (e) => {
+        this.props.history.push('/koulunakyma/' + e.target.value);
     };
 
     render() {
@@ -64,21 +69,57 @@ class MuokkaaToimeksianto extends Component {
                 <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
                 :
                 <div>
-                    <form>
-                        Toimeksiannon AlkuPvm: <br/>
-                        <input type="datetime-local" placeholder=""
-                               value={this.state.toimeksiantoAlkuaika}
-                               onChange={this.handlaatoimeksiantoAlkuaika}/><br/>
-                        Toimeksiannon LoppuPvm: <br/>
-                        <input type="datetime-local" placeholder=""
-                               value={this.state.toimeksiantoLoppuaika}
-                               onChange={this.handlaatoimeksiantoLoppuaika}/><br/>
-                        Oppiaine: <br/>
-                        <input type="text" placeholder=""
-                               value={this.state.oppiaine}
-                               onChange={this.handlaaoppiaine}/><br/>
-                        <button type="submit" onClick={this.muokkaalomake}>Muokkaa toimeksianto</button>
-                    </form>
+                    <div className="logo">
+                        <a href='/'>
+                            <img src={Substidudes2} alt="Substidudes-logo"/></a><br/><br/><br/><br/><br/><br/>
+                    </div>
+                    <Col id="lomake2Col">
+                        <Row>
+                            <FormGroup>
+                                <Col componentClass={ControlLabel} sm={2}>
+                                    Toimeksiannon alkuaika:
+                                </Col>
+                                <Col sm={3}>
+                                    <FormControl
+                                        type="datetime-local"
+                                        placeholder=""
+                                        value={this.state.toimeksiantoAlkuaika}
+                                        onChange={this.handlaatoimeksiantoAlkuaika}/><br/>
+                                </Col>
+                            </FormGroup>
+                        </Row>
+
+                        <Row>
+                            <FormGroup>
+                                <Col componentClass={ControlLabel} sm={2}>
+                                    Toimeksiannon loppuaika:
+                                </Col>
+                                <Col sm={3}>
+                                    <FormControl
+                                        type="datetime-local"
+                                        placeholder=""
+                                        value={this.state.toimeksiantoLoppuaika}
+                                        onChange={this.handlaatoimeksiantoLoppuaika}/><br/>
+                                </Col>
+                            </FormGroup>
+                        </Row>
+                        <Row>
+                            <FormGroup>
+                                <Col componentClass={ControlLabel} sm={2}>
+                                    Oppiaine:
+                                </Col>
+                                <Col sm={3}>
+                                    <FormControl
+                                        type="text" placeholder=""
+                                        value={this.state.oppiaine}
+                                        onChange={this.handlaaoppiaine}/><br/>
+                                </Col>
+                            </FormGroup>
+                        </Row>
+                    </Col>
+                    <br/>
+                    <Button id="submit-btn2" onClick={this.muokkaalomake}>Muokkaa toimeksianto</Button>
+                    <Button onClick={this.peruuta}>Peruuta</Button>
                 </div>
             }
             </div>

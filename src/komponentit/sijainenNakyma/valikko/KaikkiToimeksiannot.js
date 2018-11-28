@@ -54,13 +54,19 @@ class KaikkiToimeksiannot extends Component {
             var aikamuutos = new Date(toimeksiantomappi.toimeksiantoAlkuaika);
             var aikamuutos1 = new Date(toimeksiantomappi.toimeksiantoLoppuaika);
             if (toimeksiantomappi.sijainen === null && toimeksiantomappi.vahvistus === false) {
-                return <li key={toimeksiantomappi.toimeksiantoId}>{toimeksiantomappi.oppiaine}
-                    <li>Alkaa: {aikamuutos.toLocaleTimeString("fi", optiot)} Loppuu: {aikamuutos1.toLocaleTimeString("fi", optiot)}</li>
-                    {toimeksiantomappi.koulu &&
-                    <li>Koulu:{toimeksiantomappi.koulu.kouluNimi} Osoite: {toimeksiantomappi.koulu.kouluOsoite} Yhteyshenkilö:{toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>}
-                    <button type="button" value={toimeksiantomappi.toimeksiantoId} onClick={this.handlaavaraus}>Varaa
-                    </button>
-                </li>
+                return <div className="valkoinenDataboksi"><div className="keskitettyData">
+                    <ul key={toimeksiantomappi.toimeksiantoId}>
+                    <li><strong>Oppiaine:</strong> {toimeksiantomappi.oppiaine}</li>
+                    <li><strong>Alkaa:</strong> {aikamuutos.toLocaleTimeString("fi", optiot)}</li> 
+                    <li><strong>Päättyy:</strong> {aikamuutos1.toLocaleTimeString("fi", optiot)}</li>
+                    <li><strong>Koulu:</strong> {toimeksiantomappi.koulu.kouluNimi}</li>
+                    <li><strong>Osoite:</strong> {toimeksiantomappi.koulu.kouluOsoite}</li>
+                    <li><strong>Yhteyshenkilö:</strong> {toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>
+                    <button type="button" value={toimeksiantomappi.toimeksiantoId} onClick={this.handlaavaraus}>Varaa</button>
+                </ul>
+                <br/>
+                </div>
+                </div>
 
             }
 
@@ -68,12 +74,12 @@ class KaikkiToimeksiannot extends Component {
 //Datan näyttö sivustolla:
 
         return (
-            <div>{this.state.showME ?
-                    <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
-                    :
-                <ul>
-                    {toimeksiantooliot}
-                </ul>}
+            <div className="keskitettyDivi">
+                <div>
+                    
+                        {toimeksiantooliot}
+                    
+                </div>
             </div>
         );
 

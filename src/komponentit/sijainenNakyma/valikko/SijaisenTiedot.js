@@ -55,24 +55,33 @@ class SijaisenTiedot extends Component {
             if (sijaisentiedotmappi) {
                 if (sijaisentiedotmappi.sijainenSahkoposti === kirjautuneenEmail) {
                     return <li key={sijaisentiedotmappi.sijainenId}>
-                        Nimi: {sijaisentiedotmappi.sijainenNimi}
-                        <li>Osoite: {sijaisentiedotmappi.sijainenOsoite}</li>
-                        <li>Yhteystiedot: {sijaisentiedotmappi.sijainenPuhelinnumero}, {sijaisentiedotmappi.sijainenSahkoposti}</li>
+                        <strong>Nimi:</strong> {sijaisentiedotmappi.sijainenNimi}
+                        <li><strong>Osoite: </strong> {sijaisentiedotmappi.sijainenOsoite}</li>
+                        <li><strong>Puhelinnumero: </strong> {sijaisentiedotmappi.sijainenPuhelinnumero}</li>
+                        <li><strong>Sähköposti:</strong> {sijaisentiedotmappi.sijainenSahkoposti}</li>
                         <Button type="button"
-                                value={sijaisentiedotmappi.sijainenId} onClick={this.handlaamuokkaus}>Muokkaa
-                            tietoja</Button>
+                                value={sijaisentiedotmappi.sijainenId} 
+                                onClick={this.handlaamuokkaus}>
+                                Muokkaa yhteystietojasi
+                        </Button>
                     </li>
                 }
             }
         });
         //ja näytetään se sivustolla:
         return (
-            <div>
-                <ul>
-                    {sijaisentiedotolio}
-                </ul>
-                <br/>
-            <SignOutButton/>
+            <div className="keskitettyDivi">
+                <div className="valkoinenDataboksi">
+                    
+                    <div className="keskitettyData">
+                        <div className="keskitaBootstrappi">
+                            <SignOutButton/>
+                        </div>
+                        <ul>
+                            {sijaisentiedotolio}
+                        </ul>
+                    </div>
+                </div>
             </div>
         );
 

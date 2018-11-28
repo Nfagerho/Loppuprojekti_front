@@ -69,17 +69,17 @@ class SijainenNakyma extends Component {
                         <img src={Substidudes2} alt="Substidudes-logo"/></a>
                 </div>
                 
-                <AuthUserContext.Consumer callbackfromparent = {this.callbackDataKomponentilta}>
+                {/* /*Näyttää sisäänkirjautuneen käyttäjän emailin ja user-logon sen edessä */}
+                {/* <AuthUserContext.Consumer callbackfromparent = {this.callbackDataKomponentilta}>
                     {authUser => (
-                        /*Näyttää sisäänkirjautuneen käyttäjän emailin ja user-logon sen edessä*/
                         <div className="sisaanKirjautunut">
                             <p><img src={userSymbol} alt="userSymbol-logo" />{authUser.email}</p>
                         </div>
                     )}
-                </AuthUserContext.Consumer>
+                </AuthUserContext.Consumer> */}
 
                 {/* Hampurilaismenu: */}
-                <div style={styles}>
+                {/* <div style={styles}>
                     <Popup
                         modal
                         // overlayStyle={{ background: "rgba(255,255,255,0.8"}}
@@ -90,8 +90,8 @@ class SijainenNakyma extends Component {
                     >
                         {close => <Valikko close={close} history={this.props.history}/>}
                     </Popup>
-                </div>
-                {/* <Kartta/> */}
+                </div> */}
+        
                 <Router>
                     <div>
                         <div className="keskita">

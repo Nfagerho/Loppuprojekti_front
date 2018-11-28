@@ -118,8 +118,20 @@ a.button {
 
 .SignIn:hover {
     background-color: black;
-    color: white;
+    color: rgb(196, 196, 196);
     border: 2px solid #e42226;
+}
+
+.Valikkonapit {
+    background-color: #e42226;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+}
+
+.Valikkonapit:hover {
+    color: black;
+    border: 2px solid whitesmoke;
 }
 
 h1 {
@@ -148,6 +160,10 @@ footer {
 
 #linkki {
     color: white;
+}
+
+.keskita {
+    text-align: center;
 }
 
 

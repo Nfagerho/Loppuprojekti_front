@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {BrowserRouter as Router, Route, Switch, Link, Redirect} from 'react-router-dom';
 import Kartta from './kartta/Kartta';
 import './valikko/sivupalkki.css';
 import Popup from 'reactjs-popup';
@@ -6,8 +7,12 @@ import BurgerIkoni from './valikko/BurgerIkoni';
 import Valikko from './valikko/Valikko';
 import Substidudes2 from '../substidudes2.png';
 import userSymbol from './userSymbol.png';
+import { Button } from 'react-bootstrap';
 
-
+import SivuaEiLoytynyt from '../SivuaEiLoytynyt';
+import SijaisenTiedot from './valikko/SijaisenTiedot';
+import SijaisenToimeksiannot from './valikko/SijaisenToimeksiannot';
+import KaikkiToimeksiannot from './valikko/KaikkiToimeksiannot';
 
 // Autentikointiin liittyvää
 import {withAuthorization, AuthUserContext} from '../firebase/Session';
@@ -19,7 +24,7 @@ import {withAuthorization, AuthUserContext} from '../firebase/Session';
 const styles = {
     fontFamily: "sans-serif",
     textAlign: "center",
-    marginTop: "40px"
+    marginTop: "-25px"
 };
 
 // Valikkoon liittyviä tyylityksiä
@@ -32,6 +37,16 @@ const contentStyle = {
 
 };
 
+const Navigointipalkki = () => (
+    <div>
+        <Link to="/sijainen/"><Button className="Valikkonapit" bsStyle="danger">Kartta</Button></Link> &nbsp; &nbsp;
+        <Link to="/sijainen/toimeksiannot"><Button className="Valikkonapit" bsStyle="danger">Sijaisuudet</Button></Link> &nbsp; &nbsp;
+        <Link to="/sijainen/sijaisenomattoimeksiannot"><Button className="Valikkonapit" bsStyle="danger">Omat sijaisuudet</Button></Link> &nbsp; &nbsp;
+        <Link to="/sijainen/sijaisentiedot"><Button className="Valikkonapit" bsStyle="danger">Käyttäjätili</Button></Link>
+        <br/><br/>
+    </div>
+)
+
 class SijainenNakyma extends Component {
 
     constructor(props) {
@@ -42,8 +57,7 @@ class SijainenNakyma extends Component {
 
 
     render() {
-
-        // console.log(this.props.firebase.naytaEmail());
+        var emailii = this.props.firebase.naytaEmail();
 
         return (
             
@@ -53,8 +67,6 @@ class SijainenNakyma extends Component {
                     <a href='/'>
                         <img src={Substidudes2} alt="Substidudes-logo"/></a>
                 </div>
-
-                {/* <SisaankirjautunutId/> */}
                 
                 <AuthUserContext.Consumer callbackfromparent = {this.callbackDataKomponentilta}>
                     {authUser => (
@@ -65,10 +77,8 @@ class SijainenNakyma extends Component {
                     )}
                 </AuthUserContext.Consumer>
 
+                {/* Hampurilaismenu: */}
                 <div style={styles}>
-
-                    {/* <Sivupalkki /> */}
-
                     <Popup
                         modal
                         // overlayStyle={{ background: "rgba(255,255,255,0.8"}}
@@ -79,10 +89,24 @@ class SijainenNakyma extends Component {
                     >
                         {close => <Valikko close={close} history={this.props.history}/>}
                     </Popup>
-
                 </div>
-                <Kartta/>
-
+                {/* <Kartta/> */}
+                <Router>
+                    <div>
+                        <div className="keskita">
+                            <Navigointipalkki/>
+                        </div>
+                        <div  className="nakyma">
+                        <Switch>
+                            <Route path="/sijainen" exact component={Kartta}/>
+                            <Route path="/sijainen/toimeksiannot" exact component={KaikkiToimeksiannot}/>
+                            <Route path="/sijainen/sijaisenomattoimeksiannot" exact render={(props) => <SijaisenToimeksiannot {...props} emaili={emailii} />}/>
+                            <Route path="/sijainen/sijaisentiedot" exact render={(props) => <SijaisenTiedot {...props} emaili={emailii} />}/>
+                            <Route component={SivuaEiLoytynyt}/>
+                        </Switch>
+                        </div>
+                    </div>
+                </Router>
             </div>
         );
     }

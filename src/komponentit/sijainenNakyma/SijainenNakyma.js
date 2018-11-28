@@ -51,7 +51,7 @@ class SijainenNakyma extends Component {
             <div>
                 <br/>
                 <div className="logo">
-                    <a href='/'>
+                    <a href='/sijainen'>
                         <img src={Substidudes2} alt="Substidudes-logo"/></a>
                 </div>
 
@@ -61,7 +61,7 @@ class SijainenNakyma extends Component {
                     {authUser => (
                         /*Näyttää sisäänkirjautuneen käyttäjän emailin ja user-logon sen edessä*/
                         <div className="sisaanKirjautunut">
-                            <p><img src={userSymbol} alt="userSymbol-logo" />{authUser.email}</p> 
+                            <p><img src={userSymbol} alt="userSymbol-logo" />{authUser.email}</p>
                         </div>
                     )}
                 </AuthUserContext.Consumer>

@@ -63,7 +63,7 @@ class KoulunTiedot extends Component {
                             <Button onClick={this.siirryLomakkeelle}>Luo uusi sijaisuus</Button>
                         </Thumbnail>
                     </Col>
-                    <Col sm={8} id="kouluntiedotTeksti">
+                    <Col sm={7} id="kouluntiedotTeksti">
                         <Col sm={6}>
                             <ListGroup>
                                 <ListGroupItem header="Koulun tiedot">

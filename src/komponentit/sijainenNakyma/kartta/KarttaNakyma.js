@@ -27,7 +27,7 @@ class KarttaNakyma extends Component {
             toimeksiantodata: []
         };
 
-        // var markkerit = [];
+        // var koulutaulukko = [];
     }
     componentDidMount() {
         //////////////////////////
@@ -136,61 +136,51 @@ class KarttaNakyma extends Component {
         });
 
         // Tehdään toimeksiannoista taulukko, jonka yksi alkio vastaa yhtä koulua (nimi, lat, long, toimeksiantojen lkm)
-        var markkerit = new Array ( );
-        var matchi = false;
+        var koulutaulukko = new Array ( );
+        var loytyykoKoulutaulukosta = false;
         for(var i = 0; i < this.state.toimeksiantodata.length; ++i){
 
-            matchi = false;
+            loytyykoKoulutaulukosta = false;
 
-            if(markkerit.length == 0) {
-                    markkerit[i] = new Array ( 
+            if(koulutaulukko.length == 0) {
+                    koulutaulukko[i] = new Array ( 
                     this.state.toimeksiantodata[i].koulu.kouluNimi,
                     this.state.toimeksiantodata[i].koulu.kouluKoordLat,
                     this.state.toimeksiantodata[i].koulu.kouluKoordLong,
                     1);
             } else {
-                for(var y = 0; y < markkerit.length; ++y) {
-                    console.log(this.state.toimeksiantodata[i].koulu.kouluNimi);
-                    console.log("TÄMÄ ON ACADEMY:", markkerit[0][0]);
-                    if(markkerit[y][0] === this.state.toimeksiantodata[i].koulu.kouluNimi){
-                        markkerit[y][3] += 1;
-                        console.log("Nyt sen piti lisätä +1 Ressun kouluun");
-                        matchi = true;
+                for(var y = 0; y < koulutaulukko.length; ++y) {
+               
+                    if(koulutaulukko[y][0] === this.state.toimeksiantodata[i].koulu.kouluNimi){
+                        koulutaulukko[y][3] += 1;
+                        loytyykoKoulutaulukosta = true;
                         break;
                     }
                 }
 
-                if(matchi == false) {
-                    markkerit[i] = new Array ( 
+                if(loytyykoKoulutaulukosta == false) {
+                    koulutaulukko[i] = new Array ( 
                         this.state.toimeksiantodata[i].koulu.kouluNimi,
                         this.state.toimeksiantodata[i].koulu.kouluKoordLat,
                         this.state.toimeksiantodata[i].koulu.kouluKoordLong,
                         1); 
                 }
             }
-
-            // Console log: markkeritaulukon data
-            for(var x = 0; x < markkerit.length; ++x) {
-                console.log("KOULU " + x);
-                for(var xx = 0; xx < 4; ++xx) {
-                    console.log(markkerit[x][xx]);
-                }
-            }
-
+            console.log("MONTAKOHAN KERTAA TÄMÄ NÄKYY");
             // Mäpätään toimeksiannot taulukosta markkereiksi
             var markerit;
-            for(var i2 = 0; i2 < markkerit.length; ++i2){
+            for(var toimeksianto = 0; toimeksianto < koulutaulukko.length; ++toimeksianto){
                 markerit = new this.props.google.maps.Marker({
-                    position: {lat: markkerit[i2][1], lng: markkerit[i2][2]},
+                    position: {lat: koulutaulukko[toimeksianto][1], lng: koulutaulukko[toimeksianto][2]},
                     map: this.map,
-                    title: markkerit[i2][0],
-                    label: markkerit[i2][3].toString(),
+                    title: koulutaulukko[toimeksianto][0],
+                    label: koulutaulukko[toimeksianto][3].toString(),
                 });
-
+                // Lisätään onClick-toiminnallisuus:
                 markerit.addListener('click', function() {
                     this.map.setZoom(18);
-                    this.map.setCenter(markerit.getPosition());
-                    infowindow1.open(this.map, markerit);
+                    // this.map.setCenter(markerit.getPosition());
+                    // infowindow1.open(this.map, markerit);
                     });
             }
             

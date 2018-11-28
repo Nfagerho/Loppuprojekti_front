@@ -21,7 +21,7 @@ class SijaisenTiedot extends Component {
             this.setState({
                 showME: false
             })
-        }, 1000)
+        }, 0)
     }
 
     componentDidMount() {

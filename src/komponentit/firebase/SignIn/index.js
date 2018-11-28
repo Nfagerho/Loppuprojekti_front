@@ -55,7 +55,7 @@ class SignInFormBase extends Component {
             this.setState({
                 showME: false
             })
-        }, 1000)
+        }, 0)
     }
 
     onChange = event => {

@@ -51,7 +51,7 @@ class SijaisenToimeksiannot extends Component {
             var d1 = Date.parse(d);
             var d2 = Date.parse(aikamuutos1);
             if (toimeksiantomappi.sijainen) {
-                if (toimeksiantomappi.sijainen.sijainenSahkoposti === kirjautuneenEmail) {
+                if (toimeksiantomappi.sijainen.sijainenSahkoposti === kirjautuneenEmail && toimeksiantomappi.vahvistus === true) {
                     if (d2 > d1) {
                         return <li key={toimeksiantomappi.toimeksiantoId}>{
                             toimeksiantomappi.koulu &&
@@ -76,7 +76,7 @@ class SijaisenToimeksiannot extends Component {
             var d1 = Date.parse(d);
             var d2 = Date.parse(aikamuutos1);
             if (toimeksiantomappi.sijainen) {
-                if (toimeksiantomappi.sijainen.sijainenSahkoposti === kirjautuneenEmail) {
+                if (toimeksiantomappi.sijainen.sijainenSahkoposti === kirjautuneenEmail && toimeksiantomappi.vahvistus === true) {
                     if (d2 < d1) {
                         return <ul key={toimeksiantomappi.toimeksiantoId}>
                             {toimeksiantomappi.koulu &&

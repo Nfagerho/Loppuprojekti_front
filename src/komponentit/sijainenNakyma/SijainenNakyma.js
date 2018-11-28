@@ -68,7 +68,7 @@ class SijainenNakyma extends Component {
                     <a href='/sijainen'>
                         <img src={Substidudes2} alt="Substidudes-logo"/></a>
                 </div>
-                
+                <br/>
                 {/* /*Näyttää sisäänkirjautuneen käyttäjän emailin ja user-logon sen edessä */}
                 {/* <AuthUserContext.Consumer callbackfromparent = {this.callbackDataKomponentilta}>
                     {authUser => (

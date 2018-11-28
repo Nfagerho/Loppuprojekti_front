@@ -114,6 +114,7 @@ a.button {
     color: black;
     font-weight: bold;
     border: 2px solid black;
+    outline: none !important;
 }
 
 .SignIn:hover {
@@ -127,7 +128,9 @@ a.button {
     color: black;
     font-weight: bold;
     border: 2px solid black;
+    outline: none !important;
 }
+
 
 .Valikkonapit:hover {
     color: black;

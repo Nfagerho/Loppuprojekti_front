@@ -245,7 +245,9 @@ footer {
 
 .sijaisuustekstit {
     text-align: center;
-    color: white;
+    color: black;
+    
+    
 }
 
 .flex-container {
@@ -328,8 +330,10 @@ footer {
     outline: none !important;
 }
 
-.logoutkuva {
-    padding: 7px;
+.valikkokuva {
+    padding-right: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 

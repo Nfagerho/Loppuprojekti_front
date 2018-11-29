@@ -98,12 +98,12 @@ class SijaisenToimeksiannot extends Component {
         return (
             <div className="keskitettyDivi">
                 <div className="sijaisuustekstit">
-                    <h2>Tulevat sijaisuudet:</h2>
+                    <h2><strong>Tulevat:</strong></h2>
                 </div>
                     {toimeksiantooliot}
 
                 <div className="sijaisuustekstit">
-                    <h2>Päättyneet sijaisuudet:</h2>
+                    <h2><strong>Päättyneet:</strong></h2>
                 </div>
                     {toimeksiantooliotmenneet}
             </div>

@@ -1,14 +1,10 @@
 import React from 'react';
-import logoutKuva from '../../sijainenNakyma/logout.png';
+import logoutKuva2 from '../../sijainenNakyma/logout.png';
 import {withFirebase} from '../Firebase';
 
-const logoutkuva = ({firebase}) => (
-    <img onClick={firebase.doSignOut} src={logoutKuva} alt="logout-kuva" />
-    
-//     <button type="button" onClick={firebase.doSignOut}>
-//     Sign Out
-//   </button>
+const Logoutkuva = ({firebase}) => (
+    <a href=""><img onClick={firebase.doSignOut} src={logoutKuva2} alt="logout-kuva" className="valikkokuva" /></a>
 
 );
 
-export default withFirebase(logoutkuva);
+export default withFirebase(Logoutkuva);

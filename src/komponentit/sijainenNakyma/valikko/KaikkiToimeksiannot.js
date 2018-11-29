@@ -54,7 +54,7 @@ class KaikkiToimeksiannot extends Component {
             var aikamuutos = new Date(toimeksiantomappi.toimeksiantoAlkuaika);
             var aikamuutos1 = new Date(toimeksiantomappi.toimeksiantoLoppuaika);
             if (toimeksiantomappi.sijainen === null && toimeksiantomappi.vahvistus === false) {
-                return <div className="valkoinenDataboksi"><div className="keskitettyData">
+                return <div className="harmaaDataboksi"><div className="keskitettyData">
                     <ul key={toimeksiantomappi.toimeksiantoId}>
                     <li><strong>Oppiaine:</strong> {toimeksiantomappi.oppiaine}</li>
                     <li><strong>Alkaa:</strong> {aikamuutos.toLocaleTimeString("fi", optiot)}</li> 

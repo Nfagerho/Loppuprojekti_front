@@ -7,7 +7,7 @@ import BurgerIkoni from './valikko/BurgerIkoni';
 import Valikko from './valikko/Valikko';
 import Substidudes2 from '../substidudes2.png';
 import userSymbol from './userSymbol.png';
-import logoutKuva from './logout.png';
+import logoutKuva2 from './logout.png';
 import { Button } from 'react-bootstrap';
 
 import SivuaEiLoytynyt from '../SivuaEiLoytynyt';
@@ -23,7 +23,7 @@ import SignOutButton from "../firebase/SignOut";
 import ToimeksiannonVaraus from './valikko/ToimeksiannonVaraus';
 import { haeSijaisenTiedotEmaililla } from '../../restpalvelu';
 import SijaisenTietojenMuokkaus from './valikko/SijaisenTietojenMuokkaus';
-import logoutkuva from '../firebase/SignOut/logoutkuva';
+import Logoutkuva from '../firebase/SignOut/logoutkuva';
 
 // import { sisaankirjaantuneenId } from './SisaankirjautunutId';
 
@@ -56,8 +56,8 @@ const Navigointipalkki = () => (
         <Link to="/sijainen/toimeksiannot"><Button className="Valikkonapit" bsStyle="danger">Sijaisuudet</Button></Link> &nbsp; &nbsp;
         <Link to="/sijainen/sijaisenomattoimeksiannot"><Button className="Valikkonapit" bsStyle="danger">Omat sijaisuudet</Button></Link> &nbsp; &nbsp;
         {/* <Link to="/sijainen/sijaisentiedot"><Button className="Valikkonapit" bsStyle="danger">Käyttäjätili</Button></Link> */}
-        <Link to="/sijainen/sijaisentiedot"><img src={userSymbol} alt="userSymbol-kuva" /></Link>
-        {logoutkuva} 
+        <Link to="/sijainen/sijaisentiedot"><img src={userSymbol} className="valikkokuva" alt="userSymbol-kuva" /></Link>
+        <Logoutkuva/> 
         <br/><br/>
     </div>
 )
@@ -132,6 +132,7 @@ class SijainenNakyma extends Component {
                     <div>
                         <div className="keskita">
                             <Navigointipalkki/>
+
                         </div>
                         <div  className="nakyma">
                         <Switch>
@@ -147,6 +148,7 @@ class SijainenNakyma extends Component {
                         </div>
                     </div>
                 </Router>
+                
             </div>
         );
     }

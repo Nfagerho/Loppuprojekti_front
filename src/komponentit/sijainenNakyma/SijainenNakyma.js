@@ -54,9 +54,9 @@ const Navigointipalkki = () => (
     <div>
         <Link to="/sijainen/"><Button className="Valikkonapit" bsStyle="danger">Kartta</Button></Link> &nbsp; &nbsp;
         <Link to="/sijainen/toimeksiannot"><Button className="Valikkonapit" bsStyle="danger">Sijaisuudet</Button></Link> &nbsp; &nbsp;
-        <Link to="/sijainen/sijaisenomattoimeksiannot"><Button className="Valikkonapit" bsStyle="danger">Omat sijaisuudet</Button></Link> &nbsp; &nbsp;
+        <Link to="/sijainen/sijaisenomattoimeksiannot"><Button className="Valikkonapit" bsStyle="danger">Omat sijaisuudet</Button></Link> &nbsp; &nbsp;&nbsp; &nbsp;
         {/* <Link to="/sijainen/sijaisentiedot"><Button className="Valikkonapit" bsStyle="danger">Käyttäjätili</Button></Link> */}
-        <Link to="/sijainen/sijaisentiedot"><img src={userSymbol} className="valikkokuva" alt="userSymbol-kuva" /></Link>
+        <Link to="/sijainen/sijaisentiedot"><img src={userSymbol} className="valikkokuva" alt="userSymbol-kuva" /></Link>&nbsp; &nbsp;
         <Logoutkuva/> 
         <br/><br/>
     </div>

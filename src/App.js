@@ -28,12 +28,11 @@ const App = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path='/' component={Etusivu}></Route>
-            <Route exact path='/sijainen' component={SijainenNakyma}></Route>
             <Route exact path='/sijainenlogin' component={SijainenLogin}></Route>
+            <Route path='/sijainen' component={SijainenNakyma}></Route>
             <Route exact path='/koululogin' component={KouluLogin}></Route>
             <Route exact path='/rekisterointi' component={Rekisterointi}></Route>
             
-
             {/* Alla olevat sivut ovat suojattuja (autentikoinnin takana) */}
             <Route exact path='/toimeksiannot' component={KaikkiToimeksiannot}></Route>
             <Route path='/koulunakyma' component={KouluNakyma}></Route>

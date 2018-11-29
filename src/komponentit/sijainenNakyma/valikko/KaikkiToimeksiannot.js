@@ -65,7 +65,6 @@ class KaikkiToimeksiannot extends Component {
                         <br/>
                     <button type="button" id="varaaToimeksiantoNappi" value={toimeksiantomappi.toimeksiantoId} onClick={this.handlaavaraus}>Varaa</button>
                 </ul>
-                <br/>
                 </div>
                 </div>
 

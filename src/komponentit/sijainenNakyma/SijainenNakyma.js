@@ -24,6 +24,7 @@ import ToimeksiannonVaraus from './valikko/ToimeksiannonVaraus';
 import { haeSijaisenTiedotEmaililla } from '../../restpalvelu';
 import SijaisenTietojenMuokkaus from './valikko/SijaisenTietojenMuokkaus';
 import Logoutkuva from '../firebase/SignOut/logoutkuva';
+import KouluToimaritKartta from '../kouluNakyma/koulu/KouluToimaritKartta';
 
 // import { sisaankirjaantuneenId } from './SisaankirjautunutId';
 
@@ -142,6 +143,7 @@ class SijainenNakyma extends Component {
                             <Route path="/sijainen/sijaisentiedot" exact render={(props) => <SijaisenTiedot {...props} emaili={emailii} />}/>
 
                             <Route path='/toimeksiannonvaraus/:id' render={(props) => <ToimeksiannonVaraus {...props} sijaisenId={this.state.sijainen}/>}/>
+                            <Route path='/sijainen/koulunsijaisuudet/:id' component={KouluToimaritKartta} />
                             <Route path='/sijaisenomientietojenmuokkaus/:id' render={(props) => <SijaisenTietojenMuokkaus {...props} sijaisenId={this.state.sijainen}/>}/>
                             <Route component={SivuaEiLoytynyt}/>
                         </Switch>

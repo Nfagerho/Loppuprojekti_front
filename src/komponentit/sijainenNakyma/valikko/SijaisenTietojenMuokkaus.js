@@ -54,40 +54,40 @@ class SijaisenTietojenMuokkaus extends Component {
 
     };
 
+    peruuta = () => {
+        this.props.history.push('/sijainen/sijaisentiedot/');
+    }
+
+
     render() {
         return (
-            <div>{this.state.showME ?
-                <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
-                :
+            <div className="keskitettyDivi">
+                <div className="valkoinenDataboksi"><div className="keskitettyData">
                 <Form>
-                    <Col sm={2}>
+
                         Nimi:
                         <FormControl type="text" placeholder=""
                                      value={this.state.sijainenNimi}
                                      onChange={this.handlaaNimi}/><br/>
-                    </Col>
-                    <Col sm={3}>
+
                         Osoite:
                         <FormControl type="text" placeholder=""
                                      value={this.state.sijainenOsoite}
                                      onChange={this.handlaaOsoite}/><br/>
-                    </Col>
-                    <Col sm={3}>
+
                         Puhelinnumero:
                         <FormControl type="text" placeholder=""
                                      value={this.state.sijainenPuhelinnumero}
                                      onChange={this.handlaaPuhelinnumero}/><br/>
-                    </Col>
-                    {/* <Col sm={4}>
-                        Sahköposti:
-                        <FormControl type="text" placeholder=""
-                                     value={this.state.sijainenSahkoposti}
-                                     onChange={this.handlaaSahkoposti}/><br/>
-                    </Col> */}
-                    <Col>
-                    <Button type="submit" onClick={this.muokkaatietoja}>Tallenna</Button></Col>
+
+
+                    <Button type="submit" id="sijaisenTietojenTallennusNappi" onClick={this.muokkaatietoja}>Tallenna</Button>
+                    <Button type="submit" id="sijaisenTietojenTallennusNappi" onClick={this.peruuta}>Peruuta</Button>
                 </Form>
-            }
+
+                </div>
+                </div>
+
             </div>
         );
     }

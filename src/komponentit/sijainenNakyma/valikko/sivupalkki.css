@@ -70,3 +70,10 @@
 .menu li.toimeksiannot {
  font-size: 75%
 }
+
+ul {
+  list-style-type: none; 
+}
+li {
+  list-style-type: none;
+}

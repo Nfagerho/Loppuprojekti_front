@@ -59,7 +59,8 @@ class SijaisenTiedot extends Component {
                         <li><strong>Osoite: </strong> {sijaisentiedotmappi.sijainenOsoite}</li>
                         <li><strong>Puhelinnumero: </strong> {sijaisentiedotmappi.sijainenPuhelinnumero}</li>
                         <li><strong>Sähköposti:</strong> {sijaisentiedotmappi.sijainenSahkoposti}</li>
-                        <Button type="button"
+                        <br/>
+                        <Button type="button" id="muokkaaSijaisenTietojaNappi"
                                 value={sijaisentiedotmappi.sijainenId} 
                                 onClick={this.handlaamuokkaus}>
                                 Muokkaa yhteystietojasi
@@ -75,7 +76,7 @@ class SijaisenTiedot extends Component {
                     
                     <div className="keskitettyData">
                         <div className="keskitaBootstrappi">
-                            <SignOutButton/>
+
                         </div>
                         <ul>
                             {sijaisentiedotolio}

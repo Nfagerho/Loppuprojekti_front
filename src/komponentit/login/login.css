@@ -304,6 +304,30 @@ footer {
     max-width: 300px;
 }
 
+#muokkaaSijaisenTietojaNappi {
+    margin-left: 9%;
+    outline: none !important;
+}
+
+#varaaToimeksiantoNappi {
+    margin-left: 32%;
+    outline: none !important;
+}
+
+.keskitettyData2 {
+    margin-left: 25%;
+}
+
+#vahvistaVarausNappi {
+    margin-left: 20%;
+    outline: none !important;
+}
+
+#sijaisenTietojenTallennusNappi {
+    margin-left: 17%;
+    outline: none !important;
+}
+
 
 
 

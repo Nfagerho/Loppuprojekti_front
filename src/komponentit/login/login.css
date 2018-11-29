@@ -1,7 +1,7 @@
 body {
-    background-image: url("tausta.jpg");
+    background-image: url("tausta3.jpg");
     background-repeat: repeat;
-    background-size: cover;
+    background-size: 1554px 736px;
 }
 
 .button-menu {
@@ -13,7 +13,7 @@ body {
     height: 32px;
     width: 32px;
     border-radius: 100%;
-    background-color: #e42226;
+    background-color: #b92c28;
     border: 10px solid black;
     padding: 65px;
     line-height: 0px;
@@ -28,7 +28,7 @@ body {
     height: 32px;
     width: 32px;
     border-radius: 100%;
-    background-color: #e42226;
+    background-color: #b92c28;
     border: 10px solid black;
     padding: 50px;
     line-height: 0px;
@@ -42,7 +42,7 @@ body {
 .button2:hover {
     background-color: black;
     color: white;
-    border: 10px solid #e42226;
+    border: 10px solid #b92c28;
 }
 
 a.button2 {
@@ -76,7 +76,7 @@ a.button2 {
 .button:hover {
     background-color: black;
     color: white;
-    border: 10px solid #e42226;
+    border: 10px solid #b92c28;
 }
 
 a.button {
@@ -97,7 +97,7 @@ a.button {
 
 .logout {
     margin-left: 0%;
-    background-color: #e42226;
+    background-color: #b92c28;
     color: black;
     border: 2px solid black;
     font-weight: bold;
@@ -107,7 +107,7 @@ a.button {
 .logout:hover {
     background-color: black;
     color: white;
-    border: 2px solid #e42226;
+    border: 2px solid #b92c28;
 }
 
 .sijainenSignIn {
@@ -115,7 +115,7 @@ a.button {
 }
 
 .SignIn {
-    background-color: #e42226;
+    background-color: #b92c28;
     color: black;
     font-weight: bold;
     border: 2px solid black;
@@ -125,11 +125,11 @@ a.button {
 .SignIn:hover {
     background-color: black;
     color: rgb(196, 196, 196);
-    border: 2px solid #e42226;
+    border: 2px solid #b92c28;
 }
 
 .Valikkonapit {
-    background-color: #e42226;
+    background-color: #b92c28;
     color: black;
     font-weight: bold;
     border: 2px solid black;

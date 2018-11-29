@@ -64,6 +64,7 @@ class ToimeksiannonVaraus extends Component {
             <div>{this.state.showME ?
                 <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
                 :
+            
                 <div>
                     <input type="text" value={this.state.oppiaine}/><br/>
 

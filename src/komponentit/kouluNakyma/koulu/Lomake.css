@@ -7,13 +7,13 @@
 }
 
 #nappi1 {
-margin-left: 72.3%;
+margin-left: 80.5%;
 }
 
-#nappi2 {
-    margin-left: 86.8%;
-    }
+#nappi3 {
+    margin-left: 68.8%
 
+}
 
 #muokkaatietojanappi {
     margin-left: 64%;
@@ -32,11 +32,11 @@ margin-left: 72.3%;
  }
 #avoimetTeksti {
     font-size: 14px;
-    color: darkred;
+    color: #b92c28;
 }
 #vahvistamatonteksti {
     font-size: 14px;
-    color: grey;
+    color: #337ab7;
 }
 #kouluntiedotTeksti {
     margin-left: 6.2%;

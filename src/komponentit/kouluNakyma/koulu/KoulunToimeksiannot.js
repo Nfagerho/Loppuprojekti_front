@@ -124,8 +124,17 @@ class KoulunToimeksiannot extends Component {
                             <b>Alkaa:</b> {aikamuutos.toLocaleTimeString("fi", optiot)}<span> </span> <b>Loppuu:</b> {aikamuutos1.toLocaleTimeString("fi", optiot)}<br/>
                             <b>Sijainen:</b> {toimeksiantomappi.sijainen.sijainenNimi}
                         </ListGroupItem>}
+                        <Button type="button"
+                                bsSize="small"
+                                id="nappi3"
+                                value={toimeksiantomappi.toimeksiantoId}
+                                onClick={this.handlaamuokkaus}>Muokkaa
+                        </Button>
                         <Button type="button" bsStyle="danger"
-                                id="nappi2"
+                                value={toimeksiantomappi.toimeksiantoId}
+                                bsSize="small"
+                                onClick={this.poistaToimeksiantoById}>Poista</Button>
+                        <Button type="button" bsStyle="primary"
                                 value={toimeksiantomappi.toimeksiantoId}
                                 bsSize="small"
                                 onClick={this.vahvistaToimeksianto}>Tarkastele</Button>

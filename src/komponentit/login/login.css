@@ -243,6 +243,24 @@ footer {
     color: white;
 }
 
+#muokkaaSijaisenTietojaNappi {
+    margin-left: 8%;
+    outline: none !important;
+}
+
+#varaaToimeksiantoNappi {
+    margin-left: 32%;
+    outline: none !important;
+}
+
+.keskitettyData2 {
+    margin-left: 25%;
+}
+
+#vahvistaVarausNappi {
+    margin-left: 10%;
+    outline: none !important;
+}
 
 
 

@@ -62,11 +62,9 @@ class ToimeksiannonVaraus extends Component {
 
     render() {
         return (
-            <div>{this.state.showME ?
-                <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
-                :
-            
-                <div>
+
+            <div className="keskitettyDivi">
+                <div className="valkoinenDataboksi"><div className="keskitettyData2">
                     <input type="text" value={this.state.oppiaine}/><br/>
 
                     <input type="datetime-local" value={this.state.toimeksiantoAlkuaika}/><br/>
@@ -77,12 +75,13 @@ class ToimeksiannonVaraus extends Component {
 
                     <input type="text" value={this.state.kouluOsoite}/><br/>
 
-                    <input type="text" value={this.state.kouluYhteyshenkilo}/><br/>
+                    <input type="text" value={this.state.kouluYhteyshenkilo}/><br/><br/>
 
-                    <button type="submit" onClick={this.muokkaatietoja}>Vahvista varaus</button>
-
-                </div>}
+                    <button type="submit" id="vahvistaVarausNappi" onClick={this.muokkaatietoja}>Vahvista varaus</button>
+                </div>
             </div>
+            </div>
+
         );
     }
 }

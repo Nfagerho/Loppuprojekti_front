@@ -62,7 +62,8 @@ class KaikkiToimeksiannot extends Component {
                     <li><strong>Koulu:</strong> {toimeksiantomappi.koulu.kouluNimi}</li>
                     <li><strong>Osoite:</strong> {toimeksiantomappi.koulu.kouluOsoite}</li>
                     <li><strong>Yhteyshenkilö:</strong> {toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>
-                    <button type="button" value={toimeksiantomappi.toimeksiantoId} onClick={this.handlaavaraus}>Varaa</button>
+                        <br/>
+                    <button type="button" id="varaaToimeksiantoNappi" value={toimeksiantomappi.toimeksiantoId} onClick={this.handlaavaraus}>Varaa</button>
                 </ul>
                 <br/>
                 </div>

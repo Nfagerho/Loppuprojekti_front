@@ -204,7 +204,7 @@ class KarttaNakyma extends Component {
         });
 
         var infowindow1 = new window.google.maps.InfoWindow({
-            content: 'Academy'
+            content: 'Academy' + '<br/><a href="/sijainen/koulunsijaisuudet/1">Näytä sijaisuudet</a>'
         });
 
         // Kauniaisten lukio
@@ -222,7 +222,7 @@ class KarttaNakyma extends Component {
         });
 
         var infowindow2 = new window.google.maps.InfoWindow({
-            content: 'Kauniaisten lukio'
+            content: 'Kauniaisten lukio' + '<br/><a href="/sijainen/koulunsijaisuudet/2">Näytä sijaisuudet</a>'
         });
 
         // Helsingin Rudolf Steiner -koulu
@@ -240,7 +240,7 @@ class KarttaNakyma extends Component {
         });
 
         var infowindow3 = new window.google.maps.InfoWindow({
-            content: 'Helsingin Rudolf Steiner -koulu'
+            content: 'Helsingin Rudolf Steiner -koulu' + '<br/><a href="/sijainen/koulunsijaisuudet/3">Näytä sijaisuudet</a>'
         });
 
         // Helsingin Saksalainen Koulu
@@ -258,7 +258,7 @@ class KarttaNakyma extends Component {
         });
 
         var infowindow4 = new window.google.maps.InfoWindow({
-            content: 'Helsingin Saksalainen Koulu'
+            content: 'Helsingin Saksalainen Koulu' + '<br/><a href="/sijainen/koulunsijaisuudet/4">Näytä sijaisuudet</a>'
         });
 
         // Töölön ala-aste
@@ -276,7 +276,7 @@ class KarttaNakyma extends Component {
         });
 
         var infowindow5 = new window.google.maps.InfoWindow({
-            content: 'Töölön ala-aste'
+            content: 'Töölön ala-aste' + '<br/><a href="/sijainen/koulunsijaisuudet/5">Näytä sijaisuudet</a>'
         });
 
         // Taivallahden Koulu
@@ -294,7 +294,7 @@ class KarttaNakyma extends Component {
         });
 
         var infowindow6 = new window.google.maps.InfoWindow({
-            content: 'Taivallahden Koulu'
+            content: 'Taivallahden Koulu' + '<br/><a href="/sijainen/koulunsijaisuudet/6">Näytä sijaisuudet</a>'
         });
 
         // Käpylän Koulu
@@ -312,7 +312,7 @@ class KarttaNakyma extends Component {
         });
 
         var infowindow7 = new window.google.maps.InfoWindow({
-            content: 'Käpylän Koulu'
+            content: 'Taivallahden Koulu' + '<br/><a href="/sijainen/koulunsijaisuudet/7">Näytä sijaisuudet</a>'
         });
 
         // Leppävaaran Lukio
@@ -330,7 +330,7 @@ class KarttaNakyma extends Component {
         });
 
         var infowindow8 = new window.google.maps.InfoWindow({
-            content: 'Leppävaaran Lukio'
+            content: 'Leppävaaran Lukio' + '<br/><a href="/sijainen/koulunsijaisuudet/8">Näytä sijaisuudet</a>'
         });
 
         // Neulamäen Koulu
@@ -348,7 +348,7 @@ class KarttaNakyma extends Component {
         });
 
         var infowindow9 = new window.google.maps.InfoWindow({
-            content: 'Neulamäen Koulu'
+            content: 'Neulamäen Koulu' + '<br/><a href="/sijainen/koulunsijaisuudet/9">Näytä sijaisuudet</a>'
         });
 
         // Ressun peruskoulu
@@ -366,7 +366,7 @@ class KarttaNakyma extends Component {
         });
 
         var infowindow10 = new window.google.maps.InfoWindow({
-            content: 'Ressun peruskoulu'
+            content: 'Ressun peruskoulu' + '<br/><a href="/sijainen/koulunsijaisuudet/10">Näytä sijaisuudet</a>'
         });
 
 

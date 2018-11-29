@@ -103,7 +103,7 @@ class SijaisenToimeksiannot extends Component {
                     {toimeksiantooliot}
 
                 <div className="sijaisuustekstit">
-                    <h2>Menneet sijaisuudet:</h2>
+                    <h2>Päättyneet sijaisuudet:</h2>
                 </div>
                     {toimeksiantooliotmenneet}
             </div>

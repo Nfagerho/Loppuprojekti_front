@@ -54,6 +54,11 @@ class SijaisenTietojenMuokkaus extends Component {
 
     };
 
+    peruuta = () => {
+        this.props.history.push('/sijainen/sijaisentiedot/');
+    }
+
+
     render() {
         return (
             <div>{this.state.showME ?
@@ -85,8 +90,11 @@ class SijaisenTietojenMuokkaus extends Component {
                                      onChange={this.handlaaSahkoposti}/><br/>
                     </Col> */}
                     <Col>
-                    <Button type="submit" onClick={this.muokkaatietoja}>Tallenna</Button></Col>
+                    <Button type="submit" onClick={this.muokkaatietoja}>Tallenna</Button>
+                    <Button type="submit" onClick={this.peruuta}>Peruuta</Button></Col>
                 </Form>
+                
+               
             }
             </div>
         );

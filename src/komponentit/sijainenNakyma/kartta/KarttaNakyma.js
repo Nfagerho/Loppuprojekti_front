@@ -124,9 +124,7 @@ class KarttaNakyma extends Component {
         //     '<object type="text/html" data="/koulunomattoimeksiannot" width="600px" height="600px" >\n' +
         //     '</object></div>';
 
-        var contentString1 = '<div id="content"><h1>Academy</h1><h3>Vapaat toimeksiannot</h3>\' +\n' +
-            '        //     \'<object type="text/html" data="/toimeksiannot" width="600px" height="600px" >\\n\' +\n' +
-            '        //     \'</object></div>';
+        var contentString1 = '<div id="content"><h1>Academy</h1><h3>Vapaat toimeksiannot</h3><a href="/koulunomattoimeksiannot"/>Tästä sijaisuuksiin</div>';
 
 
         var contentString2 = '<div id="content"><h1>Ressun peruskoulu</h1><p>RESSUN PERUSKOULUN VAPAAT SIJAISUUDET: </p></div>';
@@ -199,12 +197,12 @@ class KarttaNakyma extends Component {
         marker1.addListener('click', function() {
             this.map.setZoom(18);
             this.map.setCenter(marker1.getPosition());
-            infowindow1.open(this.map, marker1);
+            infowindow1.open(this.map, marker1, contentString1);
 
         });
 
         var infowindow1 = new window.google.maps.InfoWindow({
-            content: 'Academy'
+            content: contentString1
         });
 
         // Kauniaisten lukio

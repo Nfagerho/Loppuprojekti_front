@@ -83,7 +83,7 @@ class KoulunToimeksiannot extends Component {
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
                 if (toimeksiantomappi.sijainen === null && toimeksiantomappi.vahvistus === false) {
                     return <Col id="toimeksiannot"
-                                sm={5}
+                                sm={7}
                                 key={toimeksiantomappi.toimeksiantoId}>
                         {toimeksiantomappi.koulu &&
 
@@ -115,7 +115,7 @@ class KoulunToimeksiannot extends Component {
             if (toimeksiantomappi.koulu && toimeksiantomappi.koulu.kouluId === 1) {
                 if (toimeksiantomappi.sijainen !== null && toimeksiantomappi.vahvistus === false) {
                     return <Col id="toimeksiannot"
-                                sm={8}
+                                sm={7}
                                 key={toimeksiantomappi.toimeksiantoId}>
                         {toimeksiantomappi.koulu &&
                         <ListGroupItem>
@@ -124,8 +124,17 @@ class KoulunToimeksiannot extends Component {
                             <b>Alkaa:</b> {aikamuutos.toLocaleTimeString("fi", optiot)}<span> </span> <b>Loppuu:</b> {aikamuutos1.toLocaleTimeString("fi", optiot)}<br/>
                             <b>Sijainen:</b> {toimeksiantomappi.sijainen.sijainenNimi}
                         </ListGroupItem>}
+                        <Button type="button"
+                                bsSize="small"
+                                id="nappi3"
+                                value={toimeksiantomappi.toimeksiantoId}
+                                onClick={this.handlaamuokkaus}>Muokkaa
+                        </Button>
                         <Button type="button" bsStyle="danger"
-                                id="nappi2"
+                                value={toimeksiantomappi.toimeksiantoId}
+                                bsSize="small"
+                                onClick={this.poistaToimeksiantoById}>Poista</Button>
+                        <Button type="button" bsStyle="primary"
                                 value={toimeksiantomappi.toimeksiantoId}
                                 bsSize="small"
                                 onClick={this.vahvistaToimeksianto}>Tarkastele</Button>

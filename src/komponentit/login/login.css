@@ -134,6 +134,7 @@ a.button {
     font-weight: bold;
     border: 2px solid black;
     outline: none !important;
+
 }
 
 
@@ -334,6 +335,16 @@ footer {
     padding-right: 18px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.logOutNappi {
+    margin-left: 65%;
+    width: 3.5%;
+    background-color: rgba(158, 158, 158, 0.7);
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 10px;
+    margin-top: 30px;
 }
 
 

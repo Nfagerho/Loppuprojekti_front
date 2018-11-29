@@ -53,15 +53,17 @@ class SijaisenToimeksiannot extends Component {
             if (toimeksiantomappi.sijainen) {
                 if (toimeksiantomappi.sijainen.sijainenSahkoposti === kirjautuneenEmail && toimeksiantomappi.vahvistus === true) {
                     if (d2 > d1) {
-                        return <li key={toimeksiantomappi.toimeksiantoId}>{
-                            toimeksiantomappi.koulu &&
-                            <li class="toimeksiannot">Oppiaine: {toimeksiantomappi.oppiaine}<br/> Alkaa: {aikamuutos.toLocaleTimeString("fi", optiot)}<br/>
-                                Loppuu: {aikamuutos1.toLocaleTimeString("fi", optiot)}<br/>
-                                Koulu:{toimeksiantomappi.koulu.kouluNimi}<br/>
-                                Osoite: {toimeksiantomappi.koulu.kouluOsoite}<br/>
-                                Yhteyshenkilö:{toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>
-                        }
-                        </li>
+                        return <div className="vihreaDataboksi">
+                            <div className="keskitettyData"><ul key={toimeksiantomappi.toimeksiantoId}>
+                            <li><strong>Oppiaine:</strong> {toimeksiantomappi.oppiaine}</li> 
+                            <li><strong>Alkaa:</strong> {aikamuutos.toLocaleTimeString("fi", optiot)}</li>
+                            <li><strong>Loppuu:</strong> {aikamuutos1.toLocaleTimeString("fi", optiot)}</li>
+                            <li><strong>Koulu:</strong> {toimeksiantomappi.koulu.kouluNimi}</li>
+                            <li><strong>Osoite:</strong> {toimeksiantomappi.koulu.kouluOsoite}</li>
+                            <li><strong>Yhteyshenkilö:</strong> {toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>
+                            </ul>
+                            </div>
+                            </div>
                     }
                 }
             }
@@ -78,28 +80,32 @@ class SijaisenToimeksiannot extends Component {
             if (toimeksiantomappi.sijainen) {
                 if (toimeksiantomappi.sijainen.sijainenSahkoposti === kirjautuneenEmail && toimeksiantomappi.vahvistus === true) {
                     if (d2 < d1) {
-                        return <ul key={toimeksiantomappi.toimeksiantoId}>
-                            {toimeksiantomappi.koulu &&
-                            <li className="toimeksiannot">Oppiaine: {toimeksiantomappi.oppiaine}<br/> Alkaa: {aikamuutos.toLocaleTimeString("fi", optiot)}<br/>
-                                Loppuu: {aikamuutos1.toLocaleTimeString("fi", optiot)}<br/>
-                                Koulu:{toimeksiantomappi.koulu.kouluNimi}<br/>
-                                Osoite: {toimeksiantomappi.koulu.kouluOsoite}<br/>
-                                Yhteyshenkilö:{toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>}</ul>
+                        return <div className="harmaaDataboksi"><div className="keskitettyData"><ul key={toimeksiantomappi.toimeksiantoId}>
+                            <li><strong>Oppiaine:</strong> {toimeksiantomappi.oppiaine}</li> 
+                            <li><strong>Alkaa:</strong> {aikamuutos.toLocaleTimeString("fi", optiot)}</li>
+                            <li><strong>Loppuu:</strong> {aikamuutos1.toLocaleTimeString("fi", optiot)}</li>
+                            <li><strong>Koulu:</strong> {toimeksiantomappi.koulu.kouluNimi}</li>
+                            <li><strong>Osoite:</strong> {toimeksiantomappi.koulu.kouluOsoite}</li>
+                            <li><strong>Yhteyshenkilö:</strong> {toimeksiantomappi.koulu.kouluYhteyshenkilo}</li>
+                            </ul>
+                            </div>
+                            </div>
                     }
                 }
             }
         });
 
         return (
-            <div>{this.state.showME ?
-                <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
-                :
-                <ul>
-                    <li><p id="tuleva">Tulevat toimeksiannot:</p></li>
+            <div className="keskitettyDivi">
+                <div className="sijaisuustekstit">
+                    <h2>Tulevat sijaisuudet:</h2>
+                </div>
                     {toimeksiantooliot}
-                    <li><p id="meneva">Menneet toimeksiannot:</p></li>
+
+                <div className="sijaisuustekstit">
+                    <h2>Menneet sijaisuudet:</h2>
+                </div>
                     {toimeksiantooliotmenneet}
-                </ul>}
             </div>
 
 

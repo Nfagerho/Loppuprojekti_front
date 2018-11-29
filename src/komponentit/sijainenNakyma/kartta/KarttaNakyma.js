@@ -147,11 +147,9 @@ class KarttaNakyma extends Component {
                     this.state.toimeksiantodata[i].koulu.kouluKoordLat,
                     this.state.toimeksiantodata[i].koulu.kouluKoordLong,
                     1];
-
             } else {
 
                 for (var y = 0; y < koulutaulukko.length; ++y) {
-
                     if (koulutaulukko[y][0] === this.state.toimeksiantodata[i].koulu.kouluNimi) {
                         koulutaulukko[y][3] += 1;
                         loytyykoKoulutaulukosta = true;

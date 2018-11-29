@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import React, {Component} from 'react';
 import {haeKaikkiToimeksiannot} from '../../../restpalvelu';
+import jutila from '../jutila.png'
 // Tarviiko lisätä autentikointia?
 
 
@@ -120,6 +121,11 @@ class KarttaNakyma extends Component {
     renderChildren() {
         const {children} = this.props;
 
+        var iconBase = './src/komponentit/sijainenNakyma/jutila.png';
+
+
+
+
         // var contentString1 = '<div id="content"><h1>Käpylän peruskoulu</h1><h3>Vapaat toimeksiannot</h3>' +
         //     '<object type="text/html" data="/koulunomattoimeksiannot" width="600px" height="600px" >\n' +
         //     '</object></div>';
@@ -191,6 +197,7 @@ class KarttaNakyma extends Component {
             position: {lat: 60.17187, lng: 24.82698},
             map: this.map,
             title: 'Academy',
+
         });
 
         // Tapahtuma, kun markeria klikataan
@@ -365,6 +372,25 @@ class KarttaNakyma extends Component {
 
         var infowindow10 = new window.google.maps.InfoWindow({
             content: 'Ressun peruskoulu' + '<br/><a href="/sijainen/koulunsijaisuudet/10">Näytä sijaisuudet</a>'
+        });
+
+        // Tesoman koulu
+        var marker11 = new this.props.google.maps.Marker({
+            position: {lat: 61.507536, lng: 23.629933},
+            map: this.map,
+            title: 'Jutin koulu',
+            icon: jutila
+        });
+
+        marker11.addListener('click', function() {
+            this.map.setZoom(18);
+            this.map.setCenter(marker11.getPosition());
+            infowindow11.open(this.map, marker11);
+
+        });
+
+        var infowindow11 = new window.google.maps.InfoWindow({
+            content: 'Jutin koulu'
         });
 
 

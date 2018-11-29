@@ -61,26 +61,34 @@ class ToimeksiannonVaraus extends Component {
     };
 
     render() {
+
+        var optiot = {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'};
+            var toimeksiantoalku = this.state.toimeksiantoAlkuaika
+            var toimeksiantoloppu = this.state.toimeksiantoLoppuaika
+            var aikamuutos = new Date(toimeksiantoalku);
+            var aikamuutos1 = new Date(toimeksiantoloppu);
+            
         return (
             <div>{this.state.showME ?
                 <div id="spinneri"><MDspinner singleColor="#e42226"/></div>
                 :
             
                 <div>
-                    <input type="text" value={this.state.oppiaine}/><br/>
+                    <ul>
+                   <li>{this.state.oppiaine}</li>
 
-                    <input type="datetime-local" value={this.state.toimeksiantoAlkuaika}/><br/>
+                   <li>{aikamuutos.toLocaleTimeString("fi", optiot)}</li>
 
-                    <input type="datetime-local" value={this.state.toimeksiantoLoppuaika}/><br/>
+                    <li>{aikamuutos1.toLocaleTimeString("fi", optiot)}</li>
 
-                    <input type="text" value={this.state.kouluNimi}/><br/>
+                    <li>{this.state.kouluNimi}</li>
 
-                    <input type="text" value={this.state.kouluOsoite}/><br/>
+                    <li>{this.state.kouluOsoite}</li>
 
-                    <input type="text" value={this.state.kouluYhteyshenkilo}/><br/>
+                    <li>{this.state.kouluYhteyshenkilo}</li>
 
                     <button type="submit" onClick={this.muokkaatietoja}>Vahvista varaus</button>
-
+                    </ul>
                 </div>}
             </div>
         );

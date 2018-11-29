@@ -128,9 +128,6 @@ class KarttaNakyma extends Component {
             '        //     \'<object type="text/html" data="/toimeksiannot" width="600px" height="600px" >\\n\' +\n' +
             '        //     \'</object></div>';
 
-        var infowindow1 = new window.google.maps.InfoWindow({
-            content: contentString1
-        });
 
         var contentString2 = '<div id="content"><h1>Ressun peruskoulu</h1><p>RESSUN PERUSKOULUN VAPAAT SIJAISUUDET: </p></div>';
 
@@ -138,56 +135,240 @@ class KarttaNakyma extends Component {
             content: contentString2
         });
 
-        // Tehdään toimeksiannoista taulukko, jonka yksi alkio vastaa yhtä koulua (nimi, lat, long, toimeksiantojen lkm)
-        var koulutaulukko = [];
-        var loytyykoKoulutaulukosta = false;
-        for (var i = 0; i < this.state.toimeksiantodata.length; ++i) {
-            loytyykoKoulutaulukosta = false;
+        // // Tehdään toimeksiannoista taulukko, jonka yksi alkio vastaa yhtä koulua (nimi, lat, long, toimeksiantojen lkm)
+        // var koulutaulukko = [];
+        // var loytyykoKoulutaulukosta = false;
+        // for (var i = 0; i < this.state.toimeksiantodata.length; ++i) {
+        //     loytyykoKoulutaulukosta = false;
 
-            if (koulutaulukko.length == 0) {
-                koulutaulukko[i] = [this.state.toimeksiantodata[i].koulu.kouluNimi,
-                    this.state.toimeksiantodata[i].koulu.kouluKoordLat,
-                    this.state.toimeksiantodata[i].koulu.kouluKoordLong,
-                    1];
-            } else {
+        //     if (koulutaulukko.length == 0) {
+        //         koulutaulukko[i] = [this.state.toimeksiantodata[i].koulu.kouluNimi,
+        //             this.state.toimeksiantodata[i].koulu.kouluKoordLat,
+        //             this.state.toimeksiantodata[i].koulu.kouluKoordLong,
+        //             1];
+        //     } else {
 
-                for (var y = 0; y < koulutaulukko.length; ++y) {
-                    if (koulutaulukko[y][0] === this.state.toimeksiantodata[i].koulu.kouluNimi) {
-                        koulutaulukko[y][3] += 1;
-                        loytyykoKoulutaulukosta = true;
-                        break;
-                    }
-                }
+        //         for (var y = 0; y < koulutaulukko.length; ++y) {
+        //             if (koulutaulukko[y][0] === this.state.toimeksiantodata[i].koulu.kouluNimi) {
+        //                 koulutaulukko[y][3] += 1;
+        //                 loytyykoKoulutaulukosta = true;
+        //                 break;
+        //             }
+        //         }
 
-                if (loytyykoKoulutaulukosta == false) {
-                    koulutaulukko[i] = [this.state.toimeksiantodata[i].koulu.kouluNimi,
-                        this.state.toimeksiantodata[i].koulu.kouluKoordLat,
-                        this.state.toimeksiantodata[i].koulu.kouluKoordLong,
-                        1];
-                }
-            }
+        //         if (loytyykoKoulutaulukosta == false) {
+        //             koulutaulukko[i] = [this.state.toimeksiantodata[i].koulu.kouluNimi,
+        //                 this.state.toimeksiantodata[i].koulu.kouluKoordLat,
+        //                 this.state.toimeksiantodata[i].koulu.kouluKoordLong,
+        //                 1];
+        //         }
+        //     }
 
-            console.log("MONTAKOHAN KERTAA TÄMÄ NÄKYY");
-            // Mäpätään toimeksiannot taulukosta markkereiksi
-            var markerit;
-            for (var toimeksianto = 0; toimeksianto < koulutaulukko.length; ++toimeksianto) {
-                markerit = new this.props.google.maps.Marker({
-                    position: {lat: koulutaulukko[toimeksianto][1], lng: koulutaulukko[toimeksianto][2]},
-                    map: this.map,
-                    // label: markkerit[i2][3].toString(),
-                    title: koulutaulukko[toimeksianto][0],
+        //     console.log("MONTAKOHAN KERTAA TÄMÄ NÄKYY");
+        //     // Mäpätään toimeksiannot taulukosta markkereiksi
+        //     var markerit;
+        //     for (var toimeksianto = 0; toimeksianto < koulutaulukko.length; ++toimeksianto) {
+        //         markerit = new this.props.google.maps.Marker({
+        //             position: {lat: koulutaulukko[toimeksianto][1], lng: koulutaulukko[toimeksianto][2]},
+        //             map: this.map,
+        //             // label: markkerit[i2][3].toString(),
+        //             title: koulutaulukko[toimeksianto][0],
 
-                });
+        //         });
 
-                markerit.addListener('click', function () {
-                    this.map.setZoom(18);
-                    this.map.setCenter(markerit.getPosition());
-                    infowindow1.open(this.map, markerit, contentString1);
-                });
+        //         markerit.addListener('click', function () {
+        //             this.map.setZoom(18);
+        //             this.map.setCenter(markerit.getPosition());
+        //             infowindow1.open(this.map, markerit, contentString1);
+        //         });
 
-            }
+        //     }
 
-        }
+        // }
+
+        // Kovakoodatut koulumarkkerit
+        // Markerin lisääminen (tämän koodin voi lisätä esim. renderinkin sisälle suoraan)
+        // Academy
+        var marker1 = new this.props.google.maps.Marker({
+            position: {lat: 60.17187, lng: 24.82698},
+            map: this.map,
+            title: 'Academy',
+        });
+
+        // Tapahtuma, kun markeria klikataan
+        marker1.addListener('click', function() {
+            this.map.setZoom(18);
+            this.map.setCenter(marker1.getPosition());
+            infowindow1.open(this.map, marker1);
+
+        });
+
+        var infowindow1 = new window.google.maps.InfoWindow({
+            content: 'Academy'
+        });
+
+        // Kauniaisten lukio
+        var marker2 = new this.props.google.maps.Marker({
+            position: {lat: 60.215197, lng: 24.704153},
+            map: this.map,
+            title: 'Kauniaisten lukio',
+        });
+
+        marker2.addListener('click', function() {
+            this.map.setZoom(18);
+            this.map.setCenter(marker2.getPosition());
+            infowindow2.open(this.map, marker2);
+
+        });
+
+        var infowindow2 = new window.google.maps.InfoWindow({
+            content: 'Kauniaisten lukio'
+        });
+
+        // Helsingin Rudolf Steiner -koulu
+        var marker3 = new this.props.google.maps.Marker({
+            position: {lat: 60.201441, lng: 24.908629},
+            map: this.map,
+            title: 'Helsingin Rudolf Steiner -koulu',
+        });
+
+        marker3.addListener('click', function() {
+            this.map.setZoom(18);
+            this.map.setCenter(marker3.getPosition());
+            infowindow3.open(this.map, marker3);
+
+        });
+
+        var infowindow3 = new window.google.maps.InfoWindow({
+            content: 'Helsingin Rudolf Steiner -koulu'
+        });
+
+        // Helsingin Saksalainen Koulu
+        var marker4 = new this.props.google.maps.Marker({
+            position: {lat: 60.167357, lng: 24.931953},
+            map: this.map,
+            title: 'Helsingin Saksalainen Koulu',
+        });
+
+        marker4.addListener('click', function() {
+            this.map.setZoom(18);
+            this.map.setCenter(marker4.getPosition());
+            infowindow4.open(this.map, marker4);
+
+        });
+
+        var infowindow4 = new window.google.maps.InfoWindow({
+            content: 'Helsingin Saksalainen Koulu'
+        });
+
+        // Töölön ala-aste
+        var marker5 = new this.props.google.maps.Marker({
+            position: {lat: 60.182733, lng: 24.922112},
+            map: this.map,
+            title: 'Töölön ala-aste',
+        });
+
+        marker5.addListener('click', function() {
+            this.map.setZoom(18);
+            this.map.setCenter(marker5.getPosition());
+            infowindow5.open(this.map, marker5);
+
+        });
+
+        var infowindow5 = new window.google.maps.InfoWindow({
+            content: 'Töölön ala-aste'
+        });
+
+        // Taivallahden Koulu
+        var marker6 = new this.props.google.maps.Marker({
+            position: {lat: 60.176776, lng: 24.916966},
+            map: this.map,
+            title: 'Taivallahden Koulu',
+        });
+
+        marker6.addListener('click', function() {
+            this.map.setZoom(18);
+            this.map.setCenter(marker6.getPosition());
+            infowindow6.open(this.map, marker6);
+
+        });
+
+        var infowindow6 = new window.google.maps.InfoWindow({
+            content: 'Taivallahden Koulu'
+        });
+
+        // Käpylän Koulu
+        var marker7 = new this.props.google.maps.Marker({
+            position: {lat: 60.216615, lng: 24.947332},
+            map: this.map,
+            title: 'Käpylän Koulu',
+        });
+
+        marker7.addListener('click', function() {
+            this.map.setZoom(18);
+            this.map.setCenter(marker7.getPosition());
+            infowindow7.open(this.map, marker7);
+
+        });
+
+        var infowindow7 = new window.google.maps.InfoWindow({
+            content: 'Käpylän Koulu'
+        });
+
+        // Leppävaaran Lukio
+        var marker8 = new this.props.google.maps.Marker({
+            position: {lat: 60.226017, lng: 24.805696},
+            map: this.map,
+            title: 'Leppävaaran Lukio',
+        });
+
+        marker8.addListener('click', function() {
+            this.map.setZoom(18);
+            this.map.setCenter(marker8.getPosition());
+            infowindow8.open(this.map, marker8);
+
+        });
+
+        var infowindow8 = new window.google.maps.InfoWindow({
+            content: 'Leppävaaran Lukio'
+        });
+
+        // Neulamäen Koulu
+        var marker9 = new this.props.google.maps.Marker({
+            position: {lat: 60.226017, lng: 24.805696},
+            map: this.map,
+            title: 'Neulamäen Koulu',
+        });
+
+        marker9.addListener('click', function() {
+            this.map.setZoom(18);
+            this.map.setCenter(marker9.getPosition());
+            infowindow9.open(this.map, marker9);
+
+        });
+
+        var infowindow9 = new window.google.maps.InfoWindow({
+            content: 'Neulamäen Koulu'
+        });
+
+        // Ressun peruskoulu
+        var marker10 = new this.props.google.maps.Marker({
+            position: {lat: 60.16695, lng: 24.92725},
+            map: this.map,
+            title: 'Ressun peruskoulu',
+        });
+
+        marker10.addListener('click', function() {
+            this.map.setZoom(18);
+            this.map.setCenter(marker10.getPosition());
+            infowindow10.open(this.map, marker10);
+
+        });
+
+        var infowindow10 = new window.google.maps.InfoWindow({
+            content: 'Ressun peruskoulu'
+        });
+
 
         if (!children) return;
 

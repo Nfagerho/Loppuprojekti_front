@@ -9,7 +9,7 @@ const mapStyles = {
         marginLeft: '1%',
         position: 'absolute',
         width: '98%',
-        height: '75%'
+        height: '72%'
     }
 };
 

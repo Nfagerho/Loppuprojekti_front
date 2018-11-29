@@ -13,7 +13,8 @@ body {
     height: 32px;
     width: 32px;
     border-radius: 100%;
-    background-color: #b92c28;
+    /* background-color: #b92c28; */
+    background-color: rgba(250, 57, 57, 0.8);
     border: 10px solid black;
     padding: 65px;
     line-height: 0px;
@@ -28,7 +29,8 @@ body {
     height: 32px;
     width: 32px;
     border-radius: 100%;
-    background-color: #b92c28;
+    /* background-color: #b92c28; */
+    background-color: rgba(250, 57, 57, 0.9);
     border: 10px solid black;
     padding: 50px;
     line-height: 0px;
@@ -129,7 +131,8 @@ a.button {
 }
 
 .Valikkonapit {
-    background-color: #b92c28;
+    /* background-color: #b92c28; */
+    background-color: rgba(250, 57, 57, 0.8);
     color: black;
     font-weight: bold;
     border: 2px solid black;
@@ -289,8 +292,8 @@ footer {
     margin-right: auto;
     max-width: 400px;
     width: 70%;
-    background-color: rgba(189, 189, 189, 0.473);
-
+    background-color: rgba(32, 32, 32, 0.673);
+    color: white;
     border-radius: 25px;
     border: 2px solid black;
     padding: 10px; 

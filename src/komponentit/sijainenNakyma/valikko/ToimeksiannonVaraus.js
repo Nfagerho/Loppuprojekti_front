@@ -83,7 +83,7 @@ class ToimeksiannonVaraus extends Component {
 
                         <li><strong>Osoite:</strong>{this.state.kouluOsoite}</li>
 
-                        <li><strong>Yhteyshenkilö:</strong>{this.state.kouluYhteyshenkilo}</li>
+                        <li><strong>Yhteyshenkilö:</strong>{this.state.kouluYhteyshenkilo}</li><br/>
 
                         <button type="submit" id="vahvistaVarausNappi" onClick={this.muokkaatietoja}>Vahvista varaus</button>
                     </ul>

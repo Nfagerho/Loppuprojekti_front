@@ -258,7 +258,12 @@ footer {
 }
 
 #vahvistaVarausNappi {
-    margin-left: 10%;
+    margin-left: 20%;
+    outline: none !important;
+}
+
+#sijaisenTietojenTallennusNappi {
+    margin-left: 17%;
     outline: none !important;
 }
 

@@ -7,6 +7,7 @@ import BurgerIkoni from './valikko/BurgerIkoni';
 import Valikko from './valikko/Valikko';
 import Substidudes2 from '../substidudes2.png';
 import userSymbol from './userSymbol.png';
+import logoutKuva from './logout.png';
 import { Button } from 'react-bootstrap';
 
 import SivuaEiLoytynyt from '../SivuaEiLoytynyt';
@@ -16,10 +17,13 @@ import KaikkiToimeksiannot from './valikko/KaikkiToimeksiannot';
 
 // Autentikointiin liittyvää
 import {withAuthorization, AuthUserContext} from '../firebase/Session';
+import { withFirebase } from '../firebase/Firebase';
 import SignOutButton from "../firebase/SignOut";
+
 import ToimeksiannonVaraus from './valikko/ToimeksiannonVaraus';
 import { haeSijaisenTiedotEmaililla } from '../../restpalvelu';
 import SijaisenTietojenMuokkaus from './valikko/SijaisenTietojenMuokkaus';
+import logoutkuva from '../firebase/SignOut/logoutkuva';
 
 // import { sisaankirjaantuneenId } from './SisaankirjautunutId';
 
@@ -41,13 +45,19 @@ const contentStyle = {
 
 };
 
+// const KirjauduUlos = ({firebase}) => (
+//     // <img onClick={firebase.doSignOut} className="logoutkuva" src={logoutKuva} alt="logout-kuva" />¨
+//     <p>paskaa</p>
+// );
 
 const Navigointipalkki = () => (
     <div>
         <Link to="/sijainen/"><Button className="Valikkonapit" bsStyle="danger">Kartta</Button></Link> &nbsp; &nbsp;
         <Link to="/sijainen/toimeksiannot"><Button className="Valikkonapit" bsStyle="danger">Sijaisuudet</Button></Link> &nbsp; &nbsp;
         <Link to="/sijainen/sijaisenomattoimeksiannot"><Button className="Valikkonapit" bsStyle="danger">Omat sijaisuudet</Button></Link> &nbsp; &nbsp;
-        <Link to="/sijainen/sijaisentiedot"><Button className="Valikkonapit" bsStyle="danger">Käyttäjätili</Button></Link>
+        {/* <Link to="/sijainen/sijaisentiedot"><Button className="Valikkonapit" bsStyle="danger">Käyttäjätili</Button></Link> */}
+        <Link to="/sijainen/sijaisentiedot"><img src={userSymbol} alt="userSymbol-kuva" /></Link>
+        {logoutkuva} 
         <br/><br/>
     </div>
 )
@@ -145,4 +155,5 @@ class SijainenNakyma extends Component {
 const condition = authUser => !!authUser;
 // Autentikointiin liittyvää
 export default withAuthorization(condition)(SijainenNakyma);
+
 // export default SijainenNakyma;

@@ -73,17 +73,17 @@ class ToimeksiannonVaraus extends Component {
                 <div className="keskitettyDivi">
                 <div className="valkoinenDataboksi"><div className="keskitettyData">
                     <ul>
-                        <li>{this.state.oppiaine}</li>
+                        <li><strong>Oppiaine:</strong>{this.state.oppiaine}</li>
 
-                        <li>{aikamuutos.toLocaleTimeString("fi", optiot)}</li>
+                        <li><strong>Alkaa:</strong>{aikamuutos.toLocaleTimeString("fi", optiot)}</li>
 
-                        <li>{aikamuutos1.toLocaleTimeString("fi", optiot)}</li>
+                        <li><strong>Loppuu:</strong>{aikamuutos1.toLocaleTimeString("fi", optiot)}</li>
 
-                        <li>{this.state.kouluNimi}</li>
+                        <li><strong>Koulu:</strong>{this.state.kouluNimi}</li>
 
-                        <li>{this.state.kouluOsoite}</li>
+                        <li><strong>Osoite:</strong>{this.state.kouluOsoite}</li>
 
-                        <li>{this.state.kouluYhteyshenkilo}</li>
+                        <li><strong>Yhteyshenkilö:</strong>{this.state.kouluYhteyshenkilo}</li>
 
                         <button type="submit" id="vahvistaVarausNappi" onClick={this.muokkaatietoja}>Vahvista varaus</button>
                     </ul>

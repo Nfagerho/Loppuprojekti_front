@@ -9,7 +9,7 @@ import MDspinner from "react-md-spinner";
 
 const SignInPage = () => (
     <div>
-        <h1>Kirjaudu sisään</h1>
+        <h1><strong>Kirjaudu sisään</strong></h1>
         <br/>
         <SignInForm/>
         {/* Alla olevat lisätään kun ehtii */}

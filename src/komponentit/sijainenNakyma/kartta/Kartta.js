@@ -44,5 +44,5 @@ class Kartta extends Component {
     }
 }
 export default GoogleApiWrapper({
-    apiKey: ''
+    apiKey: 'AIzaSyAUH1zJfyxQLcANucHvyUefXI9mNM_C1FM'
 })(Kartta);

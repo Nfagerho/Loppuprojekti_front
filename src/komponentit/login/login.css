@@ -306,8 +306,15 @@ footer {
 .etusivukeskitettyData {
     margin-left: auto;
     margin-right: auto;
-    min-width: 60px;
-    max-width: 300px;
+    margin-top: 70px;
+    margin-bottom: 80px;
+    min-width: 100px;
+    max-width: 400px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 1000;
+    font-family: sans-serif;
+    color: black;
 }
 
 #muokkaaSijaisenTietojaNappi {
@@ -348,6 +355,10 @@ footer {
     border: 2px solid black;
     padding: 10px;
     margin-top: 30px;
+}
+
+#etusivunEmail {
+    color: black;
 }
 
 

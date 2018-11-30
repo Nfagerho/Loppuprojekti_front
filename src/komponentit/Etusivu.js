@@ -41,7 +41,11 @@ class Etusivu extends Component {
                         {/* className="etusivuvalkoinenDataboksi" */}
                             <div> 
                                 <div className="etusivukeskitettyData">
-                                    Substidudes on moderni ja helppokäyttöinen sijaisopettajien välityspalvelu. <br/><br/>  Uudet sijaisopettajat voivat rekisteröityä suoraan palvelun kautta. Koulut voivat ottaa palvelun käyttöön ottamalla yhteyttä hallintoon <a id="etusivunEmail" href="mailto:info.substidudes@gmail.com" target="_top">(info.substidudes ( at ) gmail.com).</a>
+                                    Substidudes on moderni ja helppokäyttöinen sijaisopettajien välityspalvelu,
+                                    joka keskittää sijaisopetuksen koordinoinnin yhden sovelluksen alle. <br/><br/>  Sijaisopettaja-käyttäjäksi rekisteröidytään palvelussa olevan
+                                    lomakkeen avulla. Tilin avaamiseen tarvitaan toimiva sähköpostiosoite.
+                                    Koulut rekisteröidään palveluun Substidudes-sivuston asiakaspalvelun kautta
+                                    osoitteesta <a id="etusivunEmail" href="mailto:info.substidudes@gmail.com" target="_top">(info.substidudes ( at ) gmail.com).</a>
                                     
                                 </div>
                             </div>

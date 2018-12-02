@@ -25,6 +25,7 @@ import { haeSijaisenTiedotEmaililla } from '../../restpalvelu';
 import SijaisenTietojenMuokkaus from './valikko/SijaisenTietojenMuokkaus';
 import Logoutkuva from '../firebase/SignOut/logoutkuva';
 import KouluToimaritKartta from '../kouluNakyma/koulu/KouluToimaritKartta';
+import GoogleMapsContainer from './kartta/GoogleMapsContainer';
 
 // import { sisaankirjaantuneenId } from './SisaankirjautunutId';
 
@@ -137,7 +138,8 @@ class SijainenNakyma extends Component {
                         </div>
                         <div  className="nakyma">
                         <Switch>
-                            <Route path="/sijainen" exact component={Kartta}/>
+                            {/* <Route path="/sijainen" exact component={Kartta}/> */}
+                            <Route path="/sijainen" exact component={GoogleMapsContainer}/>
                             <Route path="/sijainen/toimeksiannot" exact component={KaikkiToimeksiannot}/>
                             <Route path="/sijainen/sijaisenomattoimeksiannot" exact render={(props) => <SijaisenToimeksiannot {...props} emaili={emailii} />}/>
                             <Route path="/sijainen/sijaisentiedot" exact render={(props) => <SijaisenTiedot {...props} emaili={emailii} />}/>

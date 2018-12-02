@@ -168,7 +168,7 @@ class KarttaNakyma extends Component {
         //         }
         //     }
 
-        //     console.log("MONTAKOHAN KERTAA TÄMÄ NÄKYY");
+        //     
         //     // Mäpätään toimeksiannot taulukosta markkereiksi
         //     var markerit;
         //     for (var toimeksianto = 0; toimeksianto < koulutaulukko.length; ++toimeksianto) {

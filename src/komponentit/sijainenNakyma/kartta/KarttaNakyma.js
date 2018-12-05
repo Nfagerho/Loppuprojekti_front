@@ -64,8 +64,6 @@ class KarttaNakyma extends Component {
             alert("virhe");
         } else {
             this.setState({toimeksiantodata: haettudata});
-
-
         }
     };
 
@@ -194,7 +192,7 @@ class KarttaNakyma extends Component {
         // Markerin lisääminen (tämän koodin voi lisätä esim. renderinkin sisälle suoraan)
         // Academy
         var marker1 = new this.props.google.maps.Marker({
-            position: {lat: 60.17187, lng: 24.82698},
+            position: {lat: 60.177618, lng: 24.833348},
             map: this.map,
             title: 'Academy',
 
